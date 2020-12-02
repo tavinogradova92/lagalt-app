@@ -1,5 +1,16 @@
 .industries-container {
-    display: grid;
+    display: flex;
     height: 30vh;
-    background-color: red;
+}
+
+.industry-card {
+    display: flex;
+    height: 20vh;
+    width: 30%;
+    padding: 1%;
+    background-color: #fff;
+    margin: 5% 4% 2% 2%;
+    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
 }
