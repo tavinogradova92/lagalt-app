@@ -1,0 +1,7 @@
+<div class="industries-container">
+    <p class="component-header">Top industries</p>
+    <div *ngFor="let industry of industries" class="industry-card">
+        <img src='{{ industry.imageSrc }}' alt="industry logo" height="100"/>
+        <p class="card-header">{{ industry.title }}</p>
+    </div>
+</div>
