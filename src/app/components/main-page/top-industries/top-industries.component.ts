@@ -1,34 +1,30 @@
+import { Industry } from './../../../models/industry.model';
+import { IndustryService } from './../../../services/industry.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-industries',
   templateUrl: './top-industries.component.html',
-  styleUrls: ['./top-industries.component.css']
+  styleUrls: ['./top-industries.component.css'],
 })
 export class TopIndustriesComponent implements OnInit {
+  industries: Industry[] = [];
 
-  public industries: {title: string, imageSrc: string}[] = [
-    {
-      title: 'Web Development',
-      imageSrc: '../../../assets/images/webdevelopment.svg'
-    },
-    {
-      title: 'Music',
-      imageSrc: '../../../assets/images/music.svg'
-    },
-    {
-      title: 'Film Making',
-      imageSrc: '../../../assets/images/filmmaking.svg'
-    },
-    {
-      title: 'Game Development',
-      imageSrc: '../../../assets/images/gamedesign.svg'
-    }
-  ]
-
-  constructor() { }
+  constructor(
+    private router: Router,
+    private industryService: IndustryService
+  ) {}
 
   ngOnInit(): void {
+    this.industryService
+      .getAllIndustries()
+      .subscribe((industries: Industry[]) => {
+        this.industries = industries;
+      });
   }
 
+  onIndustryClicked(industryId: number): void {
+    this.router.navigateByUrl(`/projects/industry/${industryId}`);
+  }
 }
