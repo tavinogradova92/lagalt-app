@@ -9,6 +9,7 @@ import { TopIndustriesComponent } from './components/main-page/top-industries/to
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginButtonComponent } from './utils/login-button/login-button.component';
 import { RegisterButtonComponent } from './utils/register-button/register-button.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterButtonComponent } from './utils/register-button/register-button
     TopIndustriesComponent,
     NavbarComponent,
     LoginButtonComponent,
-    RegisterButtonComponent
+    RegisterButtonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
