@@ -1,0 +1,18 @@
+<div *ngIf="user$ | async as user">
+  <p>{{ user.name }}</p>
+  <textarea
+    [(ngModel)]="user.description"
+    placeholder="Write someting about yourself"
+    >{{ user.description }}</textarea
+  >
+  <input type="checkbox" [(ngModel)]="user.hidden" />
+  <h2>Skills:</h2>
+  <h2>Previous projects</h2>
+  <button (click)="onSave(user)">Save</button>
+  <p
+    [ngClass]="!!patchError ? 'error' : 'success'"
+    *ngIf="patchResponseMessage"
+  >
+    {{ patchResponseMessage }}
+  </p>
+</div>

@@ -1,3 +1,5 @@
+import { UserPreloadGuard } from './guards/user-preload.guard';
+import { UserComponent } from './views/user/user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -7,21 +9,25 @@ import { NotFoundPageComponent } from './error-handling/not-found-page/not-found
 const routes: Routes = [
   {
     path: '',
-    component: MainPageComponent
+    component: MainPageComponent,
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+  },
+  {
+    path: 'users/:id',
+    component: UserComponent,
+    resolve: [UserPreloadGuard],
   },
   {
     path: '**',
-    component: NotFoundPageComponent
-  }
-
+    component: NotFoundPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

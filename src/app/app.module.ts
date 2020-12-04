@@ -1,3 +1,4 @@
+import { UserModule } from './views/user/user.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -25,7 +26,13 @@ import { LoginComponent } from './components/login/login.component';
     RegisterButtonComponent,
     LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, RouterModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule,
+    UserModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
