@@ -1,4 +1,7 @@
 .main-container {
     background-color: #E5E5E5;
-    height: 100vh;
+}
+
+.box-with-left-margin {
+    margin-left: 3vw;
 }

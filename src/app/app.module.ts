@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginButtonComponent } from './utils/login-button/login-button.component';
 import { RegisterButtonComponent } from './utils/register-button/register-button.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProjectsListComponent } from './components/main-page/projects-list/projects-list/projects-list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LoginComponent } from './components/login/login.component';
     LoginButtonComponent,
     RegisterButtonComponent,
     LoginComponent,
+    ProjectsListComponent,
   ],
   imports: [
     BrowserModule,

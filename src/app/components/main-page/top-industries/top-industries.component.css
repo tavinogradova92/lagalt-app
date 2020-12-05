@@ -3,13 +3,19 @@
     height: 30vh;
 }
 
+.component-header {
+    display: inline-block;
+    width: 50%;
+    margin-top: 2vh;
+}
+
 .industry-card {
     display: flex;
     height: 20vh;
     width: 30%;
     padding: 1%;
     background-color: #fff;
-    margin: 5% 4% 2% 2%;
+    margin: 3% 4% 2% 0;
     border-radius: 10px;
     justify-content: space-around;
     align-items: center;
