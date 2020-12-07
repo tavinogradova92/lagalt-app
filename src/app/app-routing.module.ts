@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NotFoundPageComponent } from './error-handling/not-found-page/not-found-page.component';
+import { ProjectDetailsPageComponent } from './components/project-details-page/project-details-page.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: 'users/:id',
     component: UserComponent,
     resolve: [UserPreloadGuard],
+  },
+  {
+    path: 'project',
+    component: ProjectDetailsPageComponent
   },
   {
     path: '**',
