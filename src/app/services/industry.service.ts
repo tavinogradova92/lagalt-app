@@ -1,7 +1,7 @@
 import { environment } from './../../environments/environment';
 import { Industry } from './../models/industry.model';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,5 +12,13 @@ export class IndustryService {
 
   getAllIndustries(): Observable<Industry[]> {
     return this.http.get<Industry[]>(`${environment.api.baseUrl}${environment.api.industries}`);
+  }
+
+  getIndustry(industryId: number): Observable<Industry> {
+    return this.http.get<Industry>(`${environment.api.baseUrl}${environment.api.industries}/${industryId}`);
+  }
+
+  getIndustryByProject(id: number): Observable<Industry> {
+    return this.http.get<Industry>(`${environment.api.baseUrl}${environment.api.industries}/project/${id}`);
   }
 }
