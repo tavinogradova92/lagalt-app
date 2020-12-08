@@ -1,5 +1,5 @@
-import { Industry } from './../../../models/industry.model';
-import { IndustryService } from './../../../services/industry.service';
+import { Industry } from './../../models/industry.model';
+import { IndustryService } from './../../services/industry.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

@@ -2,10 +2,10 @@ import { UserPreloadGuard } from './guards/user-preload.guard';
 import { UserComponent } from './views/user/user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { MainPageComponent } from './components/main-page/main-page.component';
+import { LoginComponent } from './views/login/login.component';
+import { MainPageComponent } from './views/main-page/main-page.component';
 import { NotFoundPageComponent } from './error-handling/not-found-page/not-found-page.component';
-import { ProjectDetailsPageComponent } from './components/project-details-page/project-details-page.component';
+import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 
 const routes: Routes = [
   {
