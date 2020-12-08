@@ -4,9 +4,8 @@
         <div class="project-card">
             <div class="project-title">{{ project.name }}</div>
             <div class="project-description">{{ project.description }}</div>
-            <div class="project-progress">{{ project.progress }}</div>
-            <div class="project-industry">{{ project.industry }}
-            </div>
+            <div class="project-industry">{{ project.industry }}</div>
+            <div *ngFor="let skill of project.projectSkills" class="project-skills">{{ skill }}</div>
             <button (click)="onProjectClicked(project.id)">Read more</button>
     </div>
 </div>
