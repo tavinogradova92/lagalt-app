@@ -5,10 +5,9 @@ import { FormsModule } from '@angular/forms';
 
 import { UserComponent } from './user.component';
 import { ToggleComponent } from '../../components/toggle/toggle.component';
-import { ProjectSimpleComponent } from './../../components/project-simple/project-simple-component';
 
 @NgModule({
-  declarations: [UserComponent, ToggleComponent, ProjectSimpleComponent],
+  declarations: [UserComponent, ToggleComponent],
   imports: [CommonModule, FormsModule],
   exports: [],
   providers: [UserService],

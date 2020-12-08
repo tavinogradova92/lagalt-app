@@ -1,5 +1,5 @@
 import { Project } from 'src/app/models/project.model';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'project-simple',
@@ -10,7 +10,7 @@ export class ProjectSimpleComponent {
   @Input() project: Project;
   @Output() projectClicked: EventEmitter<number> = new EventEmitter();
 
-  onProjectClicked(projectId): void {
+  onProjectClicked(projectId: number): void {
     this.projectClicked.emit(projectId);
   }
 }
