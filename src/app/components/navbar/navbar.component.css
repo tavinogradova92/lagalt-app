@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
+
+
 .navbar-container{
     display: flex;
     height: 15vh;
@@ -15,3 +18,8 @@
     display: block;
     height: 100%;
 }
+
+.logo-title {
+    font-family: 'Cairo', sans-serif;
+}
+

@@ -16,6 +16,7 @@ import { RegisterButtonComponent } from './utils/register-button/register-button
 import { LoginComponent } from './components/login/login.component';
 import { ProjectsListComponent } from './components/main-page/projects-list/projects-list/projects-list.component';
 import { ProjectDetailsPageComponent } from './components/project-details-page/project-details-page.component';
+import { SearchBarComponent } from './utils/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ProjectDetailsPageComponent } from './components/project-details-page/p
     LoginComponent,
     ProjectsListComponent,
     ProjectDetailsPageComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
