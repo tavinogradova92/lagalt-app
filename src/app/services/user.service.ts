@@ -1,3 +1,4 @@
+import { ResponseObject } from './../models/response-object.model';
 import { catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { environment } from './../../environments/environment';
@@ -12,8 +13,8 @@ export class UserService {
   private baseUrl = `${environment.api.baseUrl}users`;
   constructor(private http: HttpClient) {}
 
-  getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/${id}`);
+  getUserById(id: number): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(`${this.baseUrl}/${id}`);
   }
 
   updateUser(user: User): Observable<any> {

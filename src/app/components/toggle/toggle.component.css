@@ -1,0 +1,36 @@
+.toggle-control {
+  cursor: pointer;
+}
+.toggle-control input {
+  margin: 0 5px;
+  display: none;
+}
+.toggle-control input:checked ~ .control {
+  background-color: lightgray;
+}
+.toggle-control input:checked ~ .control:after {
+  background: gray;
+  left: 32px;
+}
+.toggle-control .control {
+  border: gray 1px solid;
+  display: block;
+  height: 30px;
+  width: 60px;
+  border-radius: 25px;
+  background-color: transparent;
+  transition: background-color 0.15s ease-in;
+  margin: 0 10px;
+}
+.toggle-control .control:after {
+  content: "";
+  display: block;
+  top: 4px;
+  left: 5px;
+  position: relative;
+  width: 23px;
+  height: 23px;
+  border-radius: 25px;
+  background: dodgerblue;
+  transition: left 0.15s ease-in;
+}

@@ -1,18 +1,46 @@
-<div *ngIf="user$ | async as user">
-  <p>{{ user.name }}</p>
+<div class="container">
+  <div class="profile-top">
+    <div class="image-name-container">
+      <img [src]="user.image" />
+      <h1 class="user-name">{{ user.name }}</h1>
+    </div>
+    <div class="skills-container">
+      <div class="skills">sdfsdf</div>
+      <div class="skills">sdfsdf</div>
+    </div>
+  </div>
+
   <textarea
+    rows="10"
+    class="description"
     [(ngModel)]="user.description"
+    (blur)="sendUpdate({ description: user.description })"
     placeholder="Write someting about yourself"
     >{{ user.description }}</textarea
   >
-  <input type="checkbox" [(ngModel)]="user.hidden" />
-  <h2>Skills:</h2>
-  <h2>Previous projects</h2>
-  <button (click)="onSave(user)">Save</button>
-  <p
-    [ngClass]="!!patchError ? 'error' : 'success'"
-    *ngIf="patchResponseMessage"
-  >
+
+  <p class="error" *ngIf="patchResponseMessage">
     {{ patchResponseMessage }}
   </p>
+
+  <div class="projects">
+    <h3>Your projects</h3>
+    <project-simple
+      *ngFor="let project of activeProjects"
+      [project]="project"
+      (projectClicked)="toProjectDetails($event)"
+    ></project-simple>
+  </div>
+
+  <div class="visibility-container">
+    <h2>Profile visibility</h2>
+    <div class="toggle-container">
+      <span [ngClass]="{ bold: !toggled }">Visible to all users</span>
+      <toggle-component
+        [checked]="toggled"
+        (toggle)="toggleHidden($event)"
+      ></toggle-component>
+      <span [ngClass]="{ bold: toggled }">Hidden</span>
+    </div>
+  </div>
 </div>

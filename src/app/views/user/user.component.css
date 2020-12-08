@@ -1,7 +1,42 @@
+img {
+  height: 120px;
+  border-radius: 100px;
+}
+
+.container {
+  padding: 0 5%;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+  align-items: center;
+}
+
+.image-name-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  margin-left: 15px;
+}
+
+.description {
+  width: 100%;
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .error {
   color: red;
 }
 
-.success {
-  color: green;
+.bold {
+  font-weight: bold;
 }
