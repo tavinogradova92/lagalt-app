@@ -22,8 +22,8 @@ const routes: Routes = [
     resolve: [UserPreloadGuard],
   },
   {
-    path: 'project',
-    component: ProjectDetailsPageComponent
+    path: 'projects',
+    component: ProjectDetailsPageComponent,
   },
   {
     path: '**',
