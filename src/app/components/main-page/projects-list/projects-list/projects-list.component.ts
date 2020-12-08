@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/project.model';
 import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
+import { IndustryService } from 'src/app/services/industry.service';
+import { Industry } from 'src/app/models/industry.model';
 
 @Component({
   selector: 'app-projects-list',
@@ -18,11 +20,10 @@ export class ProjectsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.projectService
-      .getAllProjects()
-      .subscribe((projects: Project[]) => {
-        this.projects = projects;
-      });
+    this.projectService.getAllProjects()
+      .subscribe(projects => {
+          this.projects = projects;
+      })
   }
 
   onProjectClicked(projectId: number): void {
