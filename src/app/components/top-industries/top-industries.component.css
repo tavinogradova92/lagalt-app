@@ -20,3 +20,7 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.card-header {
+    font-family: 'Chilanka', cursive;
+}
