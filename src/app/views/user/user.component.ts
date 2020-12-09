@@ -1,3 +1,6 @@
+import { ModalService } from '../../components/skills-modal/skills-modal.service';
+import { Skill } from './../../models/skill.model';
+import { SkillService } from './../../services/skill.service';
 import { ResponseObject } from './../../models/response-object.model';
 import { Project } from 'src/app/models/project.model';
 import { ProjectService } from 'src/app/services/project.service';
@@ -14,7 +17,9 @@ import { pluck } from 'rxjs/operators';
 })
 export class UserComponent implements OnInit {
   user: User;
-  activeProjects: Project[];
+  allSkills: Skill[] = [];
+  availableSkills: Skill[] = [];
+  activeProjects: Project[] = [];
   toggled: boolean;
   patchResponseMessage: string;
   patchError = false;
@@ -23,7 +28,9 @@ export class UserComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private skillService: SkillService,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +40,11 @@ export class UserComponent implements OnInit {
         this.user = userResponse.data as User;
         this.getActiveProjectsFromUser();
       });
+
+    this.skillService.getAllSkills().subscribe((response: ResponseObject) => {
+      this.allSkills = response.data as Skill[];
+      this.availableSkills = this.getAvailableSkills();
+    });
   }
 
   private getActiveProjectsFromUser(): void {
@@ -43,16 +55,32 @@ export class UserComponent implements OnInit {
       });
   }
 
-  toProjectDetails(projectId): void {
+  deleteBoxClicked(skillToDelete: Skill): void {
+    this.user.skills = this.user.skills.filter(
+      (skill) => skillToDelete.id !== skill.id
+    );
+    this.availableSkills.push(skillToDelete);
+    this.sendUpdate({ skills: this.user.skills });
+  }
+
+  toProjectDetails(projectId: number): void {
     this.router.navigateByUrl(`/projects/${projectId}`);
   }
 
-  toggleHidden(toggled): void {
+  addNewSkill(newSkill: Skill): void {
+    this.user.skills = [...this.user.skills, newSkill];
+    this.availableSkills = this.availableSkills.filter(
+      (skill) => newSkill.id !== skill.id
+    );
+    this.sendUpdate({ skills: this.user.skills });
+  }
+
+  toggleHidden(toggled: boolean): void {
     this.toggled = !this.toggled;
     this.sendUpdate({ hidden: toggled });
   }
 
-  sendUpdate(updatedField): void {
+  sendUpdate(updatedField: any): void {
     const user: User = Object.assign({ id: this.user.id }, updatedField);
     this.patchResponseMessage = '';
     this.userService.updateUser(user).subscribe((response) => {
@@ -61,5 +89,14 @@ export class UserComponent implements OnInit {
         ? 'There was an error updating the profile. Please try again later.'
         : '';
     });
+  }
+
+  getAvailableSkills(): Skill[] {
+    const usersSkillIds = this.user.skills.map((skill) => skill.id);
+    return this.allSkills.filter((skill) => !usersSkillIds.includes(skill.id));
+  }
+
+  openModal(): void {
+    this.modalService.open('skills-modal');
   }
 }

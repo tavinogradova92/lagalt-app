@@ -6,5 +6,5 @@ export interface User {
   image?: string;
   hidden?: boolean;
   projects?: number[];
-  skill?: number[];
+  skills?: any[];
 }

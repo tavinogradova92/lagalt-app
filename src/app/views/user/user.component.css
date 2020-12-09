@@ -14,6 +14,42 @@ img {
   align-items: center;
 }
 
+.skills-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-headers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-row {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.skill {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.button {
+  display: flex;
+  height: 40px;
+  background: white;
+  border: 2px solid #28b2ff;
+  color: #28b2ff;
+  font-family: inherit;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.55em;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+
 .image-name-container {
   display: flex;
   align-items: center;

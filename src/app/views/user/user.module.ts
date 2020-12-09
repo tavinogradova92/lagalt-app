@@ -1,3 +1,5 @@
+import { SharedComponentsModule } from './../../components/shared-components.module';
+import { CrossBoxComponent } from './../../components/cross-box/cross-box.component';
 import { UserService } from './../../services/user.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,8 +9,8 @@ import { UserComponent } from './user.component';
 import { ToggleComponent } from '../../components/toggle/toggle.component';
 
 @NgModule({
-  declarations: [UserComponent, ToggleComponent],
-  imports: [CommonModule, FormsModule],
+  declarations: [UserComponent, ToggleComponent, CrossBoxComponent],
+  imports: [CommonModule, FormsModule, SharedComponentsModule],
   exports: [],
   providers: [UserService],
 })
