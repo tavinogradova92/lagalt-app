@@ -18,6 +18,7 @@ import { LoginComponent } from './views/login/login.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ProjectSimpleComponent } from './components/project-simple/project-simple.component';
+import { ApplicationComponent } from './views/application/application.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProjectSimpleComponent } from './components/project-simple/project-simp
     ProjectDetailsPageComponent,
     SearchBarComponent,
     ProjectSimpleComponent,
+    ApplicationComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { LoginComponent } from './views/login/login.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
 import { NotFoundPageComponent } from './error-handling/not-found-page/not-found-page.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
+import { ApplicationComponent } from './views/application/application.component';
 
 const routes: Routes = [
   {
@@ -22,8 +23,12 @@ const routes: Routes = [
     resolve: [UserPreloadGuard],
   },
   {
-    path: 'projects',
+    path: 'projects/:id',
     component: ProjectDetailsPageComponent,
+  },
+  {
+    path: 'apply',
+    component: ApplicationComponent,
   },
   {
     path: '**',
