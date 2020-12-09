@@ -2,10 +2,10 @@ import { MainPageModule } from './views/main-page/main-page.module';
 import { UserModule } from './views/user/user.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedComponentsModule } from './components/shared-components.module';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
@@ -17,7 +17,6 @@ import { RegisterButtonComponent } from './components/register-button/register-b
 import { LoginComponent } from './views/login/login.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { ProjectSimpleComponent } from './components/project-simple/project-simple.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { ProjectSimpleComponent } from './components/project-simple/project-simp
     LoginComponent,
     ProjectDetailsPageComponent,
     SearchBarComponent,
-    ProjectSimpleComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +38,7 @@ import { ProjectSimpleComponent } from './components/project-simple/project-simp
     RouterModule,
     UserModule,
     MainPageModule,
+    SharedComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
