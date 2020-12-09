@@ -13,6 +13,6 @@ export interface Project {
     progress?: number;
     neededSkills?: ProjectSkill[];
     industry?: string;
-    tags?: Tag[];
+    tags?: String[];
 }
 
