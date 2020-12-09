@@ -3,11 +3,13 @@
     <div class="project-title">{{ project.name }}</div>
     <div class="project-creation">Created by {{ ownersSeparator(project.projectOwners) }} on {{ project.dateCreated | date : 'longDate' }}</div>
     <div class="project-industry">{{ project.industry }}</div>
+    <div class="join-button">Join</div>
+    <div class="project-image"><img [src]="project.projectImage" alt="project logo"/></div>
     <div class="project-participants">Participants: {{ participantsCounter(project.projectActiveUsers) }}</div>
     <div *ngFor="let skill of project.neededSkills" class="project-skills">
-      Roles needed: {{ skill.skillName }}
+      Roles needed: {{ skill.skill }}
     </div>
-    <button (click)="onProjectClicked(project.id)">Read more</button>
-    <div class="project-tags" *ngFor="let tag of project.tags">#{{ tag }}</div>
+    <div class="details-button" (click)="onProjectClicked(project.id)">Read more</div>
+    <div class="project-tags"> <span *ngFor="let tag of project.tags"> #{{ tag }}</span></div>
   </div>
 </div>

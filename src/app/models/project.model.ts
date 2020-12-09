@@ -7,6 +7,7 @@ export interface Project {
     name?: string;
     description?: string;
     dateCreated?: Date;
+    projectImage?: string;
     deleted?: boolean;
     projectOwners: User[];
     projectActiveUsers: User[];
