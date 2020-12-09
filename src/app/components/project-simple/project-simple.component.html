@@ -8,5 +8,6 @@
       Roles needed: {{ skill.skillName }}
     </div>
     <button (click)="onProjectClicked(project.id)">Read more</button>
+    <div class="project-tags" *ngFor="let tag of project.tags">#{{ tag }}</div>
   </div>
 </div>
