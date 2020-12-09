@@ -26,6 +26,10 @@ const routes: Routes = [
     component: ProjectDetailsPageComponent,
   },
   {
+    path: 'projects/:id',
+    component: ProjectDetailsPageComponent
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },
