@@ -1,8 +1,9 @@
 <div *ngIf="project.deleted !== true" class="projects-container">
   <div class="project-card">
     <div class="project-title">{{ project.name }}</div>
-    <div class="project-creation">Created on {{ project.dateCreated | date : 'longDate' }}</div>
+    <div class="project-creation">Created by {{ ownersSeparator(project.projectOwners) }} on {{ project.dateCreated | date : 'longDate' }}</div>
     <div class="project-industry">{{ project.industry }}</div>
+    <div class="project-participants">Participants: {{ participantsCounter(project.projectActiveUsers) }}</div>
     <div *ngFor="let skill of project.neededSkills" class="project-skills">
       Roles needed: {{ skill.skillName }}
     </div>
