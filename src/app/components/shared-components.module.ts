@@ -1,3 +1,4 @@
+import { TopTagsComponent } from './top-tags/top-tags.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SkillLabelComponent } from './skills/skill-label/skill-label.component';
 import { NgModule } from '@angular/core';
@@ -12,12 +13,14 @@ import { SkillsModalComponent } from './skills/skills-modal/skills-modal.compone
     SkillsModalComponent,
     SkillLabelComponent,
     SpinnerComponent,
+    TopTagsComponent,
   ],
   exports: [
     ProjectSimpleComponent,
     SkillsModalComponent,
     SkillLabelComponent,
     SpinnerComponent,
+    TopTagsComponent,
   ],
 })
 export class SharedComponentsModule {}

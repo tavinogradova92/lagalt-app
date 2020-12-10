@@ -1,8 +1,12 @@
 .main-container {
-    background-color: #E5E5E5;
-    padding-bottom: 4vh;
+  background-color: #e5e5e5;
+  padding-bottom: 4vh;
 }
 
 .box-with-left-margin {
-    margin-left: 3vw;
+  margin-left: 3vw;
+}
+
+.main-body {
+  display: flex;
 }

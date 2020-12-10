@@ -25,4 +25,8 @@ export class ProjectService {
       `${this.baseUrl}/user/${userId}/active`
     );
   }
+
+  getProjectsFromTag(tagId: number): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(`${this.baseUrl}/tag/${tagId}`);
+  }
 }
