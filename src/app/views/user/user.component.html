@@ -10,7 +10,7 @@
       </div>
       <div class="skills-grid">
         <div class="skill-row" *ngFor="let skill of user.skills">
-          <skill-label class="skill" [skill]="skill"> </skill-label>
+          <coloured-label class="skill" [text]="skill.skill"> </coloured-label>
           <cross-box (boxClicked)="deleteBoxClicked(skill)"></cross-box>
         </div>
       </div>

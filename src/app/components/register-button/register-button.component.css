@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
-
-
 .register-button {
-    width: 126px;
-    height: 54px;
-    background-color: #28B2FF;
-    border: 2px solid #28B2FF;
-    font-family: 'Cairo', sans-serif;
-    font-size: 18px;
-    color: white;
-    border-radius: .35em;
+  width: 126px;
+  height: 54px;
+  background-color: #28b2ff;
+  border: 2px solid #28b2ff;
+  font-size: 18px;
+  color: white;
+  border-radius: 0.35em;
 }

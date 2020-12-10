@@ -1,7 +1,7 @@
 .box {
   width: 35px;
   height: 35px;
-  background: #eaeaea;
+  background: white;
   border: 1px solid rgba(188, 187, 187, 0.8);
   box-sizing: border-box;
   border-radius: 10px;

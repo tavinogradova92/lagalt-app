@@ -1,0 +1,18 @@
+.label-container {
+  margin: 2px;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  cursor: default;
+  min-width: 155px;
+  background-color: white;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 0.25em;
+  font-weight: 700;
+  box-shadow: 1px 2px;
+}
+
+.clickable {
+  cursor: pointer;
+}

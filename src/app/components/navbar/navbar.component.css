@@ -1,37 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
-
-
-.navbar-container{
-    display: flex;
-    height: 15vh;
-    justify-content: space-around;
-    align-items: center;
+.navbar-container {
+  display: flex;
+  height: 15vh;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .logo-container {
-    display: flex;
-    height: 50%;
-    align-items: center;
+  display: flex;
+  height: 50%;
+  align-items: center;
 }
 
 .logo-container:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .logo-image {
-    display: flex;
-    height: 10vh;
-    margin-right: 1vw;
+  display: flex;
+  height: 10vh;
+  margin-right: 1vw;
 }
 
 .logo-title {
-    font-family: 'Chilanka', cursive;
-    color: #000000;
-    font-size: 1.5em;
-    text-decoration: none;
+  font-family: "Chilanka", cursive;
+  color: #000000;
+  font-size: 1.5em;
+  text-decoration: none;
 }
 
 .logo-title:visited {
-    color: #000;
+  color: #000;
 }
-
