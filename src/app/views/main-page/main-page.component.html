@@ -1,6 +1,8 @@
 <div class="main-container">
   <div class="box-with-left-margin">
-    <app-top-industries></app-top-industries>
+    <app-top-industries
+      (industryClicked)="getProjectsByIndustry($event)"
+    ></app-top-industries>
     <div class="main-body">
       <div>
         <app-filter-bar></app-filter-bar>
