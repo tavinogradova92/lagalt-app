@@ -6,10 +6,9 @@
     </div>
     <div class="skills-container">
       <div class="skill-headers">
-        <h3>Skills:</h3>
-        <h3>Delete:</h3>
+        <h2>Skills:</h2>
       </div>
-      <div>
+      <div class="skills-grid">
         <div class="skill-row" *ngFor="let skill of user.skills">
           <skill-label class="skill" [skill]="skill"> </skill-label>
           <cross-box (boxClicked)="deleteBoxClicked(skill)"></cross-box>

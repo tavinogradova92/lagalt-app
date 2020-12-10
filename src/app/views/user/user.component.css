@@ -15,18 +15,22 @@ img {
 }
 
 .skills-container {
-  width: 255px;
   display: flex;
   flex-direction: column;
 }
 
 .skill-headers {
-  display: flex;
-  justify-content: space-between;
+  text-decoration: underline;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .skill-row {
   display: flex;
+  align-items: center;
   margin-bottom: 5px;
 }
 
@@ -49,6 +53,7 @@ img {
   font-weight: bold;
   outline: none;
   cursor: pointer;
+  min-width: 200px;
 }
 
 .image-name-container {
