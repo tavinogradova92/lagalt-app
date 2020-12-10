@@ -3,8 +3,12 @@ img {
   border-radius: 100px;
 }
 
+h2 {
+  text-decoration: underline;
+}
+
 .container {
-  padding: 0 5%;
+  padding: 2% 5%;
 }
 
 .profile-top {
@@ -65,8 +69,9 @@ img {
   margin-left: 15px;
 }
 
-.description {
+.textbox {
   width: 100%;
+  padding-left: 5px;
 }
 
 .toggle-container {
@@ -81,4 +86,8 @@ img {
 
 .bold {
   font-weight: bold;
+}
+
+.item-container {
+  margin-bottom: 20px;
 }

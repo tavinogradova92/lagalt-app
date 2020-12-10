@@ -20,19 +20,29 @@
 
   <textarea
     rows="10"
-    class="description"
+    class="textbox"
     [(ngModel)]="user.description"
     (blur)="sendUpdate({ description: user.description })"
     placeholder="Write someting about yourself"
     >{{ user.description }}</textarea
   >
 
+  <div class="item-container">
+    <h2>Portfolio:</h2>
+    <input
+      [(ngModel)]="user.portfolio"
+      class="textbox"
+      (blur)="sendUpdate({ portfolio: user.portfolio })"
+      placeholder="Link to your portfolio"
+    />
+  </div>
+
   <p class="error" *ngIf="patchResponseMessage">
     {{ patchResponseMessage }}
   </p>
 
-  <div class="projects">
-    <h3>Your projects</h3>
+  <div class="item-container">
+    <h2>Your projects</h2>
     <project-simple
       *ngFor="let project of activeProjects"
       [project]="project"
