@@ -1,0 +1,31 @@
+.filter-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 6vh;
+    max-width: 70vw;
+    background-color: #fff;
+    border: 1px solid rgba(188, 187, 187, 0.72);
+    border-radius: 10px;
+    padding: 1% 3% 1% 1%;
+    height: 10vh;
+}
+
+.sorter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-and-tranding {
+    display: flex;
+    align-items: center;
+}
+
+.new-and-tranding:hover {
+    cursor: pointer;
+}
+
+.filter {
+    display: flex;
+}
