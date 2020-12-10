@@ -1,26 +1,26 @@
 .industries-container {
-    display: flex;
-    height: 30vh;
+  display: flex;
+  height: 30vh;
 }
 
 .component-header {
-    display: inline-block;
-    width: 50%;
-    margin-top: 2vh;
+  display: inline-block;
+  width: 50%;
+  margin-top: 2vh;
 }
 
 .industry-card {
-    display: flex;
-    height: 20vh;
-    width: 30%;
-    padding: 1%;
-    background-color: #fff;
-    margin: 3% 4% 2% 0;
-    border-radius: 10px;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  height: 20vh;
+  width: 30%;
+  padding: 1%;
+  background-color: #fff;
+  margin: 3% 4% 2% 0;
+  border-radius: 10px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .card-header {
-    font-family: 'Chilanka', cursive;
+  font-family: "Chilanka", cursive;
 }
