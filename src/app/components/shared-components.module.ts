@@ -1,3 +1,4 @@
+import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { TopTagsComponent } from './top-tags/top-tags.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SkillLabelComponent } from './skills/skill-label/skill-label.component';
@@ -14,6 +15,7 @@ import { SkillsModalComponent } from './skills/skills-modal/skills-modal.compone
     SkillLabelComponent,
     SpinnerComponent,
     TopTagsComponent,
+    FilterBarComponent,
   ],
   exports: [
     ProjectSimpleComponent,
@@ -21,6 +23,7 @@ import { SkillsModalComponent } from './skills/skills-modal/skills-modal.compone
     SkillLabelComponent,
     SpinnerComponent,
     TopTagsComponent,
+    FilterBarComponent,
   ],
 })
 export class SharedComponentsModule {}

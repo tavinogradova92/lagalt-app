@@ -17,8 +17,7 @@ import { RegisterButtonComponent } from './components/register-button/register-b
 import { LoginComponent } from './views/login/login.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     ProjectDetailsPageComponent,
     SearchBarComponent,
-    FilterBarComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +40,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     UserModule,
     MainPageModule,
     SharedComponentsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
