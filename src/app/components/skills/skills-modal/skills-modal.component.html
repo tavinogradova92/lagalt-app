@@ -1,0 +1,14 @@
+﻿<div class="modal">
+  <div class="modal-body">
+    <div (click)="close()" class="x">X</div>
+    <div class="skills-container">
+      <skill-label
+        *ngFor="let skill of availableSkills"
+        [skill]="skill"
+        (click)="addSkill.emit(skill)"
+        [clickable]="true"
+      ></skill-label>
+    </div>
+  </div>
+</div>
+<div class="modal-background"></div>

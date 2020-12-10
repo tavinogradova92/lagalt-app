@@ -15,6 +15,7 @@ img {
 }
 
 .skills-container {
+  width: 255px;
   display: flex;
   flex-direction: column;
 }
