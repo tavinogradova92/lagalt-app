@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
+  p: number = 1;
   projects: Project[] = [];
 
   constructor(private router: Router, private projectService: ProjectService) {}
