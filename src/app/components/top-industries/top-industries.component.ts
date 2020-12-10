@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TopIndustriesComponent implements OnInit {
   industries: Industry[] = [];
+  loading = true;
 
   constructor(
     private router: Router,
@@ -22,6 +23,10 @@ export class TopIndustriesComponent implements OnInit {
       .subscribe((industries: Industry[]) => {
         this.industries = industries;
       });
+  }
+
+  onLoad() {
+    this.loading = false;
   }
 
   onIndustryClicked(industryId: number): void {

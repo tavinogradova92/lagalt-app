@@ -5,7 +5,13 @@
     *ngFor="let industry of industries"
     class="industry-card"
   >
-    <img [src]="industry.image" alt="industry logo" height="100" />
+    <spinner *ngIf="loading"></spinner>
+    <img
+      [hidden]="loading"
+      (load)="onLoad()"
+      [src]="industry.image"
+      height="100"
+    />
     <div class="card-header">{{ industry.name }}</div>
   </div>
 </div>

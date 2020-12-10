@@ -1,3 +1,4 @@
+import { SpinnerComponent } from './spinner/spinner.component';
 import { SkillLabelComponent } from './skills/skill-label/skill-label.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,13 @@ import { SkillsModalComponent } from './skills/skills-modal/skills-modal.compone
     ProjectSimpleComponent,
     SkillsModalComponent,
     SkillLabelComponent,
+    SpinnerComponent,
   ],
-  exports: [ProjectSimpleComponent, SkillsModalComponent, SkillLabelComponent],
+  exports: [
+    ProjectSimpleComponent,
+    SkillsModalComponent,
+    SkillLabelComponent,
+    SpinnerComponent,
+  ],
 })
 export class SharedComponentsModule {}
