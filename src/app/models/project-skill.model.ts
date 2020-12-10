@@ -1,3 +1,3 @@
 export interface ProjectSkill {
-    skillName: string;
+    skill: string;
 }

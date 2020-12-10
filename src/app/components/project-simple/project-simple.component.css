@@ -12,3 +12,62 @@
 .projects-container:first-child {
   margin-top: 4vh;
 }
+
+.project-title {
+  grid-area: title;
+  font-weight: bold;
+  font-size: 24px;
+  color: #514E7F;
+}
+
+.project-creation {
+  grid-area: creation;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.join-button {
+  grid-area: join;
+}
+
+.project-industry {
+  grid-area: industry;
+}
+
+.project-image {
+  grid-area: image;
+}
+
+.project-image img {
+  width: 18vw;
+}
+
+.project-participants {
+  grid-area: participants;
+}
+
+.project-skills {
+  grid-area: skills;
+}
+
+.details-button {
+  grid-area: details;
+}
+
+.project-tags {
+  grid-area: tags;
+}
+
+.project-card {
+  display: grid;
+  height: 40vh;
+  grid-template-columns: 20vw 20vw 20vw 20vw;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "title creation industry join"
+    "image image participants participants"
+    "image image skills skills"
+    "image image details details"
+    "tags tags tags tags";
+}
+
+

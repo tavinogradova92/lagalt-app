@@ -1,0 +1,9 @@
+.skill-container {
+  font-weight: bold;
+  margin: 2px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: center;
+  cursor: default;
+}
