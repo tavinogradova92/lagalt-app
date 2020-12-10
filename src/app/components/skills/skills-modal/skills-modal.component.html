@@ -7,12 +7,12 @@
 
     <ng-container *ngIf="availableSkills.length > 0; else elseTemplate">
       <div class="skills-container">
-        <skill-label
+        <coloured-label
           *ngFor="let skill of availableSkills"
-          [skill]="skill"
+          [text]="skill.skill"
           (click)="addSkill.emit(skill)"
           [clickable]="true"
-        ></skill-label>
+        ></coloured-label>
       </div>
     </ng-container>
     <ng-template #elseTemplate>

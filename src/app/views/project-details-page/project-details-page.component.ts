@@ -35,8 +35,8 @@ export class ProjectDetailsPageComponent implements OnInit {
       for (let i = 0; i < owners.length; i++) {
         ownersArray.push(owners[i].name);
       }
-      return ownersArray.join(" and ");
-    } 
+      return ownersArray.join(' and ');
+    }
     return owners[0].name;
   }
 

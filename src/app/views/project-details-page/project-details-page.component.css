@@ -1,65 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
-
-h2, h3, h4 {
-    text-transform: capitalize;
-    font-weight: 400;
+h2,
+h3,
+h4 {
+  text-transform: capitalize;
+  font-weight: 400;
 }
 
 h5 {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .project-details {
-    font-family: 'Cairo', sans-serif;
-    font-size: 18px; 
+  font-size: 18px;
 }
 
 .project-title {
-    margin-top: 1em;
-    text-align: center;
-    color: #514E7F
+  margin-top: 1em;
+  text-align: center;
+  color: #514e7f;
 }
 
 .project-industry {
-    text-transform: uppercase;
-    width: 15%;
-    margin: 0.75em 2em;
-    padding: 0.25em 0.35em;
-    text-align: center;
-    border: 1px solid #F14336;
-    border-radius: 0.25em;
-    font-weight: 700;
-    color: #F14336;
-    box-shadow: 1px 2px;
+  text-transform: uppercase;
+  width: 15%;
+  margin: 0.75em 2em;
+  padding: 0.25em 0.35em;
+  text-align: center;
+  border: 1px solid #f14336;
+  border-radius: 0.25em;
+  font-weight: 700;
+  color: #f14336;
+  box-shadow: 1px 2px;
 }
 
 .industry-image {
-    width: 7%;
-    position: absolute; right: 20%;
+  width: 7%;
+  position: absolute;
+  right: 20%;
 }
 
 .project-information {
-    margin-left: 2em;
+  margin-left: 2em;
 }
 
 .project-skills {
-    font-size: 16px;
+  font-size: 16px;
 }
 
-
 .apply-button {
-    display: block;
-    margin: 0px auto;
-    margin-top: 6em;
-    padding: 8px 8px;
-    text-align: center;
-    justify-content: center;
+  display: block;
+  margin: 0px auto;
+  margin-top: 6em;
+  padding: 8px 8px;
+  text-align: center;
+  justify-content: center;
 
-    border: 1px solid #28B2ff;
-    background-color: #28B2ff;
-    color: white;
-    font-family: 'Cairo', sans-serif;
-    border-radius: .25em;
-    font-weight: bold;
-    text-transform: uppercase;
+  border: 1px solid #28b2ff;
+  background-color: #28b2ff;
+  color: white;
+  border-radius: 0.25em;
+  font-weight: bold;
+  text-transform: uppercase;
 }

@@ -1,22 +1,17 @@
-import { Skill } from './../../../models/skill.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'skill-label',
+  selector: 'coloured-label',
   template: `
-    <div
-      [ngClass]="{ clickable: clickable }"
-      class="skill-container"
-      [ngStyle]="colorStyle"
-    >
-      {{ skill.skill }}
+    <div class="label-container" [ngStyle]="colorStyle">
+      {{ text }}
     </div>
   `,
-  styleUrls: ['./skill-label.component.css'],
+  styleUrls: ['./coloured-label.component.css'],
 })
-export class SkillLabelComponent implements OnInit {
+export class ColouredLabelComponent implements OnInit {
   colorStyle: any;
-  @Input() skill: Skill;
+  @Input() text: string;
   @Input() clickable: boolean;
 
   ngOnInit() {
