@@ -14,6 +14,7 @@
   justify-content: center;
   content: "\274c";
   font-size: 23px;
+  margin-top: -5px;
 }
 
 .box:active {

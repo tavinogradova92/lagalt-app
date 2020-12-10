@@ -1,14 +1,23 @@
 ﻿<div class="modal">
   <div class="modal-body">
-    <div (click)="close()" class="x">X</div>
-    <div class="skills-container">
-      <skill-label
-        *ngFor="let skill of availableSkills"
-        [skill]="skill"
-        (click)="addSkill.emit(skill)"
-        [clickable]="true"
-      ></skill-label>
+    <div class="head-container">
+      <h2>Which skills do you have?</h2>
+      <span (click)="close()" class="x">X</span>
     </div>
+
+    <ng-container *ngIf="availableSkills.length > 0; else elseTemplate">
+      <div class="skills-container">
+        <skill-label
+          *ngFor="let skill of availableSkills"
+          [skill]="skill"
+          (click)="addSkill.emit(skill)"
+          [clickable]="true"
+        ></skill-label>
+      </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <h4>There are no more skills to choose from.</h4>
+    </ng-template>
   </div>
 </div>
 <div class="modal-background"></div>

@@ -1,9 +1,9 @@
 import { ModalService } from '../../components/skills/skills-modal/skills-modal.service';
-import { Skill } from './../../models/skill.model';
-import { SkillService } from './../../services/skill.service';
-import { ResponseObject } from './../../models/response-object.model';
-import { Project } from 'src/app/models/project.model';
-import { ProjectService } from 'src/app/services/project.service';
+import { Skill } from '../../models/skill.model';
+import { SkillService } from '../../services/skill.service';
+import { ResponseObject } from '../../models/response-object.model';
+import { Project } from '../../models/project.model';
+import { ProjectService } from '../../services/project.service';
 import { UserService } from './../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from './../../models/user.model';
