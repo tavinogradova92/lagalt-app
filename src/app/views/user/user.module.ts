@@ -1,6 +1,6 @@
-import { SharedComponentsModule } from './../../components/shared-components.module';
-import { CrossBoxComponent } from './../../components/cross-box/cross-box.component';
-import { UserService } from './../../services/user.service';
+import { SharedComponentsModule } from '../../components/shared-components.module';
+import { CrossBoxComponent } from '../../components/skills/cross-box/cross-box.component';
+import { UserService } from '../../services/user.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

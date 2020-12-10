@@ -1,4 +1,4 @@
-import { ModalService } from '../../components/skills-modal/skills-modal.service';
+import { ModalService } from '../../components/skills/skills-modal/skills-modal.service';
 import { Skill } from './../../models/skill.model';
 import { SkillService } from './../../services/skill.service';
 import { ResponseObject } from './../../models/response-object.model';
@@ -22,7 +22,6 @@ export class UserComponent implements OnInit {
   activeProjects: Project[] = [];
   toggled: boolean;
   patchResponseMessage: string;
-  patchError = false;
 
   constructor(
     private router: Router,
@@ -84,8 +83,7 @@ export class UserComponent implements OnInit {
     const user: User = Object.assign({ id: this.user.id }, updatedField);
     this.patchResponseMessage = '';
     this.userService.updateUser(user).subscribe((response) => {
-      this.patchError = !!response;
-      this.patchResponseMessage = this.patchError
+      this.patchResponseMessage = !!response
         ? 'There was an error updating the profile. Please try again later.'
         : '';
     });
