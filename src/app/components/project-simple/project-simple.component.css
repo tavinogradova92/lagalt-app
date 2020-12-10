@@ -1,40 +1,78 @@
 .projects-container {
-  display: grid;
-  width: 70vw;
-  background-color: #fff;
-  border: 1px solid rgba(188, 187, 187, 0.72);
-  box-sizing: border-box;
-  border-radius: 10px;
-  margin-bottom: 2vh;
-  padding: 1% 2% 1% 2%;
-}
-
-.projects-container:first-child {
-  margin-top: 4vh;
+  margin-top: 6vh;
 }
 
 .project-title {
   grid-area: title;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.5em;
   color: #514E7F;
+  justify-self: center;
+  align-self: center;
+}
+
+.project-title:hover {
+  cursor: pointer;
 }
 
 .project-creation {
   grid-area: creation;
   color: rgba(0, 0, 0, 0.72);
+  font-size: 0.8em;
+  justify-self: center;
+  align-self: center;
 }
 
 .join-button {
   grid-area: join;
+  font-size: 1em;
+  justify-self: end;
+  align-self: center;
+  padding: 2% 10%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: #28B2FF;
+  color: #FFF;
+}
+
+.join-button:hover {
+  cursor: pointer;
 }
 
 .project-industry {
   grid-area: industry;
+  font-size: 0.8em;
+  justify-self: end;
+  align-self: center;
+  padding: 2% 10%;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.yellow {
+  border: 1px solid#b1b41c;
+  color: #b1b41c;
+}
+
+.red {
+  border: 1px solid #F14336;
+  color: #F14336;
+}
+
+.green {
+  border: 1px solid #2b8f71;
+  color: #2b8f71;
+}
+
+.purple {
+  border: 1px solid #812781;
+  color: #812781;
 }
 
 .project-image {
   grid-area: image;
+  justify-self: center;
+  align-self: center;
 }
 
 .project-image img {
@@ -43,30 +81,58 @@
 
 .project-participants {
   grid-area: participants;
+  font-size: 1.2em;
+  margin-left: 5vw;
+  color: rgba(0, 0, 0, 0.72);
 }
 
 .project-skills {
   grid-area: skills;
+  font-size: 1.2em;
+  margin-left: 5vw;
+  color: rgba(0, 0, 0, 0.72);
 }
 
 .details-button {
   grid-area: details;
+  font-size: 1.2em;
+  justify-self: center;
+  align-self: end;
+  box-sizing: border-box;
+  padding: 1% 8%;
+  border: 1px solid #28B2FF;
+  border-radius: 10px;
+  color:#28B2FF;
+}
+
+.details-button:hover {
+  cursor: pointer;
 }
 
 .project-tags {
   grid-area: tags;
+  font-size: 1em;
+  justify-self: end;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .project-card {
   display: grid;
-  height: 40vh;
-  grid-template-columns: 20vw 20vw 20vw 20vw;
-  grid-template-rows: auto;
+  max-width: 70vw;
+  background-color: #fff;
+  border: 1px solid rgba(188, 187, 187, 0.72);
+  border-radius: 10px;
+  padding: 1% 3% 1% 1%;
+  min-height: 40vh;
+  max-height: 60vh;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-template-rows: 2fr 1.5fr 1.5fr 1.5fr 1fr;
+  row-gap: 2vh;
   grid-template-areas: 
     "title creation industry join"
-    "image image participants participants"
-    "image image skills skills"
-    "image image details details"
+    "image participants participants participants"
+    "image skills skills skills"
+    "image details details details"
     "tags tags tags tags";
 }
 
