@@ -1,12 +1,12 @@
 <div class="project-details">
 
-    <div class="project-industry">Web development</div>
-    <h1 class="project-title">Insert Project Name here</h1>
+    <div class="project-industry">{{ project.industry }}</div>
+    <h1 class="project-title">{{ project.name }}</h1>
 
     <main class="project-information">
         <section>
             <span>
-                <p>Created by: Some guy</p>
+                <p>Created by: {{ ownersSeparator(project.projectOwners) }}</p>
             </span>
             
             <h3>Participants: </h3>
@@ -14,13 +14,13 @@
                 <img class="industry-image" src="../../../assets/images/webdevelopment.svg">
             </aside>
             <h5>Skills needed: </h5>
+            <div *ngFor="let skill of project.neededSkills" class="project-skills">{{ skill.skill }}</div>
         </section>  <br>
-
         <section class="project-description">
             <h3>Project description</h3>
-            <h5>Insert some cool description here</h5>
+            <h5>{{ project.description }}</h5>
         </section>
     </main>
 </div>
 
-<button type="submit" class="apply-button">Apply to join</button>
+<button type="submit" class="apply-button" (click)="onApplyClicked(project.id)">Apply to join</button>

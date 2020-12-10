@@ -27,8 +27,8 @@ const routes: Routes = [
     component: ProjectDetailsPageComponent,
   },
   {
-    path: 'projects/:id',
-    component: ProjectDetailsPageComponent
+    path: 'projects/:id/apply',
+    component: ApplicationComponent,
   },
   {
     path: '**',
