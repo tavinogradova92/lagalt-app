@@ -53,4 +53,13 @@ export class MainPageComponent implements OnInit {
   toProjectDetails(projectId: number): void {
     this.router.navigateByUrl(`/projects/${projectId}`);
   }
+
+  getProjectsByIndustry(industryId: number): void {
+    console.log(industryId);
+    // this.projectService
+    //   .getProjectsByIndustry(industryId)
+    //   .subscribe((projects) => {
+    //     this.projects = projects;
+    //   });
+  }
 }

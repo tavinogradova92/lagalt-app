@@ -1,7 +1,7 @@
 <div class="component-header">Top industries</div>
 <div class="industries-container">
   <div
-    (click)="onIndustryClicked(industry.id)"
+    (click)="industryClicked.emit(industry.id)"
     *ngFor="let industry of industries"
     class="industry-card"
   >
