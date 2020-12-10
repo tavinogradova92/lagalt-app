@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/project.model';
 import { ProjectService } from 'src/app/services/project.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-project-details-page',
@@ -14,7 +15,8 @@ export class ProjectDetailsPageComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.projectId = this.route.snapshot.params.id;
   }
@@ -25,5 +27,20 @@ export class ProjectDetailsPageComponent implements OnInit {
       .subscribe((project: Project) => {
         this.project = project;
       });
+  }
+
+  ownersSeparator(owners: User[]): string {
+    let ownersArray = [];
+    if (owners.length > 1) {
+      for (let i = 0; i < owners.length; i++) {
+        ownersArray.push(owners[i].name);
+      }
+      return ownersArray.join(" and ");
+    } 
+    return owners[0].name;
+  }
+
+  onApplyClicked(projectId: number): void {
+    this.router.navigateByUrl(`/projects/${projectId}/apply`);
   }
 }
