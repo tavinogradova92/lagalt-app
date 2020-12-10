@@ -18,6 +18,7 @@ import { LoginComponent } from './views/login/login.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
     UserModule,
     MainPageModule,
     SharedComponentsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent],

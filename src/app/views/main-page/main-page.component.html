@@ -3,9 +3,10 @@
     <app-top-industries></app-top-industries>
     <app-filter-bar></app-filter-bar>
     <project-simple
-      *ngFor="let project of projects"
+      *ngFor="let project of projects | paginate: { itemsPerPage: 10, currentPage: p }"
       [project]="project"
       (projectClicked)="toProjectDetails($event)"
     ></project-simple>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>
