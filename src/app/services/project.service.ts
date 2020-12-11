@@ -29,4 +29,8 @@ export class ProjectService {
   getProjectsByIndustry(industryId: number): Observable<Project[]> {
     return this.http.get<Project[]>(`${this.baseUrl}/industry/${industryId}`);
   }
+
+  getProjectsFromTag(tagId: number): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(`${this.baseUrl}/tag/${tagId}`);
+  }
 }

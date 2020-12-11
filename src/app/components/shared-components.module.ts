@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { ColouredLabelComponent } from './coloured-label/coloured-label.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
 import { TopTagsComponent } from './top-tags/top-tags.component';
@@ -8,7 +9,7 @@ import { ProjectSimpleComponent } from './project-simple/project-simple.componen
 import { SkillsModalComponent } from './skills/skills-modal/skills-modal.component';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   declarations: [
     ProjectSimpleComponent,
     SkillsModalComponent,

@@ -50,20 +50,23 @@ export class MainPageComponent implements OnInit {
       );
   }
 
+  getProjectsByIndustry(industryId: number): void {
+    this.projectService
+      .getProjectsByIndustry(industryId)
+      .subscribe((projects) => {
+        this.projects = projects;
+      });
+  }
+
   toProjectDetails(projectId: number): void {
     this.router.navigateByUrl(`/projects/${projectId}`);
   }
 
   onIndustryChosen(industryId: number): void {
-    if (industryId == null) {
-      this.projectService.getAllProjects().subscribe((projects) => {
-        this.projects = projects;
-      });
+    if (industryId === 0) {
+      this.getAllProjects();
     } else {
-        this.projectService.getProjectsByIndustry(industryId).subscribe((projects) => {
-          this.projects = projects;
-      });
+      this.getProjectsByIndustry(industryId);
     }
-    
   }
 }

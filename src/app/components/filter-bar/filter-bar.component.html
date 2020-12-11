@@ -9,16 +9,18 @@
     </div>
   </div>
   <div class="new-and-tranding">
-      <img src="../../../assets/images/new-release.svg" alt="new release icon"/>
-      <div class="new-and-tranding-title">Tranding this month</div>
+    <img src="../../../assets/images/new-release.svg" alt="new release icon" />
+    <div class="new-and-tranding-title">Tranding this month</div>
   </div>
   <div class="filter">
     <label for="filter">Choose industry</label>
     <div class="filter-selection">
       <form [formGroup]="industryChoice">
         <select formControlName="industry" (ngModelChange)="onIndustryChosen()">
-          <option [ngValue]="null">All industries</option>
-          <option *ngFor="let i of industries" [ngValue]="i.id">{{ i.name }}</option>
+          <option [value]="0">All industries</option>
+          <option *ngFor="let i of industries" [value]="i.id">
+            {{ i.name }}
+          </option>
         </select>
       </form>
     </div>
