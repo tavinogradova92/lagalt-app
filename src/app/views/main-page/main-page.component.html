@@ -1,32 +1,27 @@
-<div class="main-container">
-  <div class="box-with-left-margin">
-    <app-top-industries
-      (industryClicked)="getProjectsByIndustry($event)"
-    ></app-top-industries>
-    <div class="main-body">
-      <div>
-        <app-filter-bar
-          (industryChosen)="onIndustryChosen($event)"
-          (resetClicked)="onFilterReset()"
-          (popularSorterClicked)="onPopularSorterClicked()"
-          (newSorterClicked)="onNewSorterClicked()"
-        ></app-filter-bar>
-        <project-simple
-          *ngFor="
-            let project of projects
-              | paginate: { itemsPerPage: 10, currentPage: p }
-          "
-          [project]="project"
-          (projectClicked)="toProjectDetails($event)"
-        ></project-simple>
-      </div>
-      <div>
-        <top-tags
-          (tagClicked)="getProjectsFromTag($event)"
-          [tags]="topTags"
-        ></top-tags>
-      </div>
-    </div>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+<app-top-industries
+  (industryClicked)="getProjectsByIndustry($event)"
+></app-top-industries>
+<div class="main-body">
+  <div>
+    <app-filter-bar
+      (industryChosen)="onIndustryChosen($event)"
+      (resetClicked)="onFilterReset()"
+      (popularSorterClicked)="onPopularSorterClicked()"
+      (newSorterClicked)="onNewSorterClicked()"
+    ></app-filter-bar>
+    <project-simple
+      *ngFor="
+        let project of projects | paginate: { itemsPerPage: 10, currentPage: p }
+      "
+      [project]="project"
+      (projectClicked)="toProjectDetails($event)"
+    ></project-simple>
+  </div>
+  <div>
+    <top-tags
+      (tagClicked)="getProjectsFromTag($event)"
+      [tags]="topTags"
+    ></top-tags>
   </div>
 </div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

@@ -1,6 +1,6 @@
 import { ResponseObject } from './../models/response-object.model';
-import { catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { environment } from './../../environments/environment';
 import { User } from './../models/user.model';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +11,10 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
   private baseUrl = `${environment.api.baseUrl}users`;
+  public readonly currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(
+    {} as User
+  );
+
   constructor(private http: HttpClient) {}
 
   getUserById(id: number): Observable<ResponseObject> {
