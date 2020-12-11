@@ -7,6 +7,9 @@
       <div>
         <app-filter-bar
           (industryChosen)="onIndustryChosen($event)"
+          (resetClicked)="onFilterReset()"
+          (popularSorterClicked)="onPopularSorterClicked()"
+          (newSorterClicked)="onNewSorterClicked()"
         ></app-filter-bar>
         <project-simple
           *ngFor="

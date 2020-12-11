@@ -1,28 +1,40 @@
 <div class="filter-container">
-  <div class="sorter">
-    <label for="sorter">Sort by</label>
-    <div>
-      <select name="sorter" id="sorter">
-        <option value="popularity">Popularity</option>
-        <option value="date">Date (new first)</option>
-      </select>
-    </div>
+  <div 
+    class="popular-sorter" 
+    (click)="onPopularClicked()">
+      <img 
+        src="../../../assets/images/popular.svg" 
+        alt="popular icon" />
+      <div class="popular-title">Popular</div>
   </div>
-  <div class="new-and-tranding">
-    <img src="../../../assets/images/new-release.svg" alt="new release icon" />
-    <div class="new-and-tranding-title">Tranding this month</div>
+  <div 
+    class="new-sorter" 
+    (click)="onNewClicked()">
+      <img 
+        src="../../../assets/images/new-release.svg" 
+        alt="new release icon" />
+      <div class="new-title">New releases</div>
   </div>
   <div class="filter">
     <label for="filter">Choose industry</label>
-    <div class="filter-selection">
-      <form [formGroup]="industryChoice">
-        <select formControlName="industry" (ngModelChange)="onIndustryChosen()">
-          <option [value]="0">All industries</option>
-          <option *ngFor="let i of industries" [value]="i.id">
-            {{ i.name }}
-          </option>
-        </select>
-      </form>
-    </div>
+    <form [formGroup]="industryChoice">
+      <select 
+        formControlName="industry" 
+        (ngModelChange)="onIndustryChosen()">
+        <option [value]="0">All industries</option>
+        <option 
+          *ngFor="let i of industries" 
+          [value]="i.id"
+        >
+          {{ i.name }}
+        </option>
+      </select>
+    </form>
+  </div>
+  <div 
+    class="reset-button" 
+    (click)="onResetClicked()"
+  >
+    Show all projects
   </div>
 </div>

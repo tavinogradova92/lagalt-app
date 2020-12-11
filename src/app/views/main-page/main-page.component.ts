@@ -33,6 +33,14 @@ export class MainPageComponent implements OnInit {
     });
   }
 
+  getPopularProjects() {
+    this.projects.sort((a, b) => (a.projectActiveUsers.length < b.projectActiveUsers.length) ? 1 : -1);
+  }
+
+  getNewProjects() {
+    this.projects.sort((a, b) => (a.dateCreated < b.dateCreated) ? 1 : -1);
+  }
+
   getTopTags() {
     this.tagService
       .getPopularTags()
@@ -62,11 +70,23 @@ export class MainPageComponent implements OnInit {
     this.router.navigateByUrl(`/projects/${projectId}`);
   }
 
+  onPopularSorterClicked(): void {
+    this.getPopularProjects();
+  }
+
+  onNewSorterClicked(): void {
+    this.getNewProjects();
+  }
+
   onIndustryChosen(industryId: number): void {
     if (industryId === 0) {
       this.getAllProjects();
     } else {
       this.getProjectsByIndustry(industryId);
     }
+  }
+
+  onFilterReset(): void {
+    this.getAllProjects();
   }
 }

@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 6vh;
-    max-width: 70vw;
+    width: 70vw;
     background-color: #fff;
     border: 1px solid rgba(188, 187, 187, 0.72);
     border-radius: 10px;
@@ -17,15 +17,28 @@
     align-items: center;
 }
 
-.new-and-tranding {
+.popular-sorter {
     display: flex;
     align-items: center;
 }
 
-.new-and-tranding:hover {
+.popular-sorter:hover {
+    cursor: pointer;
+}
+
+.new-sorter {
+    display: flex;
+    align-items: center;
+}
+
+.new-sorter:hover {
     cursor: pointer;
 }
 
 .filter {
     display: flex;
+}
+
+.reset-button:hover {
+    cursor: pointer;
 }
