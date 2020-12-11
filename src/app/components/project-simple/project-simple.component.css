@@ -119,7 +119,7 @@
 
 .project-card {
   display: grid;
-  max-width: 70vw;
+  width: 70vw;
   background-color: #fff;
   border: 1px solid rgba(188, 187, 187, 0.72);
   border-radius: 10px;

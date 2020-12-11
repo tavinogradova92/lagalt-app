@@ -15,6 +15,10 @@ import {
 })
 export class FilterBarComponent implements OnInit {
   @Output() industryChosen: EventEmitter<number> = new EventEmitter();
+  @Output() resetClicked: EventEmitter<any> = new EventEmitter();
+  @Output() popularSorterClicked: EventEmitter<any> = new EventEmitter();
+  @Output() newSorterClicked: EventEmitter<any> = new EventEmitter();
+
   industryChoice: FormGroup;
   industries: Industry[] = [];
 
@@ -32,7 +36,22 @@ export class FilterBarComponent implements OnInit {
     });
   }
 
+  onPopularClicked(): void {
+    this.popularSorterClicked.emit();
+  }
+
+  onNewClicked(): void {
+    this.newSorterClicked.emit();
+  }
+
   onIndustryChosen(): void {
     this.industryChosen.emit(parseInt(this.industryChoice.value.industry));
+  }
+
+  onResetClicked(): void {
+    this.resetClicked.emit();
+    this.industryChoice = this.fb.group({
+      industry: '',
+    });
   }
 }
