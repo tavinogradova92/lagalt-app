@@ -2,10 +2,10 @@
   <div class="sorter">
     <label for="sorter">Sort by</label>
     <div>
-        <select name="sorter" id="sorter">
-            <option value="popularity">Popularity</option>
-            <option value="date">Date (new first)</option>
-          </select>
+      <select name="sorter" id="sorter">
+        <option value="popularity">Popularity</option>
+        <option value="date">Date (new first)</option>
+      </select>
     </div>
   </div>
   <div class="new-and-tranding">
@@ -15,13 +15,12 @@
   <div class="filter">
     <label for="filter">Choose industry</label>
     <div class="filter-selection">
-        <select name="filter" id="filter">
-            <option value="all">All industries</option>
-            <option value="web-development">Web Development</option>
-            <option value="game-development">Game Development</option>
-            <option value="music">Music</option>
-            <option value="film-making">Film Making</option>
+      <form [formGroup]="industryChoice">
+        <select formControlName="industry" (ngModelChange)="onIndustryChosen()">
+          <option [ngValue]="null">All industries</option>
+          <option *ngFor="let i of industries" [ngValue]="i.id">{{ i.name }}</option>
         </select>
+      </form>
     </div>
   </div>
 </div>

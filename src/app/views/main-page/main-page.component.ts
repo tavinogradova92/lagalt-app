@@ -54,12 +54,16 @@ export class MainPageComponent implements OnInit {
     this.router.navigateByUrl(`/projects/${projectId}`);
   }
 
-  getProjectsByIndustry(industryId: number): void {
-    console.log(industryId);
-    // this.projectService
-    //   .getProjectsByIndustry(industryId)
-    //   .subscribe((projects) => {
-    //     this.projects = projects;
-    //   });
+  onIndustryChosen(industryId: number): void {
+    if (industryId == null) {
+      this.projectService.getAllProjects().subscribe((projects) => {
+        this.projects = projects;
+      });
+    } else {
+        this.projectService.getProjectsByIndustry(industryId).subscribe((projects) => {
+          this.projects = projects;
+      });
+    }
+    
   }
 }
