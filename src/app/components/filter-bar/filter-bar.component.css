@@ -35,6 +35,10 @@
     cursor: pointer;
 }
 
+label {
+    margin-right: 1vw;
+}
+
 .filter {
     display: flex;
 }
