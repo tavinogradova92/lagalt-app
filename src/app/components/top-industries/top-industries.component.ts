@@ -20,7 +20,7 @@ export class TopIndustriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.industryService
-      .getAllIndustries()
+      .getTopIndustries()
       .subscribe((industries: Industry[]) => {
         this.industries = industries;
       });

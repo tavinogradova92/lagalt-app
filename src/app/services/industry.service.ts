@@ -25,4 +25,8 @@ export class IndustryService {
       `${environment.api.baseUrl}industries/project/${id}`
     );
   }
+
+  getTopIndustries(): Observable<Industry[]> {
+    return this.http.get<Industry[]>(`${environment.api.baseUrl}industries/popular`);
+  }
 }
