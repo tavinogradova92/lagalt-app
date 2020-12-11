@@ -1,13 +1,31 @@
 <nav class="navbar-container">
-    <div routerLink="/" class="logo-container">
-        <img class="logo-image" src="../../../assets/images/logo.png" alt="website logo"/>
-        <a class="logo-title">Lagalt</a>
+  <div class="logo-container">
+    <div routerLink="/" class="logo-link">
+      <img
+        class="logo-image"
+        src="../../../assets/images/logo.png"
+        alt="website logo"
+      />
+      <a class="logo-title">Lagalt</a>
     </div>
-    <div class="searchbar">
-        <input 
-            type="text"
-            placeholder="Search"/>
+  </div>
+
+  <!-- <div class="right-side"> -->
+  <ng-container *ngIf="!isLoginPage">
+    <div class="search-bar">
+      <input type="text" placeholder="Search" />
     </div>
-    <app-login-button></app-login-button>
-    <app-register-button></app-register-button>
+
+    <div class="buttons-container">
+      <ng-container *ngIf="!user; else elseTemplate">
+        <app-login-button></app-login-button>
+        <app-register-button></app-register-button>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <button (click)="onProfileClick()">Profile</button>
+        <button (click)="logout()">Log out</button>
+      </ng-template>
+    </div>
+  </ng-container>
+  <!-- </div> -->
 </nav>

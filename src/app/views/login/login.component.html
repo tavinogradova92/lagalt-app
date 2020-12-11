@@ -1,18 +1,31 @@
 <div class="login">
-    <h1>Log In</h1>
+  <h1>Log In</h1>
 
-    <form action="">
-        <label for="username" class="input-label">Username</label>
-        <input class="input" type="text" placeholder="Enter your username..." >
+  <form action="">
+    <label for="username" class="input-label">Username</label>
+    <input
+      [(ngModel)]="email"
+      class="textbox input"
+      name="email"
+      placeholder="Enter your username..."
+    />
+  </form>
+  <form action="">
+    <label for="password" class="input-label">Password</label>
+    <input
+      class="textbox input"
+      type="text"
+      placeholder="Enter your password..."
+    />
+  </form>
 
-    </form>
-    <form action="">
-        <label for="password" class="input-label">Password</label>
-        <input class="input" type="text" placeholder="Enter your password...">
-    </form>
+  <a href="" class="forgot-password">Forgot your password?</a>
 
-    <a href="" class="forgot-password">Forgot your password?</a>
-
-    <button class="login-button">LOG IN</button>
+  <button
+    [ngClass]="{ disabled: loading }"
+    (click)="onLogin()"
+    class="login-button"
+  >
+    LOG IN
+  </button>
 </div>
-   

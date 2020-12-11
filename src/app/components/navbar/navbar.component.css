@@ -1,17 +1,24 @@
 .navbar-container {
   display: flex;
   height: 15vh;
-  justify-content: space-around;
   align-items: center;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 }
 
 .logo-container {
   display: flex;
   height: 50%;
   align-items: center;
+  margin-left: 5%;
+  flex: 1;
 }
 
-.logo-container:hover {
+.logo-link {
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -30,4 +37,14 @@
 
 .logo-title:visited {
   color: #000;
+}
+
+.search-bar {
+  flex: 1;
+}
+
+.buttons-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
 }

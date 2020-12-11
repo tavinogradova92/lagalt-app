@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth-guard.guard';
 import { UserPreloadGuard } from './guards/user-preload.guard';
 import { UserComponent } from './views/user/user.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,7 @@ const routes: Routes = [
     path: 'users/:id',
     component: UserComponent,
     resolve: [UserPreloadGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'projects/:id',

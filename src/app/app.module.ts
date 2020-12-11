@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { MainPageModule } from './views/main-page/main-page.module';
 import { UserModule } from './views/user/user.module';
 import { RouterModule } from '@angular/router';
@@ -6,7 +7,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedComponentsModule } from './components/shared-components.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
@@ -43,7 +43,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SharedComponentsModule,
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
