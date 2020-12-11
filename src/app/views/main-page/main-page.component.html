@@ -1,11 +1,11 @@
 <div class="main-container">
   <div class="box-with-left-margin">
     <app-top-industries
-      (industryClicked)="getProjectsByIndustry($event)"
+      (industryClicked)="onIndustryChosen($event)"
     ></app-top-industries>
     <div class="main-body">
       <div>
-        <app-filter-bar></app-filter-bar>
+        <app-filter-bar (industryChosen)="onIndustryChosen($event)"></app-filter-bar>
         <project-simple
           *ngFor="
             let project of projects
