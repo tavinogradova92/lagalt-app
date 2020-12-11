@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Industry } from 'src/app/models/industry.model';
+import { IndustryService } from 'src/app/services/industry.service';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-filter-bar',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterBarComponent implements OnInit {
 
-  constructor() { }
+  @Output() industryChosen: EventEmitter<number> = new EventEmitter();
+  industryChoice: FormGroup;
+  industries: Industry[] = [];
+
+  constructor(private industryService: IndustryService, private fb: FormBuilder) {
+   }
 
   ngOnInit(): void {
+    this.industryChoice = this.fb.group({
+      industry: ''
+    });
+    this.industryService.getAllIndustries().subscribe((industries) => {
+      this.industries = industries;
+    });
+  }
+
+  onIndustryChosen(): void {
+    console.log(this.industryChoice.value.industry);
+    this.industryChosen.emit(this.industryChoice.value.industry);
   }
 
 }

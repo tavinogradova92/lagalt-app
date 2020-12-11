@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedComponentsModule } from './components/shared-components.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
@@ -17,6 +18,7 @@ import { RegisterButtonComponent } from './components/register-button/register-b
 import { LoginComponent } from './views/login/login.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -41,6 +43,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MainPageModule,
     SharedComponentsModule,
     NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
