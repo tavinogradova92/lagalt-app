@@ -26,6 +26,10 @@
     cursor: pointer;
 }
 
+.popular-title {
+    margin-left: 0.5vw;
+}
+
 .new-sorter {
     display: flex;
     align-items: center;
@@ -33,6 +37,15 @@
 
 .new-sorter:hover {
     cursor: pointer;
+}
+
+.new-title {
+    margin-left: 0.5vw;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
 }
 
 label {
@@ -45,4 +58,9 @@ label {
 
 .reset-button:hover {
     cursor: pointer;
+}
+
+.blue {
+    color: #28b2ff;
+    fill:#28b2ff;
 }

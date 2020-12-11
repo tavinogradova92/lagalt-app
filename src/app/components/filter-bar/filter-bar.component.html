@@ -1,18 +1,16 @@
 <div class="filter-container">
   <div 
     class="popular-sorter" 
-    (click)="onPopularClicked()">
-      <img 
-        src="../../../assets/images/popular.svg" 
-        alt="popular icon" />
+    (click)="onPopularClicked()"
+    [class.blue]="popularSelected">
+      <div [innerHTML]="svgPopular" class="icon"></div>
       <div class="popular-title">Popular</div>
   </div>
   <div 
     class="new-sorter" 
-    (click)="onNewClicked()">
-      <img 
-        src="../../../assets/images/new-release.svg" 
-        alt="new release icon" />
+    (click)="onNewClicked()"
+    [class.blue]="newSelected">
+      <div [innerHTML]="svgNew" class="icon"></div>
       <div class="new-title">New releases</div>
   </div>
   <div class="filter">

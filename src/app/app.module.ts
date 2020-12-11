@@ -43,7 +43,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SharedComponentsModule,
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
