@@ -15,6 +15,7 @@ export class MainPageComponent implements OnInit {
   p: number = 1;
   projects: Project[] = [];
   topTags: Tag[] = [];
+  searchText: string;
 
   constructor(
     private router: Router,
@@ -25,6 +26,10 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProjects();
     this.getTopTags();
+  }
+
+  onSearch(text: string) {
+    this.searchText = text;
   }
 
   getAllProjects() {
@@ -87,6 +92,7 @@ export class MainPageComponent implements OnInit {
   }
 
   onFilterReset(): void {
+    this.searchText = '';
     this.getAllProjects();
   }
 }

@@ -10,7 +10,7 @@ export class SearchBarComponent  {
   @Output() searchChanged: EventEmitter<string> = new EventEmitter();
 
   public onSearchTextUpdated(event): void {
-    const text = event.target.value.trim();
+    const text: string = event.target.value.trim();
     this.searchChanged.emit(text);
   }
 

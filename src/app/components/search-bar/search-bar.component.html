@@ -1,6 +1,11 @@
 <div class="searchbar">
     <div class="container">
-        <input id="search" name="search" type="search" placeholder="Search projects" (keyup)="onSearchTextUpdated($event)">
+        <input 
+            id="search" 
+            name="search" 
+            type="search" 
+            placeholder="Search projects" 
+            autocomplete="off"
+            (keyup)="onSearchTextUpdated($event)">
     </div>
-    
 </div>

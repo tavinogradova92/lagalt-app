@@ -1,3 +1,7 @@
+<app-search-bar
+  (searchChanged)="onSearch($event)"  
+>
+</app-search-bar>
 <app-top-industries
   (industryClicked)="getProjectsByIndustry($event)"
 ></app-top-industries>
@@ -11,7 +15,7 @@
     ></app-filter-bar>
     <project-simple
       *ngFor="
-        let project of projects | paginate: { itemsPerPage: 10, currentPage: p }
+        let project of projects | filter: searchText | paginate: { itemsPerPage: 10, currentPage: p }
       "
       [project]="project"
       (projectClicked)="toProjectDetails($event)"
