@@ -40,6 +40,10 @@ export class ProjectDetailsPageComponent implements OnInit {
     return owners[0].name;
   }
 
+  participantsCounter(participants: User[]): number {
+    return participants.length;
+  }
+
   onApplyClicked(projectId: number): void {
     this.router.navigateByUrl(`/projects/${projectId}/apply`);
   }
