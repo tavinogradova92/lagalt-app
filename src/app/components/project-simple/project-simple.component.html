@@ -1,20 +1,59 @@
 <div class="projects-container">
   <div *ngIf="project.deleted !== true">
     <div class="project-card">
-      <div class="project-title" (click)="onProjectClicked(project.id)">{{ project.name }}</div>
-      <div class="project-creation">Created by {{ ownersSeparator(project.projectOwners) }} on {{ project.dateCreated | date : 'longDate' }}</div>
-      <div *ngIf="project.industry=='Game development'" class="project-industry yellow">{{ project.industry }}</div>
-      <div *ngIf="project.industry=='Web development'" class="project-industry red">{{ project.industry }}</div>
-      <div *ngIf="project.industry=='Music'" class="project-industry green">{{ project.industry }}</div>
-      <div *ngIf="project.industry=='Film making'" class="project-industry purple">{{ project.industry }}</div>
-      <div class="join-button">Join</div>
-      <div class="project-image"><img [src]="project.projectImage" alt="project logo"/></div>
-      <div class="project-participants">Participants: {{ participantsCounter(project.projectActiveUsers) }}</div>
-      <div *ngFor="let skill of project.neededSkills" class="project-skills">
-        Roles needed: {{ skill.skill }}
+      <div 
+        class="project-title" 
+        (click)="onProjectClicked(project.id)">
+          {{ project.name }}
       </div>
-      <div class="details-button" (click)="onProjectClicked(project.id)">Read more</div>
-      <div class="project-tags"> <span *ngFor="let tag of project.tags"> #{{ tag }}</span></div>
+      <div class="project-creation">
+        Created by {{ ownersSeparator(project.projectOwners) }} 
+        on {{ project.dateCreated | date : 'longDate' }}
+      </div>
+      <div 
+        *ngIf="project.industry=='Game development'" 
+        class="project-industry yellow">
+          {{ project.industry }}
+      </div>
+      <div 
+        *ngIf="project.industry=='Web development'" 
+        class="project-industry red">
+          {{ project.industry }}
+      </div>
+      <div 
+        *ngIf="project.industry=='Music'" 
+        class="project-industry green">
+          {{ project.industry }}\
+      </div>
+      <div 
+        *ngIf="project.industry=='Film making'" 
+        class="project-industry purple">
+          {{ project.industry }}
+      </div>
+      <div 
+        class="join-button" 
+        (click)="onApplyClicked(project.id)">
+          Join
+      </div>
+      <div class="project-image">
+        <img [src]="project.projectImage" alt="project logo"/>
+      </div>
+      <div class="project-participants">
+        Participants: {{ participantsCounter(project.projectActiveUsers) }}
+      </div>
+      <div 
+        *ngFor="let skill of project.neededSkills" 
+        class="project-skills">
+          Roles needed: {{ skill.skill }}
+      </div>
+      <div 
+        class="details-button" 
+        (click)="onProjectClicked(project.id)">
+          Read more
+      </div>
+      <div class="project-tags"> 
+        <span *ngFor="let tag of project.tags"> #{{ tag }}</span>
+      </div>
     </div>
   </div>
 </div>
