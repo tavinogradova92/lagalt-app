@@ -6,9 +6,10 @@
     <section>
       <span>
         <p>Created by: {{ ownersSeparator(project.projectOwners) }}</p>
+        <p>Created on: {{ project.dateCreated | date: 'longDate'}}</p>
       </span>
 
-      <h3>Participants:</h3>
+      <h3>Participants: {{ participantsCounter(project.projectActiveUsers) }}</h3>
       <aside>
         <img
           class="industry-image"
@@ -31,3 +32,6 @@
 <button type="submit" class="apply-button" (click)="onApplyClicked(project.id)">
   Apply to join
 </button>
+
+<div class="project-tags"> <span *ngFor="let tag of project.tags"> #{{ tag }}</span></div>
+
