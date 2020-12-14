@@ -19,6 +19,7 @@ import { LoginComponent } from './views/login/login.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoginComponent,
     ProjectDetailsPageComponent,
     SearchBarComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

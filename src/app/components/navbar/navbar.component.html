@@ -12,10 +12,6 @@
 
   <!-- <div class="right-side"> -->
   <ng-container *ngIf="!isLoginPage">
-    <div class="search-bar">
-      <input type="text" placeholder="Search" />
-    </div>
-
     <div class="buttons-container">
       <ng-container *ngIf="!user; else elseTemplate">
         <app-login-button></app-login-button>
