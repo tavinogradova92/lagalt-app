@@ -46,5 +46,15 @@
 .buttons-container {
   display: flex;
   flex: 1;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-right: 5%;
+}
+
+.right-margin {
+  margin-right: 2%;
+}
+
+.profile-icon {
+  display: flex;
+  cursor: pointer;
 }

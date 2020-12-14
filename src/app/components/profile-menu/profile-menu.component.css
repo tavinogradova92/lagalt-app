@@ -1,0 +1,64 @@
+div.primary-navigation {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+}
+div.primary-navigation ul li {
+  list-style: none;
+  margin: 0 auto;
+  display: inline-block;
+  padding: 0 30px;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  font-family: arvo;
+}
+div.primary-navigation li p {
+  color: black;
+}
+div.primary-navigation li p:hover {
+  color: #3ca0e7;
+}
+div.primary-navigation li:hover {
+  cursor: pointer;
+}
+div.primary-navigation ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding-left: 0;
+  left: 0;
+  display: none;
+  background: white;
+}
+div.primary-navigation ul li:hover > ul,
+div.primary-navigation ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  min-width: 250px;
+  text-align: left;
+  padding-top: 20px;
+  box-shadow: 0px 3px 5px -1px #ccc;
+}
+div.primary-navigation ul li ul li {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+  border-style: none;
+}
+div.primary-navigation ul li ul li p:hover {
+  padding-left: 10px;
+  border-left: 2px solid #3ca0e7;
+  transition: all 0.3s ease;
+}
+p {
+  text-decoration: none;
+}
+a:hover {
+  color: #3ca0e7;
+}
+ul li ul li p {
+  transition: all 0.5s ease;
+}

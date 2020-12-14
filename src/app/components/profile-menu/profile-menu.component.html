@@ -1,0 +1,18 @@
+<div role="navigation" class="primary-navigation">
+  <ul>
+    <li>
+      <!-- <a href="#">Work &dtrif;</a> -->
+      <div class="profile-icon">
+        <img src="../../../assets/images/user-icon.svg" />
+        <img
+          style="width: 25px"
+          src="../../../assets/images/chevron-down.svg"
+        />
+      </div>
+      <ul class="dropdown">
+        <li (click)="profileClicked.emit()"><p>Profile</p></li>
+        <li (click)="logoutClicked.emit()"><p>Log out</p></li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,3 +1,4 @@
+import { ProfileMenuComponent } from './profile-menu/profile-menu.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ColouredLabelComponent } from './coloured-label/coloured-label.component';
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
@@ -17,6 +18,7 @@ import { SkillsModalComponent } from './skills/skills-modal/skills-modal.compone
     TopTagsComponent,
     FilterBarComponent,
     ColouredLabelComponent,
+    ProfileMenuComponent,
   ],
   exports: [
     ProjectSimpleComponent,
@@ -25,6 +27,7 @@ import { SkillsModalComponent } from './skills/skills-modal/skills-modal.compone
     TopTagsComponent,
     FilterBarComponent,
     ColouredLabelComponent,
+    ProfileMenuComponent,
   ],
 })
 export class SharedComponentsModule {}
