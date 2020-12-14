@@ -1,9 +1,10 @@
 .register-button {
-  width: 126px;
-  height: 54px;
+  width: 100px;
+  height: 40px;
   background-color: #28b2ff;
   border: 2px solid #28b2ff;
   font-size: 18px;
   color: white;
   border-radius: 0.35em;
+  cursor: pointer;
 }

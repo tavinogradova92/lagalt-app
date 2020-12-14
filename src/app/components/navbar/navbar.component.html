@@ -10,18 +10,27 @@
     </div>
   </div>
 
-  <!-- <div class="right-side"> -->
   <ng-container *ngIf="!isLoginPage">
     <div class="buttons-container">
       <ng-container *ngIf="!user; else elseTemplate">
-        <app-login-button></app-login-button>
+        <app-login-button class="right-margin"></app-login-button>
         <app-register-button></app-register-button>
       </ng-container>
       <ng-template #elseTemplate>
-        <button (click)="onProfileClick()">Profile</button>
-        <button (click)="logout()">Log out</button>
+        <!-- <div class="profile-icon">
+          <img src="../../../assets/images/user-icon.svg" />
+          <img
+            style="width: 25px"
+            src="../../../assets/images/chevron-down.svg"
+          />
+        </div> -->
+        <profile-menu
+          (profileClicked)="onProfileClick()"
+          (logoutClicked)="logout()"
+        ></profile-menu>
+        <!-- <button (click)="onProfileClick()">Profile</button>
+        <button (click)="logout()">Log out</button> -->
       </ng-template>
     </div>
   </ng-container>
-  <!-- </div> -->
 </nav>
