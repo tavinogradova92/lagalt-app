@@ -1,0 +1,14 @@
+.searchbar-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.searchbar-container input {
+    width: 30vw;
+    border: 1px solid rgba(188, 187, 187, 0.72);
+    border-radius: 10px;
+    padding-left: 2vw;
+    padding-right: 1vw;
+    height: 7vh;
+    margin-right: 3.5vw;
+}
