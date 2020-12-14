@@ -1,0 +1,62 @@
+<h1>Create a new project</h1>
+<div class="project-creation-container">
+    <form 
+        [formGroup]="projectForm" 
+        (ngSubmit)="onSubmit()">
+            <label for="name" class="input-label">
+                Project name
+                <input
+                    formControlName="name"
+                    class="textbox input"
+                    type="text"
+                    placeholder="Enter project name"
+                    required
+                />
+            </label>
+            <div
+                class="error"
+                *ngIf="projectForm.get('name').errors?.required && 
+                (projectForm.get('name').touched || projectForm.get('name').dirty)">
+                    Project name is required and must contain at least 3 letters
+            </div>
+            <div
+                class="error"
+                *ngIf="projectForm.get('name').dirty && 
+                projectForm.get('name').errors?.maxlength">
+                    Project name must contain maximum 20 letters
+            </div>
+            <label for="description" class="input-label">
+                Project description
+                <input
+                    formControlName="description"
+                    class="textbox input"
+                    type="text"
+                    placeholder="Enter project description"
+                    required
+                />
+            </label>
+            <label for="projectImage" class="input-label">
+                Project image
+                <input
+                    formControlName="projectImage"
+                    class="textbox input"
+                    type="text"
+                    placeholder="Provide the link to the image"
+                />  
+            </label>
+            <button
+                type="submit"
+                [disabled]="projectForm.invalid"
+                class="submit-button"
+            >
+                SUBMIT
+            </button>
+            <button
+                type="button"
+                class="cancel-button"
+                routerLink="/"
+            >
+                CANCEL
+            </button>
+    </form>
+</div>
