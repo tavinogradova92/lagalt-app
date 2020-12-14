@@ -21,7 +21,7 @@ import { ProjectDetailsPageComponent } from './views/project-details-page/projec
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
-import { ProjectCreationComponent } from './views/project-creation/project-creation/project-creation.component';
+import { ProjectCreationComponent } from './views/project-creation/project-creation.component';
 
 @NgModule({
   declarations: [

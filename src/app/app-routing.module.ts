@@ -8,7 +8,7 @@ import { MainPageComponent } from './views/main-page/main-page.component';
 import { NotFoundPageComponent } from './error-handling/not-found-page/not-found-page.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { ApplicationComponent } from './views/application/application.component';
-import { ProjectCreationComponent } from './views/project-creation/project-creation/project-creation.component';
+import { ProjectCreationComponent } from './views/project-creation/project-creation.component';
 
 const routes: Routes = [
   {
