@@ -20,6 +20,9 @@
       [project]="project"
       (projectClicked)="toProjectDetails($event)"
     ></project-simple>
+    <div *ngIf="(projects | filter: searchText).length < 1">
+      Projects not found
+    </div>
   </div>
   <div>
     <top-tags

@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedComponentsModule } from './components/shared-components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './views/main-page/main-page.component';
@@ -20,6 +21,7 @@ import { ProjectDetailsPageComponent } from './views/project-details-page/projec
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
+import { ProjectCreationComponent } from './views/project-creation/project-creation/project-creation.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     ProjectDetailsPageComponent,
     SearchBarComponent,
     FilterPipe,
+    ProjectCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     SharedComponentsModule,
     NgxPaginationModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
