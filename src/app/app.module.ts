@@ -1,10 +1,11 @@
+import { JwtInterceptor } from './utils/jwt.interceptor';
 import { FormsModule } from '@angular/forms';
 import { MainPageModule } from './views/main-page/main-page.module';
 import { UserModule } from './views/user/user.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedComponentsModule } from './components/shared-components.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +23,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProjectCreationComponent } from './views/project-creation/project-creation.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,12 @@ import { ProjectCreationComponent } from './views/project-creation/project-creat
     SharedComponentsModule,
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

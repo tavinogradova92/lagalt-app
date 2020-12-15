@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ResponseObject } from './../models/response-object.model';
@@ -18,9 +19,14 @@ export class AuthenticationService {
 
   public readonly userSubject$: BehaviorSubject<User>;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService,
+    private router: Router
+  ) {
+    const user = this.cookieService.get('user');
     this.userSubject$ = new BehaviorSubject<User>(
-      JSON.parse(localStorage.getItem('user'))
+      user === '' ? {} : JSON.parse(user)
     );
   }
 
@@ -28,15 +34,28 @@ export class AuthenticationService {
     return this.userSubject$.value;
   }
 
-  login(email: String) {
+  login(email: String, password: String) {
+    const body = { email, password };
     return this.http
-      .post<ResponseObject>(`${this.baseUrl}/authenticate`, email)
+      .post<ResponseObject>(`${this.baseUrl}/authenticate`, body)
       .pipe(
         map((response: ResponseObject) => {
           const user = response.data as User;
-          // console.log(user);
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('user', JSON.stringify(user));
+          this.cookieService.set('user', JSON.stringify(user));
+          this.userSubject$.next(user);
+          return user;
+        })
+      );
+  }
+
+  register(email: String, password: String) {
+    const body = { email, password };
+    return this.http
+      .post<ResponseObject>(`${this.baseUrl}/registration`, body)
+      .pipe(
+        map((response: ResponseObject) => {
+          const user = response.data as User;
+          this.cookieService.set('user', JSON.stringify(user));
           this.userSubject$.next(user);
           return user;
         })
@@ -45,7 +64,7 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('user');
+    this.cookieService.delete('user');
     this.userSubject$.next(null);
     this.router.navigateByUrl('/');
   }

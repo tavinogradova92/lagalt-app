@@ -9,7 +9,8 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  email: String = 'mail@mail.com';
+  email: String = 'rune@mail.com';
+  password = 'pass';
   loading = false;
   submitted = false;
 
@@ -28,7 +29,7 @@ export class LoginComponent {
 
     this.loading = true;
     this.authenticationService
-      .login(this.email)
+      .login(this.email, this.password)
       .pipe(first())
       .subscribe({
         next: () => {
