@@ -17,20 +17,11 @@
         <app-register-button></app-register-button>
       </ng-container>
       <ng-template #elseTemplate>
-        <!-- <div class="profile-icon">
-          <img src="../../../assets/images/user-icon.svg" />
-          <img
-            style="width: 25px"
-            src="../../../assets/images/chevron-down.svg"
-          />
-        </div> -->
         <button routerLink="/create-project">Create new project</button>
         <profile-menu
           (profileClicked)="onProfileClick()"
           (logoutClicked)="logout()"
         ></profile-menu>
-        <!-- <button (click)="onProfileClick()">Profile</button>
-        <button (click)="logout()">Log out</button> -->
       </ng-template>
     </div>
   </ng-container>

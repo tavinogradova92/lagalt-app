@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ResponseObject } from './../models/response-object.model';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from './../../environments/environment';
 import { User } from './../models/user.model';
 import { Injectable } from '@angular/core';
@@ -12,9 +12,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private baseUrl = `${environment.api.baseUrl}users`;
+  private baseUrl = `${environment.api.baseUrl}`;
+  private token: String;
   public readonly currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(
     {} as User
+  );
+  public readonly error$: BehaviorSubject<String> = new BehaviorSubject<String>(
+    ''
   );
 
   public readonly userSubject$: BehaviorSubject<User>;
@@ -26,7 +30,7 @@ export class AuthenticationService {
   ) {
     const user = this.cookieService.get('user');
     this.userSubject$ = new BehaviorSubject<User>(
-      user === '' ? {} : JSON.parse(user)
+      user === '' ? null : JSON.parse(user)
     );
   }
 
@@ -36,22 +40,28 @@ export class AuthenticationService {
 
   login(email: String, password: String) {
     const body = { email, password };
-    return this.http
-      .post<ResponseObject>(`${this.baseUrl}/authenticate`, body)
+    this.http
+      .post<ResponseObject>(`${this.baseUrl}auth`, body)
       .pipe(
         map((response: ResponseObject) => {
-          const user = response.data as User;
+          return response.data as User;
+        })
+      )
+      .subscribe(
+        (user: User) => {
           this.cookieService.set('user', JSON.stringify(user));
           this.userSubject$.next(user);
-          return user;
-        })
+        },
+        (error) => {
+          this.error$.next(error.message);
+        }
       );
   }
 
   register(email: String, password: String) {
     const body = { email, password };
     return this.http
-      .post<ResponseObject>(`${this.baseUrl}/registration`, body)
+      .post<ResponseObject>(`${this.baseUrl}registration`, body)
       .pipe(
         map((response: ResponseObject) => {
           const user = response.data as User;

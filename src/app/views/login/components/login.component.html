@@ -1,0 +1,22 @@
+<div class="login">
+  <h1>Log In</h1>
+
+  <form [formGroup]="loginForm">
+    <label for="email" class="input-label">Email</label>
+    <input
+      class="textbox input"
+      placeholder="Enter your email..."
+      formControlName="email"
+    />
+    <label for="password" class="input-label">Password</label>
+    <input
+      class="textbox input"
+      type="password"
+      placeholder="Enter your password..."
+      formControlName="password"
+    />
+    <a href="" class="forgot-password">Forgot your password?</a>
+
+    <button (click)="onLogin()" class="login-button">LOG IN</button>
+  </form>
+</div>

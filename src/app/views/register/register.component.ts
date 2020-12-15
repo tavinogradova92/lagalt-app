@@ -1,16 +1,16 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from './../../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'register-view',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
 })
-export class LoginComponent {
+export class RegisterComponent {
   email: String = 'rune@mail.com';
-  password = 'pass';
+  password: String = 'pass';
   loading = false;
   submitted = false;
 
@@ -24,21 +24,19 @@ export class LoginComponent {
     }
   }
 
-  onLogin() {
+  onRegister() {
     this.submitted = true;
 
     this.loading = true;
     this.authenticationService
-      .login(this.email, this.password)
+      .register(this.email, this.password)
       .pipe(first())
       .subscribe({
         next: () => {
-          // get return url from query parameters or default to home page
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
           this.router.navigateByUrl(returnUrl);
         },
         error: (error) => {
-          // this.error = error;
           this.loading = false;
         },
       });

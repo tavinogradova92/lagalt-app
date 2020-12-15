@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { AuthenticationService } from './../../services/authentication.service';
 import { User } from 'src/app/models/user.model';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnDestroy {
   isLoginPage: boolean;
   user: User;
   private readonly user$: Subscription;
@@ -23,11 +23,16 @@ export class NavbarComponent {
         this.user = currentUser;
       }
     );
+    // TODO should unsubscribe
     router.events.subscribe((val: any) => {
       if (val.url) {
         this.isLoginPage = val.url === '/login';
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.user$.unsubscribe();
   }
 
   onProfileClick() {

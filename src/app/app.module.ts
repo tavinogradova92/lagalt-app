@@ -1,3 +1,4 @@
+import { LoginModule } from './views/login/login.module';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { FormsModule } from '@angular/forms';
 import { MainPageModule } from './views/main-page/main-page.module';
@@ -17,7 +18,7 @@ import { TopIndustriesComponent } from './components/top-industries/top-industri
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { RegisterButtonComponent } from './components/register-button/register-button.component';
-import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -34,7 +35,7 @@ import { CookieService } from 'ngx-cookie-service';
     NavbarComponent,
     LoginButtonComponent,
     RegisterButtonComponent,
-    LoginComponent,
+    RegisterComponent,
     ProjectDetailsPageComponent,
     SearchBarComponent,
     FilterPipe,
@@ -51,6 +52,7 @@ import { CookieService } from 'ngx-cookie-service';
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
+    LoginModule,
   ],
   providers: [
     CookieService,

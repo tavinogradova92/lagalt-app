@@ -1,9 +1,10 @@
+import { RegisterComponent } from './views/register/register.component';
 import { AuthGuard } from './guards/auth-guard.guard';
 import { UserPreloadGuard } from './guards/user-preload.guard';
 import { UserComponent } from './views/user/user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './views/login/login.component';
+import { LoginContainer } from './views/login/containers/login.container';
 import { MainPageComponent } from './views/main-page/main-page.component';
 import { NotFoundPageComponent } from './error-handling/not-found-page/not-found-page.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
@@ -17,7 +18,11 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginContainer,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'users/:id',
@@ -35,7 +40,7 @@ const routes: Routes = [
   },
   {
     path: 'create-project',
-    component: ProjectCreationComponent
+    component: ProjectCreationComponent,
   },
   {
     path: '**',
