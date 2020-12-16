@@ -11,7 +11,6 @@ import { ToggleComponent } from '../../components/toggle/toggle.component';
 @NgModule({
   declarations: [UserComponent, ToggleComponent, CrossBoxComponent],
   imports: [CommonModule, FormsModule, SharedComponentsModule],
-  exports: [],
   providers: [UserService],
 })
 export class UserModule {}

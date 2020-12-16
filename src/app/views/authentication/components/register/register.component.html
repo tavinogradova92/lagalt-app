@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Register</h1>
+
+  <form [formGroup]="registerForm">
+    <div class="form-field">
+      <label for="email" class="input input-label">Username</label>
+      <input
+        class="textbox input"
+        formControlName="email"
+        placeholder="Enter your username..."
+      />
+    </div>
+    <div class="form-field">
+      <label for="password" class="input input-label">Password</label>
+      <input
+        class="textbox input"
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password..."
+      />
+    </div>
+    <div class="form-field">
+      <label for="repeatedPassword" class="input input-label"
+        >Repeat password</label
+      >
+      <input
+        class="textbox input"
+        type="password"
+        formControlName="repeatedPassword"
+        placeholder="Enter your password..."
+      />
+    </div>
+    <button
+      [ngClass]="{ disabled: isLoading$ | async }"
+      (click)="onRegister()"
+      class="button"
+    >
+      REGISTER
+    </button>
+  </form>
+
+  <p *ngIf="error$ | async as error">{{ error }}</p>
+  <p *ngIf="isLoading$ | async">Attempting to register...</p>
+</div>

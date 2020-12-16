@@ -8,5 +8,4 @@ export interface User {
   hidden: boolean;
   projects: number[];
   skills: any[];
-  token?: String;
 }
