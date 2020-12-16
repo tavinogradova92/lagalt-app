@@ -1,3 +1,5 @@
+import { NewUserContainer } from './containers/new-user/new-user.container';
+import { NewUserComponent } from './components/register/new-user/new-user.component';
 import { RegisterContainer } from './containers/register/register.container';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginRoutingModule } from './login-routing.module';
@@ -13,6 +15,8 @@ import { CommonModule } from '@angular/common';
     LoginContainer,
     RegisterContainer,
     RegisterComponent,
+    NewUserComponent,
+    NewUserContainer,
   ],
   imports: [CommonModule, ReactiveFormsModule, LoginRoutingModule],
   providers: [],

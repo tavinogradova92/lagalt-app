@@ -47,8 +47,8 @@ export class LoginFacade {
           this.loginState.setSuccess(true);
           this.setSessionAndLogin(response);
         },
-        (error) => {
-          this.loginState.setError(error.message);
+        ({ error: response }) => {
+          this.loginState.setError(response.error);
         }
       );
   }
@@ -73,8 +73,8 @@ export class LoginFacade {
           this.loginState.setSuccess(true);
           this.setSessionAndLogin(response);
         },
-        (error) => {
-          this.loginState.setError(error.message);
+        ({ error: response }) => {
+          this.loginState.setError(response.error);
         }
       );
   }

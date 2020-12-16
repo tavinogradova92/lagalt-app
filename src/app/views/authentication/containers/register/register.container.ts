@@ -5,7 +5,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'register-view',
-  templateUrl: './register.container.html',
+  template: `
+    <register-form
+      (successful)="handleRegisterSuccess()"
+      (registerClicked)="registerClicked($event)"
+    ></register-form>
+  `,
 })
 export class RegisterContainer {
   constructor(private loginFacade: LoginFacade, private router: Router) {}
