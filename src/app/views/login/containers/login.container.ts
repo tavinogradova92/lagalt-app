@@ -1,9 +1,8 @@
+import { SessionFacade } from './../../../session/session.facade';
 import { LoginFacade } from './../login.facade';
 import { Credentials } from './../../../models/credentials.model';
-import { LoginState } from './../state/login.state';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../../services/authentication.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -19,13 +18,13 @@ export class LoginContainerComponent {
   submitted = false;
 
   constructor(
-    private authenticationService: LoginFacade,
-    private loginState: LoginState,
+    private loginFacade: LoginFacade,
+    private sessionFacade: SessionFacade,
     private router: Router,
     private route: ActivatedRoute
   ) {
     console.log('object');
-    if (this.authenticationService.isLoggedIn()) {
+    if (this.sessionFacade.isLoggedIn()) {
       this.router.navigate(['/']);
     }
   }
@@ -34,7 +33,7 @@ export class LoginContainerComponent {
     // this.submitted = true;
 
     // this.loading = true;
-    this.authenticationService.login(credentials.email, credentials.password);
+    this.loginFacade.login(credentials.email, credentials.password);
     // .pipe(first())
     // .subscribe({
     //   next: () => {

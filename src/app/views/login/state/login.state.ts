@@ -11,9 +11,9 @@ export class LoginState {
   private readonly error$: BehaviorSubject<string> = new BehaviorSubject<string>(
     ''
   );
-  private readonly loginUser$: BehaviorSubject<User> = new BehaviorSubject<User>(
-    null
-  );
+  // private readonly loginUser$: BehaviorSubject<User> = new BehaviorSubject<User>(
+  //   null
+  // );
   private readonly isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
@@ -26,17 +26,17 @@ export class LoginState {
     this.isLoading$.next(isLoading);
   }
 
-  getLoginUser$(): Observable<User> {
-    return this.loginUser$.asObservable();
-  }
+  // getLoginUser$(): Observable<User> {
+  //   return this.loginUser$.asObservable();
+  // }
 
-  isLoggedIn(): boolean {
-    return !!this.loginUser$.value;
-  }
+  // isLoggedIn(): boolean {
+  //   return !!this.loginUser$.value;
+  // }
 
-  setLoginUser(user: User): void {
-    this.loginUser$.next(user);
-  }
+  // setLoginUser(user: User): void {
+  //   this.loginUser$.next(user);
+  // }
 
   setSuccess(success: boolean): void {
     this.success$.next(success);

@@ -1,3 +1,5 @@
+import { Session } from './../../models/session.model';
+import { SessionFacade } from './../../session/session.facade';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from './../../models/user.model';
 import { ResponseObject } from './../../models/response-object.model';
@@ -15,17 +17,18 @@ export class LoginFacade {
   constructor(
     private loginState: LoginState,
     private authenticationService: AuthenticationService,
-    private cookieService: CookieService,
+    private sessionFacade: SessionFacade,
+    // private cookieService: CookieService,
     private router: Router
   ) {}
 
-  getLoginUser$(): Observable<User> {
-    return this.loginState.getLoginUser$();
-  }
+  // getLoginUser$(): Observable<User> {
+  //   return this.loginState.getLoginUser$();
+  // }
 
-  isLoggedIn(): boolean {
-    return this.loginState.isLoggedIn();
-  }
+  // isLoggedIn(): boolean {
+  //   return this.loginState.isLoggedIn();
+  // }
 
   error$(): Observable<string> {
     return this.loginState.getError$();
@@ -47,15 +50,12 @@ export class LoginFacade {
       .pipe(
         finalize(() => {
           this.loginState.setIsLoading(false);
-          console.log('1');
         })
       )
       .subscribe(
         (response: ResponseObject) => {
-          console.log('2');
           this.loginState.setSuccess(true);
-          this.loginState.setLoginUser(response.data as User);
-          this.router.navigateByUrl('/');
+          this.setSessionAndLogin(response);
         },
         (error) => {
           this.loginState.setError(error.message);
@@ -64,8 +64,8 @@ export class LoginFacade {
   }
 
   logout(): void {
-    this.cookieService.delete('user');
-    this.loginState.setLoginUser(null);
+    // this.sessionFacade.setToken('user');
+    this.sessionFacade.setSession(null);
     this.router.navigateByUrl('/');
   }
 
@@ -77,19 +77,25 @@ export class LoginFacade {
       .pipe(
         finalize(() => {
           this.loginState.setIsLoading(false);
-          console.log('1');
         })
       )
       .subscribe(
         (response: ResponseObject) => {
-          console.log('2');
           this.loginState.setSuccess(true);
-          this.loginState.setLoginUser(response.data as User);
-          this.router.navigateByUrl('/');
+          this.setSessionAndLogin(response);
         },
         (error) => {
           this.loginState.setError(error.message);
         }
       );
+  }
+
+  private setSessionAndLogin(response: ResponseObject): void {
+    const session: Session = {
+      token: response.token,
+      user: response.data as User,
+    };
+    this.sessionFacade.setSession(session);
+    this.router.navigateByUrl('/');
   }
 }

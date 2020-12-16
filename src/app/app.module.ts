@@ -1,3 +1,4 @@
+import { SessionModule } from './session/session.module';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { FormsModule } from '@angular/forms';
 import { MainPageModule } from './views/main-page/main-page.module';
@@ -51,6 +52,7 @@ import { CookieService } from 'ngx-cookie-service';
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
+    SessionModule,
   ],
   providers: [
     CookieService,

@@ -1,4 +1,6 @@
+import { Session } from './../../models/session.model';
 import { LoginFacade } from './../../views/login/login.facade';
+import { SessionFacade } from './../../session/session.facade';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { Component, OnDestroy } from '@angular/core';
@@ -14,11 +16,15 @@ export class NavbarComponent implements OnDestroy {
   user: User;
   private readonly user$: Subscription;
 
-  constructor(private loginFacade: LoginFacade, private router: Router) {
-    this.user$ = this.loginFacade
-      .getLoginUser$()
-      .subscribe((currentUser: User) => {
-        this.user = currentUser;
+  constructor(
+    private sessionFacade: SessionFacade,
+    private loginFacade: LoginFacade,
+    private router: Router
+  ) {
+    this.user$ = this.sessionFacade
+      .getSession()
+      .subscribe((session: Session) => {
+        this.user = session && session.user;
       });
     // TODO should unsubscribe
     router.events.subscribe((val: any) => {

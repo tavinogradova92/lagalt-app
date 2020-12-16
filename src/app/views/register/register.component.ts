@@ -1,8 +1,7 @@
 import { LoginFacade } from './../login/login.facade';
+import { SessionFacade } from './../../session/session.facade';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
 import { Component } from '@angular/core';
-import { first, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'register-view',
@@ -17,9 +16,9 @@ export class RegisterComponent {
   isLoggedIn: boolean;
 
   constructor(
+    private sessionFacade: SessionFacade,
     private loginFacade: LoginFacade,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {
     // this.loginFacade
     //   .getLoginUser$()
@@ -27,7 +26,7 @@ export class RegisterComponent {
     // // .subscribe((currentUser: User) => {
     // //   this.user = currentUser;
     // // });
-    if (this.loginFacade.isLoggedIn()) {
+    if (this.sessionFacade.isLoggedIn()) {
       console.log('register');
       this.router.navigate(['/']);
     }
