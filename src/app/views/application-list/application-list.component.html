@@ -1,0 +1,9 @@
+<div class="applications-container">
+    <h1 class="applications-header">Applications</h1>
+    
+    <app-application-list-item 
+    *ngFor="let application of applications | paginate: { itemsPerPage: 10, currentPage: pageNum }"
+    [application]="application">
+       
+    </app-application-list-item>
+</div>

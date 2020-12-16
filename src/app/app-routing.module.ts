@@ -9,6 +9,7 @@ import { NotFoundPageComponent } from './error-handling/not-found-page/not-found
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { ApplicationComponent } from './views/application/application.component';
 import { ProjectCreationComponent } from './views/project-creation/project-creation.component';
+import { ApplicationListComponent } from './views/application-list/application-list.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'create-project',
     component: ProjectCreationComponent
+  },
+  {
+    path: 'projects/:id/applications',
+    component: ApplicationListComponent,
   },
   {
     path: '**',

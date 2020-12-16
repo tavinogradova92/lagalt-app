@@ -1,0 +1,14 @@
+.application-header {
+    margin-left: .25em;
+}
+
+.application-text {
+    margin-left: 1em;  
+}
+
+.application-container {
+    border: 3px solid #28b2ff;
+    margin: 1em 2em;
+    padding-bottom: 1em;
+    border-radius: .75em;
+}

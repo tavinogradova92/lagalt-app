@@ -22,6 +22,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProjectCreationComponent } from './views/project-creation/project-creation.component';
+import { ApplicationListComponent } from './views/application-list/application-list.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ProjectCreationComponent } from './views/project-creation/project-creat
     SearchBarComponent,
     FilterPipe,
     ProjectCreationComponent,
+    ApplicationListComponent,
   ],
   imports: [
     BrowserModule,

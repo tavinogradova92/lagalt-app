@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectSimpleComponent } from './project-simple/project-simple.component';
 import { SkillsModalComponent } from './skills/skills-modal/skills-modal.component';
+import { ApplicationListItemComponent } from './application-list-item/application-list-item.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],
@@ -19,6 +20,7 @@ import { SkillsModalComponent } from './skills/skills-modal/skills-modal.compone
     FilterBarComponent,
     ColouredLabelComponent,
     ProfileMenuComponent,
+    ApplicationListItemComponent,
   ],
   exports: [
     ProjectSimpleComponent,
@@ -28,6 +30,7 @@ import { SkillsModalComponent } from './skills/skills-modal/skills-modal.compone
     FilterBarComponent,
     ColouredLabelComponent,
     ProfileMenuComponent,
+    ApplicationListItemComponent,
   ],
 })
 export class SharedComponentsModule {}
