@@ -1,36 +1,43 @@
+import { Credentials } from './../../../models/credentials.model';
 import { LoginFacade } from './../login.facade';
-import { Subscription } from 'rxjs';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Subscription, Observable } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'login-form',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginFormComponent {
-  @Output() onLoginClicked: EventEmitter<{
-    email: String;
-    password: String;
-  }> = new EventEmitter();
+export class LoginFormComponent implements OnDestroy {
+  @Output() loginClicked: EventEmitter<Credentials> = new EventEmitter();
+
+  @Output() successful: EventEmitter<void> = new EventEmitter<void>();
+
+  success$: Subscription;
+  error$: Observable<string>;
+  isLoading$: Observable<boolean>;
 
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl('rune@mail.com'),
-    password: new FormControl('pass'),
+    email: new FormControl('rune@mail.com', [Validators.required]),
+    password: new FormControl('pass', [Validators.required]),
   });
 
-  private readonly success$: Subscription;
+  // private readonly success$: Subscription;
 
   constructor(private loginFacade: LoginFacade) {
-    // this.success$ = this.loginFacade.success$.subscribe((s) => {
-    //   console.log('object');
-    // });
+    this.success$ = this.loginFacade.success$().subscribe((_) => {
+      this.successful.emit();
+    });
+    // Using async pipe in HTML.
+    this.isLoading$ = this.loginFacade.isLoading$();
+    this.error$ = this.loginFacade.error$();
   }
   // loading = false;
   // submitted = false;
 
-  onLogin() {
-    this.onLoginClicked.emit(this.loginForm.value);
+  onLogin(): void {
+    this.loginClicked.emit(this.loginForm.value);
     // this.submitted = true;
 
     // this.loading = true;
@@ -47,5 +54,9 @@ export class LoginFormComponent {
     //     this.loading = false;
     //   },
     // });
+  }
+
+  ngOnDestroy(): void {
+    this.success$.unsubscribe();
   }
 }

@@ -1,26 +1,41 @@
 import { Injectable } from '@angular/core';
 import { User } from './../../../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
-
 @Injectable({
   providedIn: 'root',
 })
 export class LoginState {
-  private readonly currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(
+  private readonly success$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     null
   );
-  success$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
-
-  private readonly error$: BehaviorSubject<String> = new BehaviorSubject<String>(
+  private readonly error$: BehaviorSubject<string> = new BehaviorSubject<string>(
+    ''
+  );
+  private readonly loginUser$: BehaviorSubject<User> = new BehaviorSubject<User>(
     null
   );
+  private readonly isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
 
-  public getCurrentUser$(): Observable<User> {
-    return this.currentUser$.asObservable();
+  getIsLoading$(): Observable<boolean> {
+    return this.isLoading$.asObservable();
   }
 
-  public setCurrentUser(user: User): void {
-    this.currentUser$.next(user);
+  setIsLoading(isLoading: boolean): void {
+    this.isLoading$.next(isLoading);
+  }
+
+  getLoginUser$(): Observable<User> {
+    return this.loginUser$.asObservable();
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.loginUser$.value;
+  }
+
+  setLoginUser(user: User): void {
+    this.loginUser$.next(user);
   }
 
   setSuccess(success: boolean): void {
@@ -31,11 +46,11 @@ export class LoginState {
     return this.success$.asObservable();
   }
 
-  public getError$(): Observable<String> {
-    return this.error$.asObservable();
+  setError(error: string): void {
+    this.error$.next(error);
   }
 
-  public setError(error: String): void {
-    this.error$.next(error);
+  getError$(): Observable<string> {
+    return this.error$.asObservable();
   }
 }

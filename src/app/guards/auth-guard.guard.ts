@@ -1,3 +1,4 @@
+import { LoginFacade } from './../views/login/login.facade';
 import { AuthenticationService } from './../services/authentication.service';
 import { Injectable } from '@angular/core';
 import {
@@ -11,12 +12,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthenticationService) {}
+  isLoggedIn: boolean;
+  constructor(private loginFacade: LoginFacade) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return !!this.authService.userValue;
+    return this.loginFacade.isLoggedIn();
   }
 }

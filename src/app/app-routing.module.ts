@@ -4,7 +4,6 @@ import { UserPreloadGuard } from './guards/user-preload.guard';
 import { UserComponent } from './views/user/user.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginContainer } from './views/login/containers/login.container';
 import { MainPageComponent } from './views/main-page/main-page.component';
 import { NotFoundPageComponent } from './error-handling/not-found-page/not-found-page.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
@@ -18,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginContainer,
+    loadChildren: () =>
+      import('./views/login/login.module').then((m) => m.LoginModule),
   },
   {
     path: 'register',

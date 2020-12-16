@@ -1,7 +1,8 @@
+import { LoginFacade } from './../login/login.facade';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Component } from '@angular/core';
-import { first } from 'rxjs/operators';
+import { first, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'register-view',
@@ -9,36 +10,43 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  email: String = 'rune@mail.com';
-  password: String = 'pass';
+  email: string = 'rune@mail.com';
+  password: string = 'pass';
   loading = false;
   submitted = false;
+  isLoggedIn: boolean;
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private loginFacade: LoginFacade,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    if (this.authenticationService.userValue) {
+    // this.loginFacade
+    //   .getLoginUser$()
+    //   .pipe(tap((user) => (this.isLoggedIn = !!user)));
+    // // .subscribe((currentUser: User) => {
+    // //   this.user = currentUser;
+    // // });
+    if (this.loginFacade.isLoggedIn()) {
+      console.log('register');
       this.router.navigate(['/']);
     }
   }
 
-  onRegister() {
+  onRegister(): void {
     this.submitted = true;
 
     this.loading = true;
-    this.authenticationService
-      .register(this.email, this.password)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-          this.router.navigateByUrl(returnUrl);
-        },
-        error: (error) => {
-          this.loading = false;
-        },
-      });
+    this.loginFacade.register(this.email, this.password);
+    // .pipe(first())
+    // .subscribe({
+    //   next: () => {
+    //     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    //     this.router.navigateByUrl(returnUrl);
+    //   },
+    //   error: (error) => {
+    //     this.loading = false;
+    //   },
+    // });
   }
 }

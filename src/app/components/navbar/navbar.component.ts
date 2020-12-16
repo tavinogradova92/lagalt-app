@@ -1,5 +1,5 @@
+import { LoginFacade } from './../../views/login/login.facade';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './../../services/authentication.service';
 import { User } from 'src/app/models/user.model';
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -14,15 +14,12 @@ export class NavbarComponent implements OnDestroy {
   user: User;
   private readonly user$: Subscription;
 
-  constructor(
-    private authenticationService: AuthenticationService,
-    private router: Router
-  ) {
-    this.user$ = this.authenticationService.userSubject$.subscribe(
-      (currentUser: User) => {
+  constructor(private loginFacade: LoginFacade, private router: Router) {
+    this.user$ = this.loginFacade
+      .getLoginUser$()
+      .subscribe((currentUser: User) => {
         this.user = currentUser;
-      }
-    );
+      });
     // TODO should unsubscribe
     router.events.subscribe((val: any) => {
       if (val.url) {
@@ -31,15 +28,15 @@ export class NavbarComponent implements OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.user$.unsubscribe();
   }
 
-  onProfileClick() {
+  onProfileClick(): void {
     this.router.navigateByUrl(`/users/${this.user.id}`);
   }
 
-  logout() {
-    this.authenticationService.logout();
+  logout(): void {
+    this.loginFacade.logout();
   }
 }

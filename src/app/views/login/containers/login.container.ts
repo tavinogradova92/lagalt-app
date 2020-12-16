@@ -1,6 +1,7 @@
+import { LoginFacade } from './../login.facade';
+import { Credentials } from './../../../models/credentials.model';
 import { LoginState } from './../state/login.state';
 import { Subscription } from 'rxjs';
-import { FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Component } from '@angular/core';
@@ -10,31 +11,26 @@ import { Component } from '@angular/core';
   templateUrl: './login.container.html',
   styleUrls: ['./login.container.css'],
 })
-export class LoginContainer {
+export class LoginContainerComponent {
   success$: Subscription;
-  email: String = 'rune@mail.com';
+  email = 'rune@mail.com';
   password = 'pass';
   loading = false;
   submitted = false;
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private authenticationService: LoginFacade,
     private loginState: LoginState,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    // this.success$ = this.loginState
-    //   .getSuccess$()
-    //   .subscribe((success: boolean) => {
-    //     success && this.router.navigate(['/']);
-    //   });
-
-    if (this.authenticationService.userValue) {
+    console.log('object');
+    if (this.authenticationService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
   }
 
-  onLogin(credentials) {
+  onLogin(credentials: Credentials): void {
     // this.submitted = true;
 
     // this.loading = true;
