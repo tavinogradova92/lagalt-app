@@ -1,5 +1,5 @@
-import { Credentials } from './../../../models/credentials.model';
-import { LoginFacade } from './../login.facade';
+import { Credentials } from '../../../../models/credentials.model';
+import { LoginFacade } from '../../login.facade';
 import { Subscription, Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
@@ -7,11 +7,10 @@ import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 @Component({
   selector: 'login-form',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['../form-styles.component.css'],
 })
 export class LoginFormComponent implements OnDestroy {
   @Output() loginClicked: EventEmitter<Credentials> = new EventEmitter();
-
   @Output() successful: EventEmitter<void> = new EventEmitter<void>();
 
   success$: Subscription;
@@ -23,37 +22,16 @@ export class LoginFormComponent implements OnDestroy {
     password: new FormControl('pass', [Validators.required]),
   });
 
-  // private readonly success$: Subscription;
-
   constructor(private loginFacade: LoginFacade) {
     this.success$ = this.loginFacade.success$().subscribe((_) => {
       this.successful.emit();
     });
-    // Using async pipe in HTML.
-    this.isLoading$ = this.loginFacade.isLoading$();
     this.error$ = this.loginFacade.error$();
+    this.isLoading$ = this.loginFacade.isLoading$();
   }
-  // loading = false;
-  // submitted = false;
 
   onLogin(): void {
     this.loginClicked.emit(this.loginForm.value);
-    // this.submitted = true;
-
-    // this.loading = true;
-    // this.authenticationService.login(this.email, this.password);
-    // .pipe(first())
-    // .subscribe({
-    //   next: () => {
-    //     // get return url from query parameters or default to home page
-    //     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    //     this.router.navigateByUrl(returnUrl);
-    //   },
-    //   error: (error) => {
-    //     // this.error = error;
-    //     this.loading = false;
-    //   },
-    // });
   }
 
   ngOnDestroy(): void {

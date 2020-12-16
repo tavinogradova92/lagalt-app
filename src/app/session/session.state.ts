@@ -14,8 +14,6 @@ export class SessionState {
     if (!this.getSessionValue()) {
       const savedCookie = cookieService.get('session');
       if (savedCookie) {
-        console.log('From session!!');
-        console.log(savedCookie);
         const cookieSession: Session = savedCookie && JSON.parse(savedCookie);
         this.setSession(cookieSession);
       }
@@ -31,7 +29,7 @@ export class SessionState {
   }
 
   isLoggedIn(): boolean {
-    return this.session$.value && !!this.getSessionValue();
+    return !!this.getSessionValue();
   }
 
   setSession(session: Session): void {

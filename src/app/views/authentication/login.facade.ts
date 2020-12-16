@@ -1,6 +1,5 @@
 import { Session } from './../../models/session.model';
 import { SessionFacade } from './../../session/session.facade';
-import { CookieService } from 'ngx-cookie-service';
 import { User } from './../../models/user.model';
 import { ResponseObject } from './../../models/response-object.model';
 import { Router } from '@angular/router';
@@ -18,17 +17,8 @@ export class LoginFacade {
     private loginState: LoginState,
     private authenticationService: AuthenticationService,
     private sessionFacade: SessionFacade,
-    // private cookieService: CookieService,
     private router: Router
   ) {}
-
-  // getLoginUser$(): Observable<User> {
-  //   return this.loginState.getLoginUser$();
-  // }
-
-  // isLoggedIn(): boolean {
-  //   return this.loginState.isLoggedIn();
-  // }
 
   error$(): Observable<string> {
     return this.loginState.getError$();
@@ -64,7 +54,6 @@ export class LoginFacade {
   }
 
   logout(): void {
-    // this.sessionFacade.setToken('user');
     this.sessionFacade.setSession(null);
     this.router.navigateByUrl('/');
   }
@@ -96,6 +85,5 @@ export class LoginFacade {
       user: response.data as User,
     };
     this.sessionFacade.setSession(session);
-    this.router.navigateByUrl('/');
   }
 }

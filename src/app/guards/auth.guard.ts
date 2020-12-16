@@ -1,4 +1,4 @@
-import { SessionFacade } from './../session/session.facade';
+import { SessionFacade } from '../session/session.facade';
 import { Injectable } from '@angular/core';
 import {
   CanActivate,

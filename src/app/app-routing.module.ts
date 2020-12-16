@@ -1,5 +1,5 @@
-import { RegisterComponent } from './views/register/register.component';
-import { AuthGuard } from './guards/auth-guard.guard';
+import { AuthenticatedRedirectGuard } from './guards/AuthenticatedRedirect.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { UserPreloadGuard } from './guards/user-preload.guard';
 import { UserComponent } from './views/user/user.component';
 import { NgModule } from '@angular/core';
@@ -16,13 +16,10 @@ const routes: Routes = [
     component: MainPageComponent,
   },
   {
-    path: 'login',
+    path: '',
     loadChildren: () =>
-      import('./views/login/login.module').then((m) => m.LoginModule),
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
+      import('./views/authentication/login.module').then((m) => m.LoginModule),
+    canActivate: [AuthenticatedRedirectGuard],
   },
   {
     path: 'users/:id',

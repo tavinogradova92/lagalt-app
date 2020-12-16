@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { User } from './../../../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -11,9 +10,6 @@ export class LoginState {
   private readonly error$: BehaviorSubject<string> = new BehaviorSubject<string>(
     ''
   );
-  // private readonly loginUser$: BehaviorSubject<User> = new BehaviorSubject<User>(
-  //   null
-  // );
   private readonly isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
@@ -25,18 +21,6 @@ export class LoginState {
   setIsLoading(isLoading: boolean): void {
     this.isLoading$.next(isLoading);
   }
-
-  // getLoginUser$(): Observable<User> {
-  //   return this.loginUser$.asObservable();
-  // }
-
-  // isLoggedIn(): boolean {
-  //   return !!this.loginUser$.value;
-  // }
-
-  // setLoginUser(user: User): void {
-  //   this.loginUser$.next(user);
-  // }
 
   setSuccess(success: boolean): void {
     this.success$.next(success);

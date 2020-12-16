@@ -1,5 +1,5 @@
 import { Session } from './../../models/session.model';
-import { LoginFacade } from './../../views/login/login.facade';
+import { LoginFacade } from './../../views/authentication/login.facade';
 import { SessionFacade } from './../../session/session.facade';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnDestroy {
-  isLoginPage: boolean;
   user: User;
   private readonly user$: Subscription;
 
@@ -26,16 +25,6 @@ export class NavbarComponent implements OnDestroy {
       .subscribe((session: Session) => {
         this.user = session && session.user;
       });
-    // TODO should unsubscribe
-    router.events.subscribe((val: any) => {
-      if (val.url) {
-        this.isLoginPage = val.url === '/login';
-      }
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.user$.unsubscribe();
   }
 
   onProfileClick(): void {
@@ -44,5 +33,9 @@ export class NavbarComponent implements OnDestroy {
 
   logout(): void {
     this.loginFacade.logout();
+  }
+
+  ngOnDestroy(): void {
+    this.user$.unsubscribe();
   }
 }
