@@ -1,0 +1,99 @@
+<div class="container">
+  <form [formGroup]="createUserForm">
+    <label for="image" class="input input-label">Image url</label>
+    <input
+      class="textbox input"
+      formControlName="image"
+      placeholder="Enter a url to an image"
+    />
+    <label for="name" class="input input-label">Name</label>
+    <input
+      class="textbox input"
+      formControlName="name"
+      placeholder="Enter your name..."
+    />
+    <label for="description" class="input input-label">Description</label>
+    <input
+      class="textbox input"
+      formControlName="description"
+      placeholder="Write something about yourself"
+    />
+    <label for="portfolio" class="input input-label">Portfolio</label>
+    <input
+      class="textbox input"
+      formControlName="portfolio"
+      placeholder="Url to website/git repo"
+    />
+    <button (click)="handleRegisterUser()">Register!</button>
+  </form>
+
+  <!-- <div class="profile-top">
+    <div class="image-name-container">
+      <img [src]="user.image" />
+      <h1 class="user-name">{{ user.name }}</h1>
+    </div>
+    <div class="skills-container">
+      <div class="skill-headers">
+        <h2>Skills:</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-row" *ngFor="let skill of user.skills">
+          <coloured-label class="skill" [text]="skill.skill"> </coloured-label>
+          <cross-box (boxClicked)="deleteBoxClicked(skill)"></cross-box>
+        </div>
+      </div>
+      <button (click)="openModal()" class="button">Add new skill</button>
+    </div>
+  </div>
+
+  <textarea
+    rows="10"
+    class="textbox"
+    [(ngModel)]="user.description"
+    (blur)="sendUpdate({ description: user.description })"
+    placeholder="Write someting about yourself"
+    >{{ user.description }}</textarea
+  >
+
+  <div class="item-container">
+    <h2>Portfolio:</h2>
+    <input
+      [(ngModel)]="user.portfolio"
+      class="textbox"
+      (blur)="sendUpdate({ portfolio: user.portfolio })"
+      placeholder="Link to your portfolio"
+    />
+  </div>
+
+  <p class="error" *ngIf="patchResponseMessage">
+    {{ patchResponseMessage }}
+  </p>
+
+  <div class="item-container">
+    <h2>Your projects</h2>
+    <project-simple
+      *ngFor="let project of activeProjects"
+      [project]="project"
+      (projectClicked)="toProjectDetails($event)"
+    ></project-simple>
+  </div>
+
+  <div class="visibility-container">
+    <h2>Profile visibility</h2>
+    <div class="toggle-container">
+      <span [ngClass]="{ bold: !toggled }">Visible to all users</span>
+      <toggle-component
+        [checked]="toggled"
+        (toggle)="toggleHidden($event)"
+      ></toggle-component>
+      <span [ngClass]="{ bold: toggled }">Hidden</span>
+    </div>
+  </div>
+
+  <skills-modal
+    [availableSkills]="availableSkills"
+    (addSkill)="addNewSkill($event)"
+    id="skills-modal"
+  >
+  </skills-modal> -->
+</div>

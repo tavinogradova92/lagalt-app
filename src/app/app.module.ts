@@ -1,10 +1,13 @@
+import { LoginModule } from './views/authentication/login.module';
+import { SessionModule } from './session/session.module';
+import { JwtInterceptor } from './utils/jwt.interceptor';
 import { FormsModule } from '@angular/forms';
 import { MainPageModule } from './views/main-page/main-page.module';
 import { UserModule } from './views/user/user.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedComponentsModule } from './components/shared-components.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,12 +19,12 @@ import { TopIndustriesComponent } from './components/top-industries/top-industri
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { RegisterButtonComponent } from './components/register-button/register-button.component';
-import { LoginComponent } from './views/login/login.component';
 import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProjectCreationComponent } from './views/project-creation/project-creation.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,6 @@ import { ProjectCreationComponent } from './views/project-creation/project-creat
     NavbarComponent,
     LoginButtonComponent,
     RegisterButtonComponent,
-    LoginComponent,
     ProjectDetailsPageComponent,
     SearchBarComponent,
     FilterPipe,
@@ -48,9 +50,14 @@ import { ProjectCreationComponent } from './views/project-creation/project-creat
     SharedComponentsModule,
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SessionModule,
+    LoginModule,
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
