@@ -13,16 +13,12 @@ export class ImageUploadService {
   uploadImage(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', file);
-    const req = new HttpRequest('POST', `${environment.api.baseUrl}project-images`, formData, {
+    const req = new HttpRequest('POST', `${environment.api.baseUrl}project-images/uploadFile`, formData, {
       reportProgress: true,
-      responseType: 'json'
+      responseType: 'text'
     });
 
     console.log(req);
     return this.http.request(req);
-  }
-
-  getProjectImage(id: number): Observable<any> {
-    return this.http.get(`${environment.api.baseUrl}project-images/storage/` + id);
   }
 }

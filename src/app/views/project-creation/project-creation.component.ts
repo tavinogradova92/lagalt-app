@@ -38,16 +38,16 @@ export class ProjectCreationComponent implements OnInit {
     this.fileToUpload = event.target.files[0];
   }
 
-  sendUpdate(updatedField: Project): void {
+  createProject(project: Project): void {
     // creating new project object
-    const newProject: Project = Object.create(updatedField);
+    const newProject: Project = Object.create(project);
 
     // automatically assigned values
     newProject.dateCreated = new Date();
 
     // values assigned from the user input
-    newProject.name = updatedField.name;
-    newProject.description = updatedField.description;
+    newProject.name = project.name;
+    newProject.description = project.description;
 
     // uploading project image to the database
     console.log(this.fileToUpload);
@@ -65,7 +65,7 @@ export class ProjectCreationComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.sendUpdate(this.projectForm.value);
+    this.createProject(this.projectForm.value);
     console.log(this.projectForm.value);
   }
 
