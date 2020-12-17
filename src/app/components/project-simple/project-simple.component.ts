@@ -12,8 +12,8 @@ export class ProjectSimpleComponent {
   @Input() project: Project;
   @Output() projectClicked: EventEmitter<number> = new EventEmitter();
 
-  constructor(private router: Router) {
-
+  constructor(
+    private router: Router) {
   }
 
   onProjectClicked(projectId: number): void {
@@ -38,4 +38,5 @@ export class ProjectSimpleComponent {
   onApplyClicked(projectId: number): void {
     this.router.navigateByUrl(`/projects/${projectId}/apply`);
   }
+
 }

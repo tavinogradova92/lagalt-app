@@ -1,6 +1,6 @@
 import { User } from './user.model';
 import { ProjectSkill } from './project-skill.model';
-import { Tag } from './tag.model';
+import { Byte } from '@angular/compiler/src/util';
 
 export interface Project {
     id?: number;

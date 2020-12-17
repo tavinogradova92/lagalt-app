@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Project } from 'src/app/models/project.model';
 import { ProjectService } from 'src/app/services/project.service';
+import { ImageUploadService } from 'src/app/services/image-upload.service';
 
 @Component({
   selector: 'app-project-creation',
@@ -11,12 +12,12 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ProjectCreationComponent implements OnInit {
   projectForm: FormGroup;
+  fileToUpload: File;
   patchResponseMessage: string;
   submitted = false;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
+    private uploadService: ImageUploadService,
     private projectService: ProjectService
   ) { }
 
@@ -30,16 +31,29 @@ export class ProjectCreationComponent implements OnInit {
         [  Validators.required,
         Validators.minLength(3),
         Validators.maxLength(100)]),
-      projectImage: new FormControl('')
       });
   }
 
-  sendUpdate(updatedField: Project): void {
-    const newProject: Project = Object.create(updatedField);
+  handleFileInput(event) {
+    this.fileToUpload = event.target.files[0];
+  }
+
+  createProject(project: Project): void {
+    // creating new project object
+    const newProject: Project = Object.create(project);
+
+    // automatically assigned values
     newProject.dateCreated = new Date();
-    newProject.name = updatedField.name;
-    newProject.description = updatedField.description;
-    newProject.projectImage = updatedField.projectImage;
+
+    // values assigned from the user input
+    newProject.name = project.name;
+    newProject.description = project.description;
+
+    // uploading project image to the database
+    console.log(this.fileToUpload);
+    this.uploadService.uploadImage(this.fileToUpload);
+    this.fileToUpload = undefined;
+
     this.patchResponseMessage = '';
     this.projectService.createProject(newProject).subscribe((response) => {
       this.patchResponseMessage = !!response
@@ -51,7 +65,7 @@ export class ProjectCreationComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.sendUpdate(this.projectForm.value);
+    this.createProject(this.projectForm.value);
     console.log(this.projectForm.value);
   }
 

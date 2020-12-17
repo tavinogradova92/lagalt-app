@@ -7,7 +7,7 @@ import { ProjectService } from '../../services/project.service';
 import { UserService } from './../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from './../../models/user.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { pluck } from 'rxjs/operators';
 
 @Component({
@@ -16,6 +16,8 @@ import { pluck } from 'rxjs/operators';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
+  @Input() newUser: boolean;
+
   user: User;
   allSkills: Skill[] = [];
   availableSkills: Skill[] = [];

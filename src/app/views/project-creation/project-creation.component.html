@@ -38,11 +38,10 @@
             <label for="projectImage" class="input-label">
                 Project image
                 <input
-                    formControlName="projectImage"
-                    class="textbox input"
-                    type="text"
-                    placeholder="Provide the link to the image"
-                />  
+                    (change)="handleFileInput($event)"
+                    class="fileupload"
+                    type="file"
+                />
             </label>
             <button
                 type="submit"

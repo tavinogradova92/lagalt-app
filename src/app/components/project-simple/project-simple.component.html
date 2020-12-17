@@ -36,7 +36,9 @@
           Join
       </div>
       <div class="project-image">
-        <img [src]="project.projectImage" alt="project logo"/>
+        <img 
+          src="https://lagalt.s3.eu-north-1.amazonaws.com/{{project.projectImage}}" 
+          alt="project logo"/>
       </div>
       <div class="project-participants">
         Participants: {{ participantsCounter(project.projectActiveUsers) }}
