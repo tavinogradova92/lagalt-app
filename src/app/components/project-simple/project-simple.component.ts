@@ -2,7 +2,6 @@ import { Project } from 'src/app/models/project.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../models/user.model';
 import { Router } from '@angular/router';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'project-simple',
@@ -14,8 +13,7 @@ export class ProjectSimpleComponent {
   @Output() projectClicked: EventEmitter<number> = new EventEmitter();
 
   constructor(
-    private router: Router,
-    private sanitizer: DomSanitizer) {
+    private router: Router) {
   }
 
   onProjectClicked(projectId: number): void {
@@ -41,8 +39,4 @@ export class ProjectSimpleComponent {
     this.router.navigateByUrl(`/projects/${projectId}/apply`);
   }
 
-  showImage(url: String): SafeUrl {
-    let objectURL: string = `data:image/jpeg;base64, ${url}`;
-    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
-  }
 }
