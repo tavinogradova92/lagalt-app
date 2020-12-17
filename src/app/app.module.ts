@@ -39,6 +39,7 @@ import { CookieService } from 'ngx-cookie-service';
     SearchBarComponent,
     FilterPipe,
     ProjectCreationComponent,
+    ApplicationListComponent,
   ],
   imports: [
     BrowserModule,
