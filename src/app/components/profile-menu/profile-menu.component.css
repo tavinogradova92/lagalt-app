@@ -1,5 +1,17 @@
+.ul-icon {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+}
+
 div.primary-navigation {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   text-align: center;
   font-size: 16px;
 }
