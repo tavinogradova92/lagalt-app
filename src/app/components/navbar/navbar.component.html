@@ -16,7 +16,12 @@
       <app-register-button></app-register-button>
     </ng-container>
     <ng-template #elseTemplate>
-      <button routerLink="/create-project">Create new project</button>
+      <button 
+        routerLink="/create-project"
+        class="create-project-button"
+      >
+        Create new project
+      </button>
       <profile-menu
         (profileClicked)="onProfileClick()"
         (logoutClicked)="logout()"
