@@ -1,6 +1,6 @@
 import { User } from './user.model';
 import { ProjectSkill } from './project-skill.model';
-import { Byte } from '@angular/compiler/src/util';
+import { Industry } from './industry.model';
 
 export interface Project {
     id?: number;
@@ -13,7 +13,7 @@ export interface Project {
     projectActiveUsers: User[];
     progress?: number;
     neededSkills?: ProjectSkill[];
-    industry?: string;
+    industry?: Industry;
     tags?: String[];
 }
 

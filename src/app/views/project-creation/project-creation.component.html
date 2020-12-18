@@ -43,6 +43,20 @@
                     type="file"
                 />
             </label>
+            <label for="industryId" class="input-label">
+                Project industry
+                <select 
+                    formControlName="industryId"
+                >
+                    <option 
+                        *ngFor="let i of industries" 
+                        [value]="i.id"
+                        required
+                    >
+                        {{ i.name }}
+                    </option>
+                </select>
+            </label>
             <button
                 type="submit"
                 [disabled]="projectForm.invalid"

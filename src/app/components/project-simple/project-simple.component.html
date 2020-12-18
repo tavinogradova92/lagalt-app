@@ -11,24 +11,24 @@
         on {{ project.dateCreated | date : 'longDate' }}
       </div>
       <div 
-        *ngIf="project.industry=='Game development'" 
+        *ngIf="project.industry.name=='Game development'" 
         class="project-industry yellow">
-          {{ project.industry }}
+          {{ project.industry.name }}
       </div>
       <div 
-        *ngIf="project.industry=='Web development'" 
+        *ngIf="project.industry.name=='Web development'" 
         class="project-industry red">
-          {{ project.industry }}
+          {{ project.industry.name }}
       </div>
       <div 
-        *ngIf="project.industry=='Music'" 
+        *ngIf="project.industry.name=='Music'" 
         class="project-industry green">
-          {{ project.industry }}\
+          {{ project.industry.name }}\
       </div>
       <div 
-        *ngIf="project.industry=='Film making'" 
+        *ngIf="project.industry.name=='Film making'" 
         class="project-industry purple">
-          {{ project.industry }}
+          {{ project.industry.name }}
       </div>
       <div 
         class="join-button" 

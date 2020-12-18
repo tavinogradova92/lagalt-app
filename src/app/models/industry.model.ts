@@ -1,5 +1,5 @@
 export interface Industry {
   id: number;
-  name: string;
-  image: string;
+  name?: string;
+  image?: string;
 }
