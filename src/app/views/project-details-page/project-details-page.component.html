@@ -29,7 +29,7 @@
   </main>
 </div>
 
-<button type="submit" class="apply-button" (click)="onApplyClicked(project.id)">
+<button *ngIf="user" type="submit" class="apply-button" (click)="onApplyClicked(project.id)">
   Apply to join
 </button>
 

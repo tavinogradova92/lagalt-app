@@ -25,6 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ProjectCreationComponent } from './views/project-creation/project-creation.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ApplicationListComponent } from './views/application-list/application-list.component';
+import { ApplicationComponent } from './views/application/application.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { CookieService } from 'ngx-cookie-service';
     FilterPipe,
     ProjectCreationComponent,
     ApplicationListComponent,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,

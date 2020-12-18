@@ -3,6 +3,9 @@ import { Project } from 'src/app/models/project.model';
 import { ProjectService } from 'src/app/services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
+import { Session } from '../../models/session.model';
+import { SessionFacade } from 'src/app/session/session.facade';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-details-page',
@@ -12,13 +15,21 @@ import { User } from 'src/app/models/user.model';
 export class ProjectDetailsPageComponent implements OnInit {
   public project!: Project;
   public projectId: number;
+  public user: User;
+  private readonly user$: Subscription;
 
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private sessionFacade: SessionFacade
   ) {
     this.projectId = this.route.snapshot.params.id;
+    this.user$ = this.sessionFacade
+    .getSession()
+    .subscribe((session: Session) => {
+      this.user = session && session.user;
+    });
   }
 
   ngOnInit(): void {
@@ -47,4 +58,5 @@ export class ProjectDetailsPageComponent implements OnInit {
   onApplyClicked(projectId: number): void {
     this.router.navigateByUrl(`/projects/${projectId}/apply`);
   }
+
 }

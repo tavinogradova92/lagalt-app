@@ -2,14 +2,18 @@
   <h1 class="project-title">Apply for: Some project</h1>
   <h3>Please provide a reasoning for joining this project</h3>
   <main class="input-forms">
-    <textarea
-      name=""
-      id=""
-      cols="100"
-      rows="10"
-      class="textbox"
-      required
-    ></textarea>
+    <form [formGroup]="applicationForm" (ngSubmit)="submitApplication()">
+      <textarea
+        formControlName="application"
+        name=""
+        id=""
+        cols="100"
+        rows="10"
+        class="textbox"
+        required
+      ></textarea><br>
+      <button class="apply-button">Apply</button>
+    </form>
   </main>
-  <button class="apply-button">Apply</button>
+
 </div>
