@@ -39,6 +39,7 @@ const routes: Routes = [
   {
     path: 'create-project',
     component: ProjectCreationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'projects/:id/applications',
