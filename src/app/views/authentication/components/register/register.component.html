@@ -1,37 +1,62 @@
 <div class="container">
   <h1>Register</h1>
-
-  <form [formGroup]="registerForm">
+  <form [formGroup]="credentialsForm" class="form-wrapper">
     <div class="form-field">
-      <label for="email" class="input input-label">Username</label>
+      <label for="email" class="input input-label"
+        >Email <span class="error-message">*</span></label
+      >
       <input
+        (focus)="onEmailInputFocus()"
         class="textbox input"
         formControlName="email"
         placeholder="Enter your username..."
       />
     </div>
-    <div class="form-field">
-      <label for="password" class="input input-label">Password</label>
-      <input
-        class="textbox input"
-        type="password"
-        formControlName="password"
-        placeholder="Enter your password..."
-      />
+    <div class="row-form-fields">
+      <div class="form-field first-field">
+        <label for="password" class="input input-label"
+          >Password <span class="error-message">*</span></label
+        >
+        <input
+          class="textbox input"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password..."
+        />
+      </div>
+      <div class="form-field">
+        <label for="repeatedPassword" class="input input-label"
+          >Repeat password <span class="error-message">*</span></label
+        >
+        <input
+          class="textbox input"
+          type="password"
+          formControlName="repeatedPassword"
+          placeholder="Enter your password..."
+        />
+      </div>
     </div>
-    <div class="form-field">
-      <label for="repeatedPassword" class="input input-label"
-        >Repeat password</label
-      >
-      <input
-        class="textbox input"
-        type="password"
-        formControlName="repeatedPassword"
-        placeholder="Enter your password..."
-      />
+    <div
+      *ngIf="
+        (password.touched || repeatedPassword.touched) &&
+        repeatedPassword.invalid
+      "
+      class="error-message"
+    >
+      <div *ngIf="password.invalid">
+        Password must be at least 8 characters long.
+      </div>
+
+      <div *ngIf="repeatedPassword.errors.required">Password is required.</div>
+      <div *ngIf="repeatedPassword.errors.confirmedValidator">
+        Password and Repeat password must be match.
+      </div>
     </div>
     <button
-      [ngClass]="{ disabled: isLoading$ | async }"
+      [ngClass]="{
+        disabled:
+          (isLoading$ | async) || !credentialsForm.valid || (error$ | async)
+      }"
       (click)="onRegister()"
       class="button"
     >
@@ -39,6 +64,6 @@
     </button>
   </form>
 
-  <p *ngIf="error$ | async as error">{{ error }}</p>
+  <p *ngIf="error$ | async as error" class="error-message">{{ error }}</p>
   <p *ngIf="isLoading$ | async">Attempting to register...</p>
 </div>

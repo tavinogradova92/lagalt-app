@@ -24,6 +24,14 @@ export class LoginFacade {
     return this.loginState.getError$();
   }
 
+  isLoadingValue(): boolean {
+    return this.loginState.getIsLoadingValue();
+  }
+
+  resetError(): void {
+    this.loginState.setError('');
+  }
+
   isLoading$(): Observable<boolean> {
     return this.loginState.getIsLoading$();
   }
@@ -58,11 +66,31 @@ export class LoginFacade {
     this.router.navigateByUrl('/');
   }
 
-  register(email: string, password: string): void {
+  checkIfEmailExists(email: string): void {
     this.loginState.setIsLoading(true);
 
     this.authenticationService
-      .register(email, password)
+      .checkIfEmailExists(email)
+      .pipe(
+        finalize(() => {
+          this.loginState.setIsLoading(false);
+        })
+      )
+      .subscribe(
+        (_) => {
+          this.loginState.setSuccess(true);
+        },
+        ({ error: response }) => {
+          this.loginState.setError(response.error);
+        }
+      );
+  }
+
+  register(user: User): void {
+    this.loginState.setIsLoading(true);
+
+    this.authenticationService
+      .register(user)
       .pipe(
         finalize(() => {
           this.loginState.setIsLoading(false);
@@ -73,7 +101,8 @@ export class LoginFacade {
           this.loginState.setSuccess(true);
           this.setSessionAndLogin(response);
         },
-        ({ error: response }) => {
+        (response) => {
+          console.log(response);
           this.loginState.setError(response.error);
         }
       );

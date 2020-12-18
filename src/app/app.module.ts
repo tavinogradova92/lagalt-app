@@ -1,3 +1,5 @@
+import { ApplicationListComponent } from './views/application-list/application-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './views/authentication/login.module';
 import { SessionModule } from './session/session.module';
 import { JwtInterceptor } from './utils/jwt.interceptor';
@@ -6,7 +8,6 @@ import { MainPageModule } from './views/main-page/main-page.module';
 import { UserModule } from './views/user/user.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedComponentsModule } from './components/shared-components.module';
@@ -42,7 +43,6 @@ import { CookieService } from 'ngx-cookie-service';
     ApplicationListComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
@@ -54,6 +54,7 @@ import { CookieService } from 'ngx-cookie-service';
     ReactiveFormsModule,
     SessionModule,
     LoginModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     CookieService,

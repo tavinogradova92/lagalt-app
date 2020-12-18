@@ -1,0 +1,61 @@
+<div class="container-with-chevron">
+  <img
+    (click)="goBack.emit()"
+    class="chevron"
+    src="../../../assets/images/chevron-left.svg"
+  />
+  <div class="container">
+    <h1>User information</h1>
+    <form [formGroup]="createUserForm" class="form-wrapper">
+      <div class="row-form-fields">
+        <div class="first-field">
+          <img
+            src="https://gitlab.com/rhout/lagalt-images/-/raw/master/profiles/male-avatar2.jpg"
+          />
+        </div>
+        <div class="form-field">
+          <label for="name" class="input input-label"
+            >Name <span class="error-message">*</span></label
+          >
+          <input
+            class="textbox input"
+            formControlName="name"
+            placeholder="Enter your name..."
+          />
+          <div
+            *ngIf="(name.touched || name.dirty) && name.invalid"
+            class="error-message"
+          >
+            Password is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="description" class="input input-label">Description</label>
+        <input
+          class="textbox input"
+          formControlName="description"
+          placeholder="Write something about yourself"
+        />
+      </div>
+      <div class="form-field">
+        <label for="portfolio" class="input input-label">Portfolio</label>
+        <input
+          class="textbox input"
+          formControlName="portfolio"
+          placeholder="Url to website/git repo"
+        />
+      </div>
+      <button
+        [ngClass]="{
+          disabled:
+            (isLoading$ | async) || !createUserForm.valid || (error$ | async)
+        }"
+        class="button"
+        (click)="handleRegisterUser()"
+      >
+        Register!
+      </button>
+    </form>
+  </div>
+</div>
