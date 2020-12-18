@@ -2,4 +2,6 @@
   margin-top: 15vh;
   background-color: #e5e5e5;
   padding: 4vh 3vw;
+  min-height: 77vh;
+  height: auto;
 }

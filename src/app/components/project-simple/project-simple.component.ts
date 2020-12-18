@@ -12,9 +12,7 @@ export class ProjectSimpleComponent {
   @Input() project: Project;
   @Output() projectClicked: EventEmitter<number> = new EventEmitter();
 
-  constructor(
-    private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   onProjectClicked(projectId: number): void {
     this.projectClicked.emit(projectId);
@@ -26,8 +24,8 @@ export class ProjectSimpleComponent {
       for (let i = 0; i < owners.length; i++) {
         ownersArray.push(owners[i].name);
       }
-      return ownersArray.join(" and ");
-    } 
+      return ownersArray.join(' and ');
+    }
     return owners[0].name;
   }
 
@@ -38,5 +36,4 @@ export class ProjectSimpleComponent {
   onApplyClicked(projectId: number): void {
     this.router.navigateByUrl(`/projects/${projectId}/apply`);
   }
-
 }

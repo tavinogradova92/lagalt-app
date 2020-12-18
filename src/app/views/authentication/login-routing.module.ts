@@ -1,4 +1,3 @@
-import { NewUserComponent } from './components/register/new-user/new-user.component';
 import { RegisterContainer } from './containers/register/register.container';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,10 +11,6 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterContainer,
-  },
-  {
-    path: 'new-user',
-    component: NewUserComponent,
   },
 ];
 

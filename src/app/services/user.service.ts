@@ -22,7 +22,6 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<any> {
-    debugger;
     const headers = { headers: { 'content-type': 'application/json' } };
     const body = JSON.stringify(user);
     return this.http

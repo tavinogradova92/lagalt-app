@@ -9,11 +9,11 @@
   background-color: rgb(245, 245, 245);
   border: 3px solid #28b2ff;
   border-radius: 0.75em;
-  margin: 10px;
-  padding: 10px;
+  text-indent: 15px;
   resize: none;
   overflow: auto;
   font-size: 16px;
+  padding: 5px 0;
 }
 .textbox:focus {
   outline-width: 0;

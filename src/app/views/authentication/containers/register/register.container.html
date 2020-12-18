@@ -1,0 +1,12 @@
+<slide-panel [activePane]="isLeftVisible ? 'left' : 'right'">
+  <register-form
+    leftPane
+    (firstStepCompleted)="onFirstStepRegister($event)"
+  ></register-form>
+  <new-user
+    rightPane
+    (registerUser)="registerClicked($event)"
+    (goBack)="goBack()"
+    (successful)="handleRegisterSuccess()"
+  ></new-user>
+</slide-panel>
