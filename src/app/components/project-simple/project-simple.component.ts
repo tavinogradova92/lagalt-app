@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { SessionFacade } from 'src/app/session/session.facade';
+import { SessionFacade } from '../../state/session/session.facade';
 import { Session } from '../../models/session.model';
 
 @Component({

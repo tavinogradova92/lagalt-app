@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   declarations: [
     ProjectDetailsPageComponent,
     ProjectCreationComponent,
-    ProjectCreationContainer,
+    ProjectCreationContainer
   ],
   imports: [
     CommonModule,

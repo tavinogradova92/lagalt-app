@@ -6,6 +6,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainPageComponent } from './views/main-page/main-page.component';
 import { NotFoundPageComponent } from './error-handling/not-found-page/not-found-page.component';
+import { ProjectDetailsPageComponent } from './views/projects/project-details-page/project-details-page.component';
+import { ApplicationComponent } from './views/application/application.component';
+import { ProjectCreationComponent } from './views/projects/project-creation/component/project-creation.component';
+import { ApplicationListComponent } from './views/application-list/application-list.component';
 
 const routes: Routes = [
   {
@@ -29,7 +33,6 @@ const routes: Routes = [
     resolve: [UserPreloadGuard],
     canActivate: [AuthGuard],
   },
-<<<<<<< HEAD
   {
     path: 'projects/:id',
     component: ProjectDetailsPageComponent,
@@ -48,25 +51,6 @@ const routes: Routes = [
     path: 'projects/:id/applications',
     component: ApplicationListComponent,
   },
-=======
-  // {
-  //   path: 'projects/:id',
-  //   component: ProjectDetailsPageComponent,
-  // },
-  // {
-  //   path: 'projects/:id/apply',
-  //   component: ApplicationComponent,
-  // },
-  // {
-  //   path: 'create-project',
-  //   component: ProjectCreationComponent,
-  //   canActivate: [AuthGuard],
-  // },
-  // {
-  //   path: 'projects/:id/applications',
-  //   component: ApplicationListComponent,
-  // },
->>>>>>> ae51034f45e1e6d231853385f8bff471e20c27ca
   {
     path: '**',
     component: NotFoundPageComponent,

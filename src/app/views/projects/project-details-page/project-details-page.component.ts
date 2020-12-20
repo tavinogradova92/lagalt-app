@@ -1,6 +1,6 @@
 import { SessionFacade } from './../../../state/session/session.facade';
 import { Session } from './../../../models/session.model';
-import { ProjectFacade } from './../projects.facade';
+import { ProjectFacade } from '../projects.facade';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Project } from 'src/app/models/project.model';
 import { ActivatedRoute, Router } from '@angular/router';
