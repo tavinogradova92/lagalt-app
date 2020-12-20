@@ -14,7 +14,7 @@ import {
 @Component({
   selector: 'register-form',
   templateUrl: './register.component.html',
-  styleUrls: ['../form-styles.component.css'],
+  styleUrls: ['../form-styles.component.css', '../../../views.styles.css'],
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   @Output() firstStepCompleted: EventEmitter<Credentials> = new EventEmitter();

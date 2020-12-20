@@ -1,62 +1,62 @@
 <div class="projects-container">
   <div *ngIf="project.deleted !== true">
     <div class="project-card">
-      <div 
-        class="project-title" 
-        (click)="onProjectClicked(project.id)">
-          {{ project.name }}
+      <div class="project-title" (click)="onProjectClicked(project.id)">
+        {{ project.name }}
       </div>
       <div class="project-creation">
-        Created by {{ ownersSeparator(project.projectOwners) }} 
-        on {{ project.dateCreated | date : 'longDate' }}
+        Created by {{ ownersSeparator(project.projectOwners) }} on
+        {{ project.dateCreated | date: "longDate" }}
       </div>
-      <div 
-        *ngIf="project.industry.name=='Game development'" 
-        class="project-industry yellow">
-          {{ project.industry.name }}
+      <div
+        *ngIf="project.industry.name == 'Game development'"
+        class="project-industry yellow"
+      >
+        {{ project.industry.name }}
       </div>
-      <div 
-        *ngIf="project.industry.name=='Web development'" 
-        class="project-industry red">
-          {{ project.industry.name }}
+      <div
+        *ngIf="project.industry.name == 'Web development'"
+        class="project-industry red"
+      >
+        {{ project.industry.name }}
       </div>
-      <div 
-        *ngIf="project.industry.name=='Music'" 
-        class="project-industry green">
-          {{ project.industry.name }}\
+      <div
+        *ngIf="project.industry.name == 'Music'"
+        class="project-industry green"
+      >
+        {{ project.industry.name }}
       </div>
-      <div 
-        *ngIf="project.industry.name=='Film making'" 
-        class="project-industry purple">
-          {{ project.industry.name }}
+      <div
+        *ngIf="project.industry.name == 'Film making'"
+        class="project-industry purple"
+      >
+        {{ project.industry.name }}
       </div>
-      <div 
-        class="join-button" 
-        (click)="onApplyClicked(project.id)">
-          Join
-      </div>
+      <div class="join-button" (click)="onApplyClicked(project.id)">Join</div>
       <div class="project-image">
-        <img 
-          src="https://lagalt.s3.eu-north-1.amazonaws.com/{{project.projectImage}}" 
-          alt="project logo"/>
+        <img
+          src="https://lagalt.s3.eu-north-1.amazonaws.com/{{
+            project.projectImage
+          }}"
+          alt="project logo"
+        />
       </div>
       <div class="project-participants">
         Participants: {{ participantsCounter(project.projectActiveUsers) }}
       </div>
-      <div 
-        *ngFor="let skill of project.neededSkills" 
-        class="project-skills">
-          Roles needed: {{ skill.skill }}
+      <div class="project-skills">
+        <p class="">Roles needed:</p>
+        <p *ngFor="let skill of project.neededSkills; let i = index" class="">
+          &nbsp; {{ skill.skill }}
+          {{ i === project.neededSkills.length - 1 ? "" : "," }}
+        </p>
       </div>
-      <div 
-        class="details-button" 
-        (click)="onProjectClicked(project.id)">
-          Read more
+      <div class="details-button" (click)="onProjectClicked(project.id)">
+        Read more
       </div>
-      <div class="project-tags"> 
+      <div class="project-tags">
         <span *ngFor="let tag of project.tags"> #{{ tag }}</span>
       </div>
     </div>
   </div>
 </div>
-

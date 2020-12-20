@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { SessionFacade } from './../../../state/session/session.facade';
+import { Session } from './../../../models/session.model';
+import { ProjectFacade } from './../projects.facade';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Project } from 'src/app/models/project.model';
-import { ProjectService } from 'src/app/services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
-import { Session } from '../../models/session.model';
-import { SessionFacade } from 'src/app/session/session.facade';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,39 +12,42 @@ import { Subscription } from 'rxjs';
   templateUrl: './project-details-page.component.html',
   styleUrls: ['./project-details-page.component.css'],
 })
-export class ProjectDetailsPageComponent implements OnInit {
+export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
   public project!: Project;
   public projectId: number;
   public user: User;
   private readonly user$: Subscription;
 
+  private readonly project$: Subscription;
+
   constructor(
-    private projectService: ProjectService,
+    private projectFacade: ProjectFacade,
     private route: ActivatedRoute,
     private router: Router,
     private sessionFacade: SessionFacade
   ) {
-    this.projectId = this.route.snapshot.params.id;
-    this.user$ = this.sessionFacade
-    .getSession()
-    .subscribe((session: Session) => {
-      this.user = session && session.user;
-    });
-  }
-
-  ngOnInit(): void {
-    this.projectService
-      .getProject(this.projectId)
+    this.project$ = this.projectFacade
+      .currentProject$()
       .subscribe((project: Project) => {
         this.project = project;
       });
+    this.projectId = this.route.snapshot.params.id;
+    this.user$ = this.sessionFacade
+      .getSession()
+      .subscribe((session: Session) => {
+        this.user = session && session.user;
+      });
+  }
+
+  ngOnInit(): void {
+    this.projectFacade.getProject(this.projectId);
   }
 
   ownersSeparator(owners: User[]): string {
-    let ownersArray = [];
+    const ownersArray: string[] = [];
     if (owners.length > 1) {
-      for (let i = 0; i < owners.length; i++) {
-        ownersArray.push(owners[i].name);
+      for (const owner of owners) {
+        ownersArray.push(owner.name);
       }
       return ownersArray.join(' and ');
     }
@@ -59,4 +62,8 @@ export class ProjectDetailsPageComponent implements OnInit {
     this.router.navigateByUrl(`/projects/${projectId}/apply`);
   }
 
+  ngOnDestroy(): void {
+    this.project$.unsubscribe();
+    this.user$.unsubscribe();
+  }
 }

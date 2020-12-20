@@ -1,5 +1,5 @@
 import { CookieService } from 'ngx-cookie-service';
-import { Session } from './../models/session.model';
+import { Session } from '../../models/session.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({

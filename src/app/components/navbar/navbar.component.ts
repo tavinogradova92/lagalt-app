@@ -1,6 +1,6 @@
 import { Session } from './../../models/session.model';
 import { LoginFacade } from './../../views/authentication/login.facade';
-import { SessionFacade } from './../../session/session.facade';
+import { SessionFacade } from '../../state/session/session.facade';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { Component, OnDestroy } from '@angular/core';

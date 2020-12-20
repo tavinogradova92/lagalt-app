@@ -1,0 +1,104 @@
+<div class="container">
+  <h1>Create a new project</h1>
+  <form [formGroup]="projectForm" class="form-wrapper">
+    <div class="form-field">
+      <label for="name" class="input input-label">
+        Project name <span class="error-message">*</span>
+      </label>
+      <input
+        formControlName="name"
+        class="textbox input"
+        type="text"
+        placeholder="Enter project name"
+      />
+    </div>
+    <div
+      class="error-message"
+      *ngIf="
+        projectForm.get('name').errors?.required &&
+        (projectForm.get('name').touched || projectForm.get('name').dirty)
+      "
+    >
+      Project name is required and must contain at least 3 letters
+    </div>
+    <div
+      class="error"
+      *ngIf="
+        projectForm.get('name').dirty &&
+        projectForm.get('name').errors?.maxlength
+      "
+    >
+      Project name must contain maximum 20 letters
+    </div>
+    <div class="form-field">
+      <label for="description" class="input input-label">
+        Project description <span class="error-message">*</span>
+      </label>
+      <input
+        formControlName="description"
+        class="textbox input"
+        type="text"
+        placeholder="Enter project description"
+      />
+    </div>
+    <div class="form-field">
+      <label for="projectImage" class="input-label">
+        Project image
+        <input
+          (change)="handleFileInput($event)"
+          class="fileupload"
+          type="file"
+        />
+      </label>
+    </div>
+    <div class="form-field">
+      <label for="industryId" class="input-label">
+        Project industry
+        <select
+          (ngModelChange)="industrySelected()"
+          formControlName="industryId"
+        >
+          <option [value]="-1" disabled hidden>Select a project</option>
+          <option *ngFor="let i of industries" [value]="i.id">
+            {{ i.name }}
+          </option>
+        </select>
+      </label>
+    </div>
+
+    <skills-container
+      title="Needed skills:"
+      [entitySkills]="neededSkills"
+      (removeSkill)="removeSkill($event)"
+      (addSkill)="addNewSkill($event)"
+    ></skills-container>
+
+    <div class="form-field">
+      <label for="description" class="input input-label"> Tags: </label>
+      <input
+        formControlName="tags"
+        class="textbox input"
+        type="text"
+        placeholder="Enter tags (starting with # and separated by spaces)"
+      />
+    </div>
+
+    <div class="buttons-container">
+      <button
+        [ngClass]="{
+          disabled:
+            (imageIsLoading$ | async) ||
+            (projectIsLoading$ | async) ||
+            !projectForm.valid ||
+            industryId === -1
+        }"
+        (click)="upload()"
+        class="button primary"
+      >
+        SUBMIT
+      </button>
+      <button type="button" class="cancel button" routerLink="/">CANCEL</button>
+    </div>
+  </form>
+  <p *ngIf="error$ | async as error" class="error-message">{{ error }}</p>
+</div>

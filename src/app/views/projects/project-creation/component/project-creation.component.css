@@ -1,0 +1,9 @@
+.fileupload {
+  font-family: inherit;
+  margin: 1% 10%;
+  font-size: 16px;
+}
+
+.fileupload input {
+  width: 10vw;
+}

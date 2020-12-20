@@ -1,5 +1,5 @@
 import { Session } from './../../models/session.model';
-import { SessionFacade } from './../../session/session.facade';
+import { SessionFacade } from '../../state/session/session.facade';
 import { User } from './../../models/user.model';
 import { ResponseObject } from './../../models/response-object.model';
 import { Router } from '@angular/router';
@@ -56,6 +56,7 @@ export class LoginFacade {
           this.setSessionAndLogin(response);
         },
         ({ error: response }) => {
+          this.loginState.setIsLoading(false);
           this.loginState.setError(response.error);
         }
       );
@@ -81,6 +82,7 @@ export class LoginFacade {
           this.loginState.setSuccess(true);
         },
         ({ error: response }) => {
+          this.loginState.setIsLoading(false);
           this.loginState.setError(response.error);
         }
       );
@@ -101,8 +103,8 @@ export class LoginFacade {
           this.loginState.setSuccess(true);
           this.setSessionAndLogin(response);
         },
-        (response) => {
-          console.log(response);
+        ({ error: response }) => {
+          this.loginState.setIsLoading(false);
           this.loginState.setError(response.error);
         }
       );

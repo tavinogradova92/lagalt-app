@@ -1,4 +1,4 @@
-import { SessionFacade } from './../session/session.facade';
+import { SessionFacade } from '../state/session/session.facade';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import {
