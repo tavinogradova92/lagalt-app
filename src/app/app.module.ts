@@ -1,7 +1,6 @@
-import { ApplicationListComponent } from './views/application-list/application-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './views/authentication/login.module';
-import { SessionModule } from './session/session.module';
+import { SessionModule } from './state/session/session.module';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { FormsModule } from '@angular/forms';
 import { MainPageModule } from './views/main-page/main-page.module';
@@ -20,11 +19,9 @@ import { TopIndustriesComponent } from './components/top-industries/top-industri
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { RegisterButtonComponent } from './components/register-button/register-button.component';
-import { ProjectDetailsPageComponent } from './views/project-details-page/project-details-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterPipe } from './pipes/filter.pipe';
-import { ProjectCreationComponent } from './views/project-creation/project-creation.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ApplicationListComponent } from './views/application-list/application-list.component';
 import { ApplicationComponent } from './views/application/application.component';
@@ -38,12 +35,10 @@ import { ApplicationComponent } from './views/application/application.component'
     NavbarComponent,
     LoginButtonComponent,
     RegisterButtonComponent,
-    ProjectDetailsPageComponent,
     SearchBarComponent,
     FilterPipe,
-    ProjectCreationComponent,
     ApplicationListComponent,
-    ApplicationComponent
+    ApplicationComponent,
   ],
   imports: [
     AppRoutingModule,

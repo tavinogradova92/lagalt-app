@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class RegisterContainer {
   isLeftVisible = true;
-  newUser: User = null;
+  private newUser: User = null;
 
   constructor(private loginFacade: LoginFacade, private router: Router) {}
 

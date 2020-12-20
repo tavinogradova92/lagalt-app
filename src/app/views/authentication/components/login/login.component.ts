@@ -14,7 +14,7 @@ import {
 @Component({
   selector: 'login-form',
   templateUrl: './login.component.html',
-  styleUrls: ['../form-styles.component.css'],
+  styleUrls: ['../form-styles.component.css', '../../../views.styles.css'],
 })
 export class LoginFormComponent implements OnInit, OnDestroy {
   @Output() loginClicked: EventEmitter<Credentials> = new EventEmitter();

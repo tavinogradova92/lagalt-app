@@ -39,11 +39,13 @@ export class MainPageComponent implements OnInit {
   }
 
   getPopularProjects() {
-    this.projects.sort((a, b) => (a.projectActiveUsers.length < b.projectActiveUsers.length) ? 1 : -1);
+    this.projects.sort((a, b) =>
+      a.projectActiveUsers.length < b.projectActiveUsers.length ? 1 : -1
+    );
   }
 
   getNewProjects() {
-    this.projects.sort((a, b) => (a.dateCreated < b.dateCreated) ? 1 : -1);
+    this.projects.sort((a, b) => (a.dateCreated < b.dateCreated ? 1 : -1));
   }
 
   getTopTags() {

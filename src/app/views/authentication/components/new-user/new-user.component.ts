@@ -7,7 +7,7 @@ import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 @Component({
   selector: 'new-user',
   templateUrl: './new-user.component.html',
-  styleUrls: ['../form-styles.component.css'],
+  styleUrls: ['../form-styles.component.css', '../../../views.styles.css'],
 })
 export class NewUserComponent implements OnDestroy {
   @Output() goBack: EventEmitter<void> = new EventEmitter();

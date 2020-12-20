@@ -20,8 +20,8 @@ export class ProjectService {
     return this.http.get<Project[]>(this.baseUrl, this.header);
   }
 
-  getProject(id: number): Observable<Project> {
-    return this.http.get<Project>(`${this.baseUrl}/${id}`, this.header);
+  getProject(id: number): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(`${this.baseUrl}/${id}`, this.header);
   }
 
   getActiveProjectsFromUser(userId: number): Observable<ResponseObject> {
@@ -44,13 +44,9 @@ export class ProjectService {
     );
   }
 
-  createProject(project: Project): Observable<any> {
+  createProject(project: Project): Observable<ResponseObject> {
     const headers = { headers: { 'content-type': 'application/json' } };
-    const body = JSON.stringify(project);
-    return this.http.post<Project>(`${this.baseUrl}`, body, headers).pipe(
-      catchError((error) => {
-        return of({ error });
-      })
-    );
+    // const body = JSON.stringify(project);
+    return this.http.post<ResponseObject>(`${this.baseUrl}`, project, headers);
   }
 }

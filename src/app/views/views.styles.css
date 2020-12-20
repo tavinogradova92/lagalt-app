@@ -1,0 +1,86 @@
+h1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.form-wrapper {
+  width: 50%;
+}
+
+.input {
+  width: 100%;
+}
+
+.input-label {
+  font-size: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.form-field div {
+  width: 100% !important;
+}
+
+.buttons-container {
+  display: flex;
+}
+
+.button {
+  display: flex;
+  height: 50px;
+  font-size: 22px;
+  align-items: center;
+  border-radius: 0.55em;
+  margin: 1em auto;
+  cursor: pointer;
+  outline: none;
+  padding: 0 20px;
+}
+
+.cancel {
+  margin-left: 2vw;
+  background: white;
+  border: 2px solid #28b2ff;
+  color: #28b2ff;
+}
+
+.primary {
+  background: #28b2ff;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.disabled {
+  cursor: default;
+  border: 2px solid grey;
+  color: grey;
+  background-color: lightgray;
+  pointer-events: none;
+}
+
+.row-form-fields {
+  display: flex;
+  justify-content: center;
+}
+
+.row-form-fields div {
+  width: 48%;
+}
+
+.error-message {
+  max-width: 50vw;
+  color: #f14336;
+}
