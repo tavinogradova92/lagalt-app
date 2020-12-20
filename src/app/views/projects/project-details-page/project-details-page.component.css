@@ -11,6 +11,12 @@ h5 {
 
 .project-details {
   font-size: 18px;
+  display: grid;
+  width: 90vw;
+  background-color: #fff;
+  border: 1px solid rgba(188, 187, 187, 0.72);
+  border-radius: 10px;
+  padding: 2% 3% 1% 1%;
 }
 
 .project-title {
@@ -32,10 +38,11 @@ h5 {
   box-shadow: 1px 2px;
 }
 
-.industry-image {
-  width: 7%;
+.project-image {
+  width: 25%;
   position: absolute;
-  right: 20%;
+  right: 10%;
+  bottom: 12%;
 }
 
 .project-information {
@@ -53,11 +60,32 @@ h5 {
   padding: 8px 8px;
   text-align: center;
   justify-content: center;
-
   border: 1px solid #28b2ff;
   background-color: #28b2ff;
   color: white;
   border-radius: 0.25em;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.apply-button:hover {
+  cursor: pointer;
+}
+
+.participant-field {
+  font-size: 0.7em;
+  display: block;
+  margin-top: 5vh;
+  text-align: center;
+  justify-content: center;
+  color:#514E7F;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.project-tags {
+  color: rgba(0, 0, 0, 0.4);
+  size: 1em;
+  width: 100%;
+  text-align: right;
 }

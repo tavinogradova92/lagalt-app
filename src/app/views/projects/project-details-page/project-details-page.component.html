@@ -1,37 +1,48 @@
-<div class="project-details">
-  <div class="project-industry">{{ project.industry.name }}</div>
-  <h1 class="project-title">{{ project.name }}</h1>
+<div *ngIf="project.deleted !== true">
+  <div class="project-details">
+    <div class="project-industry">{{ project.industry.name }}</div>
+    <h1 class="project-title">{{ project.name }}</h1>
 
-  <main class="project-information">
-    <section>
-      <span>
-        <p>Created by: {{ ownersSeparator(project.projectOwners) }}</p>
-        <p>Created on: {{ project.dateCreated | date: 'longDate'}}</p>
-      </span>
+    <main class="project-information">
+      <section>
+        <span>
+          <p>Created by: {{ ownersSeparator(project.projectOwners) }} on {{ project.dateCreated | date: 'longDate'}}</p>
+        </span>
+  
+        <h3>Participants: {{ participantsCounter(project.projectActiveUsers) }}</h3>
+        <aside>
+          <img 
+            class="project-image"
+            src="https://lagalt.s3.eu-north-1.amazonaws.com/{{project.projectImage}}" 
+            alt="project logo"/>
+        </aside>
+        <div *ngFor="let skill of project.neededSkills" class="project-skills">
+          Skills needed: {{ skill.skill }}
+        </div>
+      </section>
+      <br />
+      <section class="project-description">
+        <h3>Project description</h3>
+        <h5>{{ project.description }}</h5>
+      </section>
 
-      <h3>Participants: {{ participantsCounter(project.projectActiveUsers) }}</h3>
-      <aside>
-        <img
-          class="industry-image"
-          src="../../../assets/images/webdevelopment.svg"
-        />
-      </aside>
-      <h5>Skills needed:</h5>
-      <div *ngFor="let skill of project.neededSkills" class="project-skills">
-        {{ skill.skill }}
+      <button *ngIf="user && !checkIfParticipant" type="submit" class="apply-button" (click)="onApplyClicked(project.id)">
+        Apply to join
+      </button>
+      
+      <div *ngIf="user && checkIfParticipant" class="participant-field">
+        You are already in this project
       </div>
-    </section>
-    <br />
-    <section class="project-description">
-      <h3>Project description</h3>
-      <h5>{{ project.description }}</h5>
-    </section>
-  </main>
+      
+      <div class="project-tags"> <span *ngFor="let tag of project.tags"> #{{ tag }}</span></div>
+    </main>
+  </div>
+  
+  
 </div>
 
-<button *ngIf="user" type="submit" class="apply-button" (click)="onApplyClicked(project.id)">
-  Apply to join
-</button>
+<div *ngIf="project.deleted">
+  <app-not-found-page></app-not-found-page>
+</div>
 
-<div class="project-tags"> <span *ngFor="let tag of project.tags"> #{{ tag }}</span></div>
 

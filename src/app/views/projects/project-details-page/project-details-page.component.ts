@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
   public project!: Project;
   public projectId: number;
+  public checkIfParticipant: boolean = false;
   public user: User;
   private readonly user$: Subscription;
 
@@ -41,6 +42,19 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.projectFacade.getProject(this.projectId);
+  }
+
+  ngAfterContentChecked() {
+    this.checkIfActiveUser();
+  }
+
+  checkIfActiveUser(): void {
+    for(let i = 0; i < this.project.projectActiveUsers.length; i++) {
+      if (this.user.id === this.project.projectActiveUsers[i].id) {
+        this.checkIfParticipant = true;
+        break;
+      }
+    }
   }
 
   ownersSeparator(owners: User[]): string {

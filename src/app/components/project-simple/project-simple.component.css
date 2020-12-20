@@ -40,6 +40,15 @@
   cursor: pointer;
 }
 
+.participant-field {
+  grid-area: join;
+  font-size: 0.7em;
+  justify-self: end;
+  align-self: center;
+  color:#514E7F;
+  font-weight: bold;
+}
+
 .project-industry {
   grid-area: industry;
   font-size: 0.7em;

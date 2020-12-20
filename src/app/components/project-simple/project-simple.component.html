@@ -5,6 +5,44 @@
         {{ project.name }}
       </div>
       <div class="project-creation">
+<<<<<<< HEAD
+        Created by {{ ownersSeparator(project.projectOwners) }} 
+        on {{ project.dateCreated | date : 'longDate' }}
+      </div>
+      <div 
+        *ngIf="project.industry.name=='Game development'" 
+        class="project-industry yellow">
+          {{ project.industry.name }}
+      </div>
+      <div 
+        *ngIf="project.industry.name=='Web development'" 
+        class="project-industry red">
+          {{ project.industry.name }}
+      </div>
+      <div 
+        *ngIf="project.industry.name=='Music'" 
+        class="project-industry green">
+          {{ project.industry.name }}\
+      </div>
+      <div 
+        *ngIf="project.industry.name=='Film making'" 
+        class="project-industry purple">
+          {{ project.industry.name }}
+      </div>
+      <div 
+        *ngIf="user && !checkIfParticipant"
+        class="join-button"
+        (click)="onApplyClicked(project.id)"
+      >
+        Join
+      </div>
+      <div 
+        *ngIf="user && checkIfParticipant"
+        class="participant-field"
+      >
+        You are already in this project
+      </div>
+=======
         Created by {{ ownersSeparator(project.projectOwners) }} on
         {{ project.dateCreated | date: "longDate" }}
       </div>
@@ -33,6 +71,7 @@
         {{ project.industry.name }}
       </div>
       <div class="join-button" (click)="onApplyClicked(project.id)">Join</div>
+>>>>>>> ae51034f45e1e6d231853385f8bff471e20c27ca
       <div class="project-image">
         <img
           src="https://lagalt.s3.eu-north-1.amazonaws.com/{{
