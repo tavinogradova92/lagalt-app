@@ -1,3 +1,4 @@
+import { ErrorInterceptor } from './utils/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './views/authentication/login.module';
 import { SessionModule } from './state/session/session.module';
@@ -57,6 +58,7 @@ import { ApplicationComponent } from './views/application/application.component'
   providers: [
     CookieService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

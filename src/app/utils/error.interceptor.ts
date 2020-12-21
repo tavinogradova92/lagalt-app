@@ -1,5 +1,5 @@
+import { Router } from '@angular/router';
 import { InterceptorSkip } from './interceptorSkipHeader';
-import { LoginFacade } from '../views/authentication/login.facade';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private loginFacade: LoginFacade) {}
+  constructor(private router: Router) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -25,7 +25,8 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err) => {
         if ([401, 403].indexOf(err.status) !== -1) {
-          this.loginFacade.logout();
+          debugger;
+          this.router.navigateByUrl('access-denied');
         }
 
         const error = err.error.message || err.statusText;

@@ -32,6 +32,7 @@ export class NavbarComponent implements OnDestroy {
   }
 
   logout(): void {
+    console.log('1');
     this.loginFacade.logout();
   }
 
