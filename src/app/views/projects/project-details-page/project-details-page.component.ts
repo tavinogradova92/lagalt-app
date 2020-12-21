@@ -42,9 +42,6 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.projectFacade.getProject(this.projectId);
-  }
-
-  ngAfterContentChecked() {
     this.checkIfActiveUser();
   }
 
