@@ -1,3 +1,4 @@
+import { ProjectPreloadGuard } from '../../guards/preloads/project-preload.guard';
 import { ProjectCreationContainer } from './project-creation/container/project-creation.container';
 import { ProjectDetailsPageComponent } from './project-details-page/project-details-page.component';
 import { ApplicationComponent } from './../application/application.component';
@@ -9,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'projects/:id',
+    resolve: [ProjectPreloadGuard],
     component: ProjectDetailsPageComponent,
   },
   {

@@ -1,5 +1,12 @@
 import { Project } from 'src/app/models/project.model';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { User } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,35 +18,33 @@ import { Session } from '../../models/session.model';
   templateUrl: './project-simple.component.html',
   styleUrls: ['./project-simple.component.css'],
 })
-export class ProjectSimpleComponent {
+export class ProjectSimpleComponent implements OnInit, OnDestroy {
   @Input() project: Project;
   @Output() projectClicked: EventEmitter<number> = new EventEmitter();
 
   public user: User;
   private readonly user$: Subscription;
-  public checkIfParticipant: boolean = false;
+  public checkIfParticipant = false;
 
-  constructor(
-    private router: Router,
-    private sessionFacade: SessionFacade) {
-      this.user$ = this.sessionFacade
-        .getSession()
-        .subscribe((session: Session) => {
+  constructor(private router: Router, private sessionFacade: SessionFacade) {
+    this.user$ = this.sessionFacade
+      .getSession()
+      .subscribe((session: Session) => {
         this.user = session && session.user;
       });
-    }
+  }
 
-  ngOnInit() {
-    this.checkIfActiveUser();
+  ngOnInit(): void {
+    if (this.user) {
+      this.checkIfActiveUser();
+    }
   }
 
   checkIfActiveUser(): void {
-    if (this.user && this.project !== null) {
-      for(let i = 0; i < this.project.projectActiveUsers.length; i++) {
-        if (this.user.id === this.project.projectActiveUsers[i].id) {
-          this.checkIfParticipant = true;
-          break;
-        }
+    for (const user of this.project.projectActiveUsers) {
+      if (this.user.id === user.id) {
+        this.checkIfParticipant = true;
+        break;
       }
     }
   }
@@ -49,7 +54,7 @@ export class ProjectSimpleComponent {
   }
 
   ownersSeparator(owners: User[]): string {
-    let ownersArray = [];
+    const ownersArray = [];
     if (owners.length > 1) {
       for (let i = 0; i < owners.length; i++) {
         ownersArray.push(owners[i].name);
@@ -65,5 +70,9 @@ export class ProjectSimpleComponent {
 
   onApplyClicked(projectId: number): void {
     this.router.navigateByUrl(`/projects/${projectId}/apply`);
+  }
+
+  ngOnDestroy(): void {
+    this.user$.unsubscribe();
   }
 }
