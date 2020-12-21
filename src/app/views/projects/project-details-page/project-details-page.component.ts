@@ -31,6 +31,7 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
       .currentProject$()
       .subscribe((project: Project) => {
         this.project = project;
+        this.checkIfActiveUser();
       });
     this.projectId = this.route.snapshot.params.id;
     this.user$ = this.sessionFacade
@@ -42,7 +43,6 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.projectFacade.getProject(this.projectId);
-    this.checkIfActiveUser();
   }
 
   checkIfActiveUser(): void {
