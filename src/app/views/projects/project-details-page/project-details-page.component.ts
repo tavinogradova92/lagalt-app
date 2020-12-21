@@ -35,8 +35,10 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.data.pipe(pluck('0')).subscribe((response: ResponseObject) => {
-      this.project = response.data as Project;
-      this.checkIfActiveUser();
+      if (response != null) {
+        this.project = response.data as Project;
+        this.checkIfActiveUser();
+      }
     });
   }
 

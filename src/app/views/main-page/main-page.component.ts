@@ -74,8 +74,8 @@ export class MainPageComponent implements OnInit {
   getProjectsByIndustry(industryId: number): void {
     this.projectService
       .getProjectsByIndustry(industryId)
-      .subscribe((projects) => {
-        this.projects = projects;
+      .subscribe((response: ResponseObject) => {
+        this.projects = response.data as Project[];
       });
   }
 

@@ -1,3 +1,4 @@
+import { ResponseObject } from './../../../../models/response-object.model';
 import { Tag } from './../../../../models/tag.model';
 import { Skill } from './../../../../models/skill.model';
 import { ImageUploadFacade } from './../../../../state/image-upload/image-upload.facade';
@@ -97,9 +98,11 @@ export class ProjectCreationComponent implements OnInit, OnDestroy {
       industryId: new FormControl(-1, [Validators.required]),
       tags: new FormControl(''),
     });
-    this.industryService.getAllIndustries().subscribe((industries) => {
-      this.industries = industries;
-    });
+    this.industryService
+      .getAllIndustries()
+      .subscribe((response: ResponseObject) => {
+        this.industries = response.data as Industry[];
+      });
   }
 
   get industryId(): number {

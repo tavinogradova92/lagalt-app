@@ -1,7 +1,7 @@
+import { ResponseObject } from './../../models/response-object.model';
 import { Industry } from './../../models/industry.model';
 import { IndustryService } from './../../services/industry.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-industries',
@@ -13,20 +13,17 @@ export class TopIndustriesComponent implements OnInit {
   loading = true;
   @Output() industryClicked: EventEmitter<number> = new EventEmitter();
 
-  constructor(
-    private router: Router,
-    private industryService: IndustryService
-  ) {}
+  constructor(private industryService: IndustryService) {}
 
   ngOnInit(): void {
     this.industryService
       .getTopIndustries()
-      .subscribe((industries: Industry[]) => {
-        this.industries = industries;
+      .subscribe((response: ResponseObject) => {
+        this.industries = response.data as Industry[];
       });
   }
 
-  onLoad() {
+  onLoad(): void {
     this.loading = false;
   }
 }
