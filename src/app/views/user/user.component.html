@@ -1,6 +1,6 @@
-<div class="user-container">
+<h1 *ngIf="!user">User does not exist.</h1>
+<div *ngIf="!!user" class="user-container">
   <div class="profile-top">
-    <h1 *ngIf="!user">User does not exist.</h1>
     <div class="image-name-container">
       <img [src]="user.image" />
       <h1 class="user-name">{{ user.name }}</h1>
@@ -16,13 +16,16 @@
       </skills-container>
     </div>
 
-    <div class="skills-container" *ngIf="!editable"> 
+    <div class="skills-container" *ngIf="!editable">
       <h3>Skills:</h3>
-      <div class="label-container" [ngStyle]="colorStyle" *ngFor="let skill of user.skills">
+      <div
+        class="label-container"
+        [ngStyle]="colorStyle"
+        *ngFor="let skill of user.skills"
+      >
         {{ skill.skill }}
       </div>
     </div>
-    
   </div>
 
   <div *ngIf="editable">
@@ -37,16 +40,11 @@
     </textarea>
   </div>
 
-  <div
-    *ngIf="!editable"
-    class="textbox">
-      {{ user.description }}
+  <div *ngIf="!editable" class="textbox">
+    {{ user.description }}
   </div>
 
-  <div 
-    *ngIf="editable"
-    class="item-container"
-  >
+  <div *ngIf="editable" class="item-container">
     <h2>Portfolio:</h2>
     <input
       [(ngModel)]="user.portfolio"
@@ -56,10 +54,7 @@
     />
   </div>
 
-  <div 
-    *ngIf="!editable"
-    class="item-container"
-  >
+  <div *ngIf="!editable" class="item-container">
     <h2>Portfolio:</h2>
     <div class="textbox">
       {{ user.portfolio }}

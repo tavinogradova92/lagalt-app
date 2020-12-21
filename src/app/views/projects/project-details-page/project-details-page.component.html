@@ -1,4 +1,7 @@
-<div *ngIf="!project.deleted">
+<h1 *ngIf="!project || project.deleted">
+  Oops. This project does not exist...
+</h1>
+<div *ngIf="project && !project.deleted">
   <div class="project-details">
     <div class="project-industry">{{ project.industry.name }}</div>
     <h1 class="project-title">{{ project.name }}</h1>

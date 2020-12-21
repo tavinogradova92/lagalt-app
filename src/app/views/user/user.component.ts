@@ -46,8 +46,8 @@ export class UserComponent implements OnInit, OnDestroy {
     this.route.data
       .pipe(pluck('0'))
       .subscribe((userResponse: ResponseObject) => {
-        this.user = userResponse.data as User;
-        if (this.user != null) {
+        if (userResponse != null) {
+          this.user = userResponse.data as User;
           this.getActiveProjectsFromUser();
           this.checkIfEditable();
         }

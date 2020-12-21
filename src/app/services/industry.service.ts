@@ -1,3 +1,4 @@
+import { ResponseObject } from './../models/response-object.model';
 import { InterceptorSkipHeader } from './../utils/interceptorSkipHeader';
 import { environment } from './../../environments/environment';
 import { Industry } from './../models/industry.model';
@@ -13,29 +14,29 @@ export class IndustryService {
 
   constructor(private http: HttpClient) {}
 
-  getAllIndustries(): Observable<Industry[]> {
-    return this.http.get<Industry[]>(
+  getAllIndustries(): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(
       `${environment.api.baseUrl}industries`,
       this.header
     );
   }
 
-  getIndustry(industryId: number): Observable<Industry> {
-    return this.http.get<Industry>(
+  getIndustry(industryId: number): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(
       `${environment.api.baseUrl}industries/${industryId}`,
       this.header
     );
   }
 
-  getIndustryByProject(id: number): Observable<Industry> {
-    return this.http.get<Industry>(
+  getIndustryByProject(id: number): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(
       `${environment.api.baseUrl}industries/project/${id}`,
       this.header
     );
   }
 
-  getTopIndustries(): Observable<Industry[]> {
-    return this.http.get<Industry[]>(
+  getTopIndustries(): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(
       `${environment.api.baseUrl}industries/popular`,
       this.header
     );
