@@ -5,47 +5,45 @@
         {{ project.name }}
       </div>
       <div class="project-creation">
-        Created by {{ ownersSeparator(project.projectOwners) }} 
-        on {{ project.dateCreated | date : 'longDate' }}
+        Created by {{ ownersSeparator(project.projectOwners) }} on
+        {{ project.dateCreated | date: "longDate" }}
       </div>
-      <div 
-        *ngIf="project.industry.name=='Game development'" 
-        class="project-industry yellow">
-          {{ project.industry.name }}
+      <div
+        *ngIf="project.industry.name == 'Game development'"
+        class="project-industry yellow"
+      >
+        {{ project.industry.name }}
       </div>
-      <div 
-        *ngIf="project.industry.name=='Web development'" 
-        class="project-industry red">
-          {{ project.industry.name }}
+      <div
+        *ngIf="project.industry.name == 'Web development'"
+        class="project-industry red"
+      >
+        {{ project.industry.name }}
       </div>
-      <div 
-        *ngIf="project.industry.name=='Music'" 
-        class="project-industry green">
-          {{ project.industry.name }}\
+      <div
+        *ngIf="project.industry.name == 'Music'"
+        class="project-industry green"
+      >
+        {{ project.industry.name }}
       </div>
-      <div 
-        *ngIf="project.industry.name=='Film making'" 
-        class="project-industry purple">
-          {{ project.industry.name }}
+      <div
+        *ngIf="project.industry.name == 'Film making'"
+        class="project-industry purple"
+      >
+        {{ project.industry.name }}
       </div>
-      <div 
+      <div
         *ngIf="user && !checkIfParticipant"
         class="join-button"
         (click)="onApplyClicked(project.id)"
       >
         Join
       </div>
-      <div 
-        *ngIf="user && checkIfParticipant"
-        class="participant-field"
-      >
+      <div *ngIf="user && checkIfParticipant" class="participant-field">
         You are already in this project
       </div>
       <div class="project-image">
-        <img
-          src="{{project.projectImage}}"
-          alt="project logo"
-        />
+        <img [src]="project.projectImage" alt="project logo" />
       </div>
       <div class="project-participants">
         Participants: {{ participantsCounter(project.projectActiveUsers) }}

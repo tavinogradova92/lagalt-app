@@ -1,8 +1,9 @@
+import { pluck } from 'rxjs/operators';
 import { Tag } from './../../models/tag.model';
 import { ResponseObject } from './../../models/response-object.model';
 import { TagsService } from './../../services/tag.service';
 import { Project } from 'src/app/models/project.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,43 +13,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
-  p: number = 1;
+  page = 1;
   projects: Project[] = [];
   topTags: Tag[] = [];
   searchText: string;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private projectService: ProjectService,
     private tagService: TagsService
   ) {}
 
   ngOnInit(): void {
-    this.getAllProjects();
+    this.route.data.pipe(pluck('0')).subscribe((response: ResponseObject) => {
+      this.projects = response.data as Project[];
+    });
     this.getTopTags();
   }
 
-  onSearch(text: string) {
+  onSearch(text: string): void {
     this.searchText = text;
   }
 
-  getAllProjects() {
-    this.projectService.getAllProjects().subscribe((projects) => {
-      this.projects = projects;
-    });
+  getAllProjects(): void {
+    this.projectService
+      .getAllProjects()
+      .subscribe((response: ResponseObject) => {
+        this.projects = response.data as Project[];
+      });
   }
 
-  getPopularProjects() {
+  getPopularProjects(): void {
     this.projects.sort((a, b) =>
       a.projectActiveUsers.length < b.projectActiveUsers.length ? 1 : -1
     );
   }
 
-  getNewProjects() {
+  getNewProjects(): void {
     this.projects.sort((a, b) => (a.dateCreated < b.dateCreated ? 1 : -1));
   }
 
-  getTopTags() {
+  getTopTags(): void {
     this.tagService
       .getPopularTags()
       .subscribe(
@@ -56,7 +62,7 @@ export class MainPageComponent implements OnInit {
       );
   }
 
-  getProjectsFromTag(tagId: number) {
+  getProjectsFromTag(tagId: number): void {
     this.projectService
       .getProjectsFromTag(tagId)
       .subscribe(

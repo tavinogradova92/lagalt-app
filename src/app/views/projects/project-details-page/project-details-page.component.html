@@ -1,4 +1,4 @@
-<div *ngIf="project !== null && project.deleted !== true">
+<div *ngIf="!project.deleted">
   <div class="project-details">
     <div class="project-industry">{{ project.industry.name }}</div>
     <h1 class="project-title">{{ project.name }}</h1>
@@ -6,15 +6,21 @@
     <main class="project-information">
       <section>
         <span>
-          <p>Created by: {{ ownersSeparator(project.projectOwners) }} on {{ project.dateCreated | date: 'longDate'}}</p>
+          <p>
+            Created by: {{ ownersSeparator(project.projectOwners) }} on
+            {{ project.dateCreated | date: "longDate" }}
+          </p>
         </span>
-  
-        <h3>Participants: {{ participantsCounter(project.projectActiveUsers) }}</h3>
+
+        <h3>
+          Participants: {{ participantsCounter(project.projectActiveUsers) }}
+        </h3>
         <aside>
-          <img 
+          <img
             class="project-image"
-            src="{{project.projectImage}}" 
-            alt="project logo"/>
+            [src]="project.projectImage"
+            alt="project logo"
+          />
         </aside>
         <div *ngFor="let skill of project.neededSkills" class="project-skills">
           Skills needed: {{ skill.skill }}
@@ -26,17 +32,22 @@
         <h5>{{ project.description }}</h5>
       </section>
 
-      <button *ngIf="user && !checkIfParticipant" type="submit" class="apply-button" (click)="onApplyClicked(project.id)">
+      <button
+        *ngIf="user && !checkIfParticipant"
+        type="submit"
+        class="apply-button"
+        (click)="onApplyClicked(project.id)"
+      >
         Apply to join
       </button>
-      
+
       <div *ngIf="user && checkIfParticipant" class="participant-field">
         You are already in this project
       </div>
-      
-      <div class="project-tags"> <span *ngFor="let tag of project.tags"> #{{ tag }}</span></div>
+
+      <div class="project-tags">
+        <span *ngFor="let tag of project.tags"> #{{ tag }}</span>
+      </div>
     </main>
   </div>
 </div>
-
-

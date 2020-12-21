@@ -17,9 +17,10 @@ import { Session } from '../../models/session.model';
   styleUrls: ['./user.component.css', '../views.styles.css'],
 })
 export class UserComponent implements OnInit, OnDestroy {
+  private readonly user$: Subscription;
+
   user: User;
   loggedUser: User;
-  private readonly user$: Subscription;
   allSkills: Skill[] = [];
   activeProjects: Project[] = [];
   toggled: boolean;
