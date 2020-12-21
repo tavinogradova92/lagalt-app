@@ -2,9 +2,9 @@
   background-color: white;
   min-width: 10%;
   min-height: 20%;
-  position: fixed;
-  bottom: 5%;
+  position: absolute;
   right: 5%;
+  margin-top: 3%;
   background: #ffffff;
   border: 1px solid rgba(188, 187, 187, 0.72);
   box-sizing: border-box;
