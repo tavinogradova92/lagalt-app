@@ -32,7 +32,9 @@ export class UserComponent implements OnInit {
       .pipe(pluck('0'))
       .subscribe((userResponse: ResponseObject) => {
         this.user = userResponse.data as User;
-        this.getActiveProjectsFromUser();
+        if (this.user != null) {
+          this.getActiveProjectsFromUser();
+        }
       });
   }
 
