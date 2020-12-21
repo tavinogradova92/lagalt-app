@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from './../../models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { pluck } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { SessionFacade } from 'src/app/state/session/session.facade';
+import { Session } from '../../models/session.model';
 
 @Component({
   selector: 'user-profile',
@@ -15,25 +18,51 @@ import { pluck } from 'rxjs/operators';
 })
 export class UserComponent implements OnInit {
   user: User;
+  loggedUser: User;
+  private readonly user$: Subscription;
   allSkills: Skill[] = [];
   activeProjects: Project[] = [];
   toggled: boolean;
   patchResponseMessage: string;
+  editable: boolean;
+  colorStyle: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
-    private projectService: ProjectService
-  ) {}
+    private projectService: ProjectService,
+    private sessionFacade: SessionFacade
+  ) {
+    this.user$ = this.sessionFacade
+      .getSession()
+      .subscribe((session: Session) => {
+        this.loggedUser = session && session.user;
+      });
+  }
 
   ngOnInit(): void {
     this.route.data
       .pipe(pluck('0'))
       .subscribe((userResponse: ResponseObject) => {
         this.user = userResponse.data as User;
+        this.checkIfEditable();
         this.getActiveProjectsFromUser();
       });
+    this.colorStyle = this.generateRandomColorStyle();
+  }
+
+  checkIfEditable(): void {
+    if (this.loggedUser.id == this.user.id) {
+      this.editable = true;
+    } else {
+      this.editable = false;
+    }
+  }
+
+  generateRandomColorStyle(): any {
+    const color = Math.floor(Math.random() * 16777215).toString(16);
+    return { color: '#' + color, border: '2px solid #' + color };
   }
 
   private getActiveProjectsFromUser(): void {
