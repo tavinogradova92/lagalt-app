@@ -1,5 +1,6 @@
 <div class="user-container">
   <div class="profile-top">
+    <h1 *ngIf="!user">User does not exist.</h1>
     <div class="image-name-container">
       <img [src]="user.image" />
       <h1 class="user-name">{{ user.name }}</h1>

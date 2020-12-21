@@ -47,14 +47,16 @@ export class UserComponent implements OnInit, OnDestroy {
       .pipe(pluck('0'))
       .subscribe((userResponse: ResponseObject) => {
         this.user = userResponse.data as User;
-        this.checkIfEditable();
-        this.getActiveProjectsFromUser();
+        if (this.user != null) {
+          this.getActiveProjectsFromUser();
+          this.checkIfEditable();
+        }
       });
     this.colorStyle = this.generateRandomColorStyle();
   }
 
   checkIfEditable(): void {
-    if (this.loggedUser.id == this.user.id) {
+    if (this.loggedUser.id === this.user.id) {
       this.editable = true;
     } else {
       this.editable = false;
