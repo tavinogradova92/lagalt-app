@@ -26,6 +26,14 @@ export class ProjectFacade {
     this.projectState.setCurrentProject(project);
   }
 
+  allProjects$(): Observable<Project[]> {
+    return this.projectState.getProjects$();
+  }
+
+  setAllProject(projects: Project[]): void {
+    this.projectState.setAllProjects(projects);
+  }
+
   error$(): Observable<string> {
     return this.projectState.getError$();
   }

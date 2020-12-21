@@ -5,7 +5,7 @@ import { ProjectService } from '../../services/project.service';
 import { UserService } from './../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from './../../models/user.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { pluck } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { SessionFacade } from 'src/app/state/session/session.facade';
@@ -16,10 +16,11 @@ import { Session } from '../../models/session.model';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css', '../views.styles.css'],
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
+  private readonly user$: Subscription;
+
   user: User;
   loggedUser: User;
-  private readonly user$: Subscription;
   allSkills: Skill[] = [];
   activeProjects: Project[] = [];
   toggled: boolean;
@@ -102,5 +103,9 @@ export class UserComponent implements OnInit {
         ? 'There was an error updating the profile. Please try again later.'
         : '';
     });
+  }
+
+  ngOnDestroy(): void {
+    this.user$.unsubscribe();
   }
 }

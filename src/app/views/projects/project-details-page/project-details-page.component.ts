@@ -1,6 +1,7 @@
+import { ResponseObject } from './../../../models/response-object.model';
+import { pluck } from 'rxjs/operators';
 import { SessionFacade } from './../../../state/session/session.facade';
 import { Session } from './../../../models/session.model';
-import { ProjectFacade } from '../projects.facade';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Project } from 'src/app/models/project.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,26 +14,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./project-details-page.component.css'],
 })
 export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
-  public project!: Project;
+  public project: Project;
   public projectId: number;
-  public checkIfParticipant: boolean = false;
+  public checkIfParticipant = false;
   public user: User;
   private readonly user$: Subscription;
 
-  private readonly project$: Subscription;
-
   constructor(
-    private projectFacade: ProjectFacade,
     private route: ActivatedRoute,
     private router: Router,
     private sessionFacade: SessionFacade
   ) {
-    this.project$ = this.projectFacade
-      .currentProject$()
-      .subscribe((project: Project) => {
-        this.project = project;
-        this.checkIfActiveUser();
-      });
     this.projectId = this.route.snapshot.params.id;
     this.user$ = this.sessionFacade
       .getSession()
@@ -42,16 +34,17 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.projectFacade.getProject(this.projectId);
+    this.route.data.pipe(pluck('0')).subscribe((response: ResponseObject) => {
+      this.project = response.data as Project;
+      this.checkIfActiveUser();
+    });
   }
 
   checkIfActiveUser(): void {
-    if (this.user && this.project !== null) {
-      for(let i = 0; i < this.project.projectActiveUsers.length; i++) {
-        if (this.user.id === this.project.projectActiveUsers[i].id) {
-          this.checkIfParticipant = true;
-          break;
-        }
+    for (const user of this.project.projectActiveUsers) {
+      if (this.user.id === user.id) {
+        this.checkIfParticipant = true;
+        break;
       }
     }
   }
@@ -76,7 +69,6 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.project$.unsubscribe();
     this.user$.unsubscribe();
   }
 }

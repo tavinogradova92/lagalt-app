@@ -5,7 +5,6 @@ import { environment } from './../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../models/project.model';
-import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +15,8 @@ export class ProjectService {
 
   constructor(private http: HttpClient) {}
 
-  getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.baseUrl, this.header);
+  getAllProjects(): Observable<ResponseObject> {
+    return this.http.get<ResponseObject>(this.baseUrl, this.header);
   }
 
   getProject(id: number): Observable<ResponseObject> {

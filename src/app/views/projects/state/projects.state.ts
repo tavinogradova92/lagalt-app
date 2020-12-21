@@ -9,6 +9,10 @@ export class ProjectState {
     null
   );
 
+  private readonly allProjects$: BehaviorSubject<
+    Project[]
+  > = new BehaviorSubject<Project[]>([]);
+
   private readonly success$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     null
   );
@@ -25,6 +29,14 @@ export class ProjectState {
 
   setCurrentProject(project: Project): void {
     this.currentProject$.next(project);
+  }
+
+  getProjects$(): Observable<Project[]> {
+    return this.allProjects$.asObservable();
+  }
+
+  setAllProjects(projects: Project[]): void {
+    this.allProjects$.next(projects);
   }
 
   getIsLoading$(): Observable<boolean> {
