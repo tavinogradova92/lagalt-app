@@ -1,5 +1,5 @@
 <div class="projects-container">
-  <div *ngIf="project.deleted !== true">
+  <div *ngIf="project !== null && project.deleted !== true">
     <div class="project-card">
       <div class="project-title" (click)="onProjectClicked(project.id)">
         {{ project.name }}

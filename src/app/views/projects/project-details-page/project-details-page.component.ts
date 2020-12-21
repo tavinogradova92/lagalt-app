@@ -46,10 +46,12 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   checkIfActiveUser(): void {
-    for(let i = 0; i < this.project.projectActiveUsers.length; i++) {
-      if (this.user.id === this.project.projectActiveUsers[i].id) {
-        this.checkIfParticipant = true;
-        break;
+    if (this.user && this.project !== null) {
+      for(let i = 0; i < this.project.projectActiveUsers.length; i++) {
+        if (this.user.id === this.project.projectActiveUsers[i].id) {
+          this.checkIfParticipant = true;
+          break;
+        }
       }
     }
   }
