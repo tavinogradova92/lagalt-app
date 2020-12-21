@@ -1,5 +1,5 @@
 <div class="projects-container">
-  <div *ngIf="project.deleted !== true">
+  <div *ngIf="project !== null && project.deleted !== true">
     <div class="project-card">
       <div class="project-title" (click)="onProjectClicked(project.id)">
         {{ project.name }}
@@ -43,9 +43,7 @@
       </div>
       <div class="project-image">
         <img
-          src="https://lagalt.s3.eu-north-1.amazonaws.com/{{
-            project.projectImage
-          }}"
+          src="{{project.projectImage}}"
           alt="project logo"
         />
       </div>

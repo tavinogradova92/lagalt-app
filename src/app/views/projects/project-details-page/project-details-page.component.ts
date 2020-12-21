@@ -31,6 +31,7 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
       .currentProject$()
       .subscribe((project: Project) => {
         this.project = project;
+        this.checkIfActiveUser();
       });
     this.projectId = this.route.snapshot.params.id;
     this.user$ = this.sessionFacade
@@ -44,15 +45,13 @@ export class ProjectDetailsPageComponent implements OnInit, OnDestroy {
     this.projectFacade.getProject(this.projectId);
   }
 
-  ngAfterContentChecked() {
-    this.checkIfActiveUser();
-  }
-
   checkIfActiveUser(): void {
-    for(let i = 0; i < this.project.projectActiveUsers.length; i++) {
-      if (this.user.id === this.project.projectActiveUsers[i].id) {
-        this.checkIfParticipant = true;
-        break;
+    if (this.user && this.project !== null) {
+      for(let i = 0; i < this.project.projectActiveUsers.length; i++) {
+        if (this.user.id === this.project.projectActiveUsers[i].id) {
+          this.checkIfParticipant = true;
+          break;
+        }
       }
     }
   }

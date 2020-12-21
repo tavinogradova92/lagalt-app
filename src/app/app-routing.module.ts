@@ -34,24 +34,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'projects/:id',
-    component: ProjectDetailsPageComponent,
-  },
-  {
-    path: 'projects/:id/apply',
-    component: ApplicationComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'create-project',
-    component: ProjectCreationComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'projects/:id/applications',
-    component: ApplicationListComponent,
-  },
-  {
     path: '**',
     component: NotFoundPageComponent,
   },

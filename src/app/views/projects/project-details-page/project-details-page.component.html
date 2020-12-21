@@ -1,4 +1,4 @@
-<div *ngIf="project.deleted !== true">
+<div *ngIf="project !== null && project.deleted !== true">
   <div class="project-details">
     <div class="project-industry">{{ project.industry.name }}</div>
     <h1 class="project-title">{{ project.name }}</h1>
@@ -13,7 +13,7 @@
         <aside>
           <img 
             class="project-image"
-            src="https://lagalt.s3.eu-north-1.amazonaws.com/{{project.projectImage}}" 
+            src="{{project.projectImage}}" 
             alt="project logo"/>
         </aside>
         <div *ngFor="let skill of project.neededSkills" class="project-skills">

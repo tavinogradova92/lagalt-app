@@ -6,24 +6,47 @@
       <h1 class="user-name">{{ user.name }}</h1>
     </div>
 
-    <skills-container
-      title="Skills:"
-      [entitySkills]="user.skills"
-      (removeSkill)="removeSkill($event)"
-      (addSkill)="addNewSkill($event)"
-    ></skills-container>
+    <div *ngIf="editable">
+      <skills-container
+        title="Skills:"
+        [entitySkills]="user.skills"
+        (removeSkill)="removeSkill($event)"
+        (addSkill)="addNewSkill($event)"
+      >
+      </skills-container>
+    </div>
+
+    <div class="skills-container" *ngIf="!editable"> 
+      <h3>Skills:</h3>
+      <div class="label-container" [ngStyle]="colorStyle" *ngFor="let skill of user.skills">
+        {{ skill.skill }}
+      </div>
+    </div>
+    
   </div>
 
-  <textarea
-    rows="10"
-    class="textbox"
-    [(ngModel)]="user.description"
-    (blur)="sendUpdate({ description: user.description })"
-    placeholder="Write someting about yourself"
-    >{{ user.description }}</textarea
-  >
+  <div *ngIf="editable">
+    <textarea
+      rows="10"
+      class="textbox"
+      [(ngModel)]="user.description"
+      (blur)="sendUpdate({ description: user.description })"
+      placeholder="Write someting about yourself"
+    >
+      {{ user.description }}
+    </textarea>
+  </div>
 
-  <div class="item-container">
+  <div
+    *ngIf="!editable"
+    class="textbox">
+      {{ user.description }}
+  </div>
+
+  <div 
+    *ngIf="editable"
+    class="item-container"
+  >
     <h2>Portfolio:</h2>
     <input
       [(ngModel)]="user.portfolio"
@@ -33,12 +56,23 @@
     />
   </div>
 
+  <div 
+    *ngIf="!editable"
+    class="item-container"
+  >
+    <h2>Portfolio:</h2>
+    <div class="textbox">
+      {{ user.portfolio }}
+    </div>
+  </div>
+
   <p class="error" *ngIf="patchResponseMessage">
     {{ patchResponseMessage }}
   </p>
 
   <div class="item-container">
-    <h2>Your projects</h2>
+    <h2 *ngIf="editable">Your projects</h2>
+    <h2 *ngIf="!editable">User's projects</h2>
     <project-simple
       *ngFor="let project of activeProjects"
       [project]="project"
@@ -46,7 +80,7 @@
     ></project-simple>
   </div>
 
-  <div class="visibility-container">
+  <div *ngIf="editable" class="visibility-container">
     <h2>Profile visibility</h2>
     <div class="toggle-container">
       <span [ngClass]="{ bold: !toggled }">Visible to all users</span>

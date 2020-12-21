@@ -5,27 +5,41 @@ import { ProjectService } from '../../services/project.service';
 import { UserService } from './../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from './../../models/user.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { pluck } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { SessionFacade } from 'src/app/state/session/session.facade';
+import { Session } from '../../models/session.model';
 
 @Component({
   selector: 'user-profile',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css', '../views.styles.css'],
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   user: User;
+  loggedUser: User;
+  private readonly user$: Subscription;
   allSkills: Skill[] = [];
   activeProjects: Project[] = [];
   toggled: boolean;
   patchResponseMessage: string;
+  editable: boolean;
+  colorStyle: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
-    private projectService: ProjectService
-  ) {}
+    private projectService: ProjectService,
+    private sessionFacade: SessionFacade
+  ) {
+    this.user$ = this.sessionFacade
+      .getSession()
+      .subscribe((session: Session) => {
+        this.loggedUser = session && session.user;
+      });
+  }
 
   ngOnInit(): void {
     this.route.data
@@ -34,8 +48,23 @@ export class UserComponent implements OnInit {
         this.user = userResponse.data as User;
         if (this.user != null) {
           this.getActiveProjectsFromUser();
+          this.checkIfEditable();
         }
       });
+    this.colorStyle = this.generateRandomColorStyle();
+  }
+
+  checkIfEditable(): void {
+    if (this.loggedUser.id === this.user.id) {
+      this.editable = true;
+    } else {
+      this.editable = false;
+    }
+  }
+
+  generateRandomColorStyle(): any {
+    const color = Math.floor(Math.random() * 16777215).toString(16);
+    return { color: '#' + color, border: '2px solid #' + color };
   }
 
   private getActiveProjectsFromUser(): void {
@@ -75,5 +104,9 @@ export class UserComponent implements OnInit {
         ? 'There was an error updating the profile. Please try again later.'
         : '';
     });
+  }
+
+  ngOnDestroy(): void {
+    this.user$.unsubscribe();
   }
 }
