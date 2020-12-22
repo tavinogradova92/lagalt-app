@@ -23,13 +23,11 @@ export class ErrorInterceptor implements HttpInterceptor {
       return next.handle(request.clone({ headers }));
     }
     return next.handle(request).pipe(
-      catchError((err) => {
-        if ([401, 403].indexOf(err.status) !== -1) {
-          debugger;
+      catchError((response) => {
+        if ([403].indexOf(response.status) !== -1) {
           this.router.navigateByUrl('access-denied');
         }
-
-        const error = err.error.message || err.statusText;
+        const error = response.error.error;
         return throwError(error);
       })
     );

@@ -30,9 +30,6 @@ export class SkillsContainer implements OnInit {
   }
 
   deleteBoxClicked(skillToDelete: Skill): void {
-    // this.entitySkills = this.entitySkills.filter(
-    //   (skill) => skillToDelete.id !== skill.id
-    // );
     this.availableSkills.push(skillToDelete);
     this.removeSkill.emit(skillToDelete);
   }

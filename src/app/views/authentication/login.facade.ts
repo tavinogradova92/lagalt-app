@@ -55,9 +55,9 @@ export class LoginFacade {
           this.loginState.setSuccess(true);
           this.setSessionAndLogin(response);
         },
-        ({ error: response }) => {
+        (error) => {
           this.loginState.setIsLoading(false);
-          this.loginState.setError(response.error);
+          this.loginState.setError(error);
         }
       );
   }
@@ -81,9 +81,9 @@ export class LoginFacade {
         (_) => {
           this.loginState.setSuccess(true);
         },
-        ({ error: response }) => {
+        (error) => {
           this.loginState.setIsLoading(false);
-          this.loginState.setError(response.error);
+          this.loginState.setError(error);
         }
       );
   }
@@ -103,9 +103,9 @@ export class LoginFacade {
           this.loginState.setSuccess(true);
           this.setSessionAndLogin(response);
         },
-        ({ error: response }) => {
+        (error) => {
           this.loginState.setIsLoading(false);
-          this.loginState.setError(response.error);
+          this.loginState.setError(error);
         }
       );
   }

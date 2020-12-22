@@ -70,9 +70,9 @@ export class ProjectFacade {
           this.projectState.setSuccess(true);
           this.projectState.setCurrentProject(response.data as Project);
         },
-        ({ error: response }) => {
+        (error) => {
           this.projectState.setIsLoading(false);
-          this.projectState.setError(response.error);
+          this.projectState.setError(error);
         }
       );
   }
@@ -94,9 +94,9 @@ export class ProjectFacade {
         (_) => {
           this.projectState.setSuccess(true);
         },
-        ({ error: response }) => {
+        (error) => {
           this.projectState.setIsLoading(false);
-          this.projectState.setError(response.error);
+          this.projectState.setError(error);
         }
       );
   }

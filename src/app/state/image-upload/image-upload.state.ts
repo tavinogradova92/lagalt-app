@@ -53,8 +53,4 @@ export class ImageUploadState {
   getError$(): Observable<string> {
     return this.error$.asObservable();
   }
-
-  // getIsLoadingValue(): boolean {
-  //   return this.isLoading$.value;
-  // }
 }
