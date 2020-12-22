@@ -45,7 +45,6 @@ export class ProjectService {
 
   createProject(project: Project): Observable<ResponseObject> {
     const headers = { headers: { 'content-type': 'application/json' } };
-    // const body = JSON.stringify(project);
     return this.http.post<ResponseObject>(`${this.baseUrl}`, project, headers);
   }
 }

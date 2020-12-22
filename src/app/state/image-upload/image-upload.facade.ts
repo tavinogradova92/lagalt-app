@@ -26,10 +26,6 @@ export class ImageUploadFacade {
     return this.imageUploadState.getError$();
   }
 
-  // isLoadingValue(): boolean {
-  //   return this.imageUploadState.getIsLoadingValue();
-  // }
-
   resetError(): void {
     this.imageUploadState.setError('');
   }

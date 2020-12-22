@@ -1,3 +1,4 @@
+import { AccessDeniedComponent } from './error-handling/access-denied/access-denied-page.component';
 import { ErrorInterceptor } from './utils/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './views/authentication/login.module';
@@ -32,6 +33,7 @@ import { ApplicationComponent } from './views/application/application.component'
     AppComponent,
     MainPageComponent,
     NotFoundPageComponent,
+    AccessDeniedComponent,
     TopIndustriesComponent,
     NavbarComponent,
     LoginButtonComponent,

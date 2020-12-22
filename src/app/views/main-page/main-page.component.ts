@@ -55,11 +55,11 @@ export class MainPageComponent implements OnInit {
   }
 
   getTopTags(): void {
-    this.tagService
-      .getPopularTags()
-      .subscribe(
-        (response: ResponseObject) => (this.topTags = response.data as Tag[])
-      );
+    this.tagService.getPopularTags().subscribe((response: ResponseObject) => {
+      if (response) {
+        this.topTags = response.data as Tag[];
+      }
+    });
   }
 
   getProjectsFromTag(tagId: number): void {

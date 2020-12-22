@@ -1,3 +1,4 @@
+import { AccessDeniedComponent } from './error-handling/access-denied/access-denied-page.component';
 import { ProjectsPreloadGuard } from './guards/preloads/projects-preload.guard';
 import { AuthenticatedRedirectGuard } from './guards/AuthenticatedRedirect.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -30,6 +31,10 @@ const routes: Routes = [
     component: UserComponent,
     resolve: [UserPreloadGuard],
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'access-denied',
+    component: AccessDeniedComponent,
   },
   {
     path: '**',

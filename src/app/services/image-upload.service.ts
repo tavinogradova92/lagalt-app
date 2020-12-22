@@ -12,7 +12,7 @@ export class ImageUploadService {
 
   uploadImage(file: File): Observable<ResponseObject> {
     const formData: FormData = new FormData();
-    formData.append('file', file);
+    formData.append('image', file);
     return this.http.post<ResponseObject>(
       `${environment.api.baseUrl}upload-image`,
       formData
