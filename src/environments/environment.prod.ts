@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   api: {
-    baseUrl: 'https://lagalt-dk.herokuapp.com/api/v1/',
+    baseUrl: 'https://lagalt-app.herokuapp.com/api/v1/',
   },
 };
