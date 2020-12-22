@@ -27,6 +27,8 @@ export class ProjectCreationContainer {
 
   createProject(project: Project): void {
     this.projectFacade.createProject(project);
+    window.alert('The project has been created!');
+    this.router.navigateByUrl('/');
   }
 
   handleCreatedSuccess(): void {
