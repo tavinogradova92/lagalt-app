@@ -1,27 +1,24 @@
-# Lagalt
+# :bulb: Lagalt - Frontend for The Great Project Manager :bulb:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+### By [Tanja Vinogradova](https://github.com/tavinogradova92), [Andreas Kjelstrup](https://github.com/AndreasKjelstrup) and [Rune Hou Thode](https://github.com/Kikkomann)
 
-## Development server
+A platform for managing projects of all kinds. Create a project within a specific industry and get members to hjoin that project or join other peoples projects. :sunny:
+<br>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+_This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2._
 
-## Code scaffolding
+## :dancers: and install dependencies:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+git clone https://github.com/tavinogradova92/lagalt-app.git
+cd lagalt-front
+npm i
+```
 
-## Build
+## :runner: the application:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng serve` in the project directory to start the development server for a dev server. Navigate to `http://localhost:4200/` to play around with the application.
 
-## Running unit tests
+It needs access to the [Lagalt API](https://gitlab.com/rhout/lagalt-back), which you can run locally (recommended) or you can use the deployed version by setting `https://lagalt-app.herokuapp.com/api/v1/` as the `baseUrl` in [environment.ts](./src/environments/environment.ts).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Note:** _For now the application only support pre-defined industries. These can be added in the backend manually, or feel free to start extending the functionality._
